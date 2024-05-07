@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    padding: 0px;
+    margin: 0px;
+    border: border-box;
+}
+
+body{
+    font-family: "Kanit", sans-serif;
+}
+
+/* HEADER */
+header{
+  height: 100px;
+  
+}
+
+li{
+    display: inline;
+}
+
+ul{
+    display: inline;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+#nav1{
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#nav2{
+    font-weight: 300;
+    font-size: 25px;
+}
+
+#nav3{
+    display: flex;
+    flex-direction: row;
+    font-weight: 300;
+    font-size: 25px;
+    gap: 40px;
+}
+
+/* Introduction */
+.About{
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    top: 100px;
+    left: 400px;
+}
+
+#profile-pic{
+    border-radius: 200px; 
+    height: 350px;
+    width: 350px;
+    background-image: url(IMG_4545.jpg);
+    background-size: cover;
+}
+
+#about-me{
+    position: relative;
+    left: 380px;
+    bottom: 340px;
+}
+
+#social-media-main{
+    margin-top: 15px;
+    
+}
+
+#hello{
+    font-size: 20px;
+    margin: 15px;
+}
+
+#rushabh{   
+    font-size: xx-large;
+    font-weight: bold;
+    margin: 15px;
+}
+
+#frontend{
+    font-size: x-large;
+    margin: 15px;
+}
+
+#download{
+    border-radius: 30px;
+    padding: 15px;
+    display: inline-block;
+    right: 400px;
+    font-weight: bold;
+    margin-right: 5px;
+    transition-property: all;
+    transition-duration:0.5s ;
+}
+
+#download:hover{
+    cursor: pointer;
+    background-color: #EF233C;
+}
+
+#contact{
+    border-radius: 30px;
+    padding: 15px;
+    display: inline-block;
+    font-weight: bold;
+    background-color: gray;
+    color: white;
+    margin-left: 5px;
+    transition-property: all;
+    transition-duration: 0.5s;
+}
+
+#contact:hover{
+    background-color: black;
+    cursor: pointer;
+}   
+
+#linkedin-image{
+    height:40px;
+    width: 40px;
+    border-radius: 40px;
+    display: inline-block;
+    position: relative;
+    margin: 5px;
+ 
+}
+
+#git-hub-image{
+    height:40px;
+    width: 40px;
+    border-radius: 40px;
+    display: inline-block;
+    position: relative;
+    margin: 5px;
+}
+
+
+/* About me */
+.about-me-outer{
+    position: relative;
+}
+
+#about-me-inner{
+    margin-top: 50px;
+}
+
+#know-me{
+    font-weight:100;
+    font-size: 20px;
+    text-align: center;
+}
+
+#me{
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#about-me-image{
+    border-radius: 30px; 
+    height: 400px;
+    width: 400px;
+    display: inline-block;
+    position: relative;
+    left: 100px;
+}
+
+#experience-border{
+    border: 1px gray solid;
+    border-radius: 30px;
+    display: inline-block;
+    height: 170px;
+    width: 400px;
+    position: relative;
+    left: 150px;
+    bottom: 250px;
+    text-align: center;
+}
+
+#experience-section-inner{
+    display: inline-block;
+    position: relative;
+    top: 20px;
+}
+
+#experience-image{
+    height: 40px;
+}
+
+#experience{
+    font-size: 25px;
+}
+
+#eductation-image{
+    height: 40px;
+}
+
+#education{
+    font-size: 25px;
+}
+
+#education-border{
+    border: 1px gray solid;
+    border-radius: 30px;
+    display: inline-block;
+    height: 170px;
+    width: 400px;
+    position: relative;
+    left: 200px;
+    bottom: 250px;
+    text-align: center;
+}
+
+#education-section-inner{
+    display: inline-block;
+    position: relative;
+    top: 20px;
+}
+
+#about-me-content{
+    width: 850px;
+    display: inline-block;
+    line-break: auto;
+    position: relative;
+    left: 550px;
+    bottom: 200px;    
+}
+
