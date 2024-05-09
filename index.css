@@ -174,7 +174,10 @@ a{
 }
 
 #about-me-inner{
-    margin-top: 50px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 10rem;
 }
 
 #about-me-image{
@@ -186,15 +189,29 @@ a{
     left: 100px;
 }
 
+#experience-section-outer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#experience-education{
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
 #experience-border{
     border: 1px gray solid;
     border-radius: 30px;
-    display: inline-block;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
     height: 170px;
-    width: 400px;
-    position: relative;
-    left: 150px;
-    bottom: 250px;
+    width: 350px;    
     text-align: center;
 }
 
@@ -223,10 +240,12 @@ a{
 #education-border{
     border: 1px gray solid;
     border-radius: 30px;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     height: 170px;
-    width: 400px;
-    position: relative;
+    width: 350px;
+    /* position: relative; */
     left: 200px;
     bottom: 250px;
     text-align: center;
@@ -239,11 +258,18 @@ a{
 }
 
 #about-me-content{
-    width: 850px;
-    display: inline-block;
+    width: 750px;
     line-break: auto;
-    position: relative;
-    left: 550px;
-    bottom: 200px;    
 }
 
+#explore-experience{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#explore-experiencep{
+    font-weight: 300;
+    font-size: 2rem;
+}
