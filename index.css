@@ -13,7 +13,6 @@ body{
 /* HEADER */
 header{
   height: 100px;
-  
 }
 
 li{
@@ -39,24 +38,23 @@ a{
 
 #nav2{
     font-weight: 300;
-    font-size: 25px;
+    font-size: 1.6rem;
 }
 
 #nav3{
     display: flex;
     flex-direction: row;
     font-weight: 300;
-    font-size: 25px;
+    font-size: 1.6rem;
     gap: 40px;
 }
 
 /* Introduction */
 .About{
-    text-align: center;
-    display: inline-block;
-    position: relative;
-    top: 100px;
-    left: 400px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #profile-pic{
@@ -68,30 +66,34 @@ a{
 }
 
 #about-me{
-    position: relative;
-    left: 380px;
-    bottom: 340px;
-}
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-#social-media-main{
-    margin-top: 15px;
-    
 }
 
 #hello{
-    font-size: 20px;
-    margin: 15px;
+    font-size: 1.3rem;
+    font-weight: 300;
 }
 
 #rushabh{   
-    font-size: xx-large;
-    font-weight: bold;
-    margin: 15px;
+    font-size: 2.5rem;
+    font-weight: 500;
 }
 
 #frontend{
-    font-size: x-large;
-    margin: 15px;
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+}
+
+#download-contact{
+    display: flex;
+    gap: 1rem;
 }
 
 #download{
@@ -100,7 +102,6 @@ a{
     display: inline-block;
     right: 400px;
     font-weight: bold;
-    margin-right: 5px;
     transition-property: all;
     transition-duration:0.5s ;
 }
@@ -117,7 +118,6 @@ a{
     font-weight: bold;
     background-color: gray;
     color: white;
-    margin-left: 5px;
     transition-property: all;
     transition-duration: 0.5s;
 }
@@ -127,14 +127,21 @@ a{
     cursor: pointer;
 }   
 
+#social-media-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}   
+
 #linkedin-image{
     height:40px;
     width: 40px;
     border-radius: 40px;
     display: inline-block;
     position: relative;
-    margin: 5px;
- 
+    top: 1px;
 }
 
 #git-hub-image{
@@ -143,29 +150,31 @@ a{
     border-radius: 40px;
     display: inline-block;
     position: relative;
-    margin: 5px;
+    /* margin: 5px; */
 }
 
 
 /* About me */
-.about-me-outer{
-    position: relative;
+
+#know-me-me{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#know-me{
+    font-weight:300;
+    font-size: 1.1rem;
+}
+
+#me{
+    font-size: 3rem;
+    font-weight: 500;
 }
 
 #about-me-inner{
     margin-top: 50px;
-}
-
-#know-me{
-    font-weight:100;
-    font-size: 20px;
-    text-align: center;
-}
-
-#me{
-    font-size: 40px;
-    font-weight: bold;
-    text-align: center;
 }
 
 #about-me-image{
