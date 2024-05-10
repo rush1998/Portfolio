@@ -175,6 +175,7 @@ a{
 
 #about-me-inner{
     margin-top: 30px;
+    margin-bottom: 50px;
     display: flex;
     justify-content: center;
     gap: 10rem;
@@ -267,9 +268,81 @@ a{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 2rem;
 }
 
 #explore-experiencep{
     font-weight: 300;
+    font-size: 1.1rem;
+}
+
+#explore-experiencep2{
+    font-weight: 500;
+    font-size: 3rem;
+}
+
+#experience-main-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+#experience-main-section-border1{
+    border-radius: 2rem;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    height: 300px;
+    width: 500px;
+}
+
+#awsp{
+    margin-top: 1rem;
+    text-align: center;
     font-size: 2rem;
+    font-weight: 500;
+}
+
+#experience-name1{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#skills-aws{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem;
+    font-weight: 500;
+}
+
+#experience-main-section-border2{
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 2rem;
+    height: 300px;
+    width: 500px;
+}
+
+#fdp{
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+#checkmarkimg{
+    height: 20px;
+    display: inline-block;
+}
+
+#skills-fdp{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem;
+    font-weight: 500;
 }
