@@ -293,12 +293,13 @@ a{
     border-color: black;
     border-style: solid;
     border-width: 1px;
-    height: 300px;
-    width: 500px;
+    height: 350px;
+    width: 550px;
 }
 
 #awsp{
     margin-top: 1rem;
+    margin-bottom: 1rem;
     text-align: center;
     font-size: 2rem;
     font-weight: 500;
@@ -315,7 +316,8 @@ a{
     align-items: center;
     gap: 1rem;
     margin: 1.5rem;
-    font-weight: 500;
+    font-weight: 300;
+    font-size: 1.2rem;
 }
 
 #experience-main-section-border2{
@@ -323,19 +325,20 @@ a{
     border-color: black;
     border-style: solid;
     border-radius: 2rem;
-    height: 300px;
-    width: 500px;
+    height: 350px;
+    width: 550px;
 }
 
 #fdp{
     margin-top: 1rem;
+    margin-bottom: 1rem;
     text-align: center;
     font-size: 2rem;
     font-weight: 500;
 }
 
 #checkmarkimg{
-    height: 20px;
+    height: 2rem;
     display: inline-block;
 }
 
@@ -344,5 +347,75 @@ a{
     align-items: center;
     gap: 1rem;
     margin: 1.5rem;
+    font-weight: 300;
+    font-size: 1.2rem;
+}
+
+#project-head{
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+#project-head1{
+    font-weight: 300;
+    font-size: 1.1rem;
+}
+
+#project-head2{
     font-weight: 500;
+    font-size: 3rem;
+}
+
+#project-body-border{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+#project-body-element{
+    border-radius: 2rem;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    height: 25rem;
+    width: 25rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    /* gap: 0.5rem; */
+}
+
+#project-image1{
+    height: 15rem;
+    width: 15rem;
+    border-radius: 2rem;
+}
+
+#project-title1{
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+#project-body-element-social{
+    display: flex;
+    gap: 1rem;
+}
+
+#project-github-button1{
+    border-radius: 30px;
+    padding: 15px;
+    font-weight: bold;
+    display: inline-block;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+#project-github-button2{
+    border-radius: 30px;
+    padding: 15px;
+    font-weight: bold;
+    display: inline-block;
+   
 }
