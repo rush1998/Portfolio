@@ -286,6 +286,7 @@ a{
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    margin-bottom: 5rem;
 }
 
 #experience-main-section-border1{
@@ -371,6 +372,7 @@ a{
     display: flex;
     justify-content: center;
     gap: 2rem;
+    margin-bottom: 10rem;
 }
 
 #project-body-element{
@@ -417,5 +419,84 @@ a{
     padding: 15px;
     font-weight: bold;
     display: inline-block;
-   
+}
+
+#contact-me{
+    text-align: center;
+}
+
+#contact-me-1{
+    font-weight: 300;
+}
+
+#contact-me-2{
+    font-weight: 500;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+#contact-me-outer{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10rem;
+}
+
+#contact-me-border{
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 2rem;
+    height: 5rem;
+    width: 32rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#contact-me-inner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+#contact-me-inner-email{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    gap: 10px;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+#contact-me-email{
+    height: 2rem;
+    
+}
+
+#contact-me-linkedin{
+    height: 2.1rem;
+}
+
+#footer{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.6rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+#footer-ul{
+    display: flex;
+    gap: 2rem;
+}
+
+#footerp{
+    display: flex;
+    justify-content: center;
+    font-weight: 300;
+    font-size: 1rem;
+    margin-bottom: 3rem;
 }
