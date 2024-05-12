@@ -38,7 +38,7 @@ a{
 
 #nav2{
     font-weight: 300;
-    font-size: 1.6rem;
+    font-size: 2rem;
 }
 
 #nav3{
@@ -47,6 +47,15 @@ a{
     font-weight: 300;
     font-size: 1.6rem;
     gap: 40px;
+    
+}
+
+#nav3 :hover{
+    
+    color: #8EA7E9;
+    text-decoration-line: underline overline;
+    text-underline-offset: 1rem;
+
 }
 
 /* Introduction */
@@ -103,7 +112,7 @@ a{
     right: 400px;
     font-weight: bold;
     transition-property: all;
-    transition-duration:0.5s ;
+    transition-duration:0.5s;
 }
 
 #download:hover{
