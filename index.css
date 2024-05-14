@@ -51,11 +51,11 @@ a{
 }
 
 #nav3 :hover{
-    
     color: #8EA7E9;
     text-decoration-line: underline overline;
     text-underline-offset: 1rem;
-
+    transition: all;
+    transition-duration: 0.4s;
 }
 
 /* Introduction */
