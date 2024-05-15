@@ -58,6 +58,62 @@ a{
     transition-duration: 0.4s;
 }
 
+.sidebar li:hover{
+    background-color: lightgray;
+}
+
+.sidebar{   
+    height: 200px;
+    width: 100px;
+    z-index: 999;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0px 10px rgba(0, 0, 0, 0.1);
+    display:none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar li{
+    width: 100%;
+}
+
+.sidebar a{
+    width: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+   #mobile-nav-menu{
+    display: flex;
+   }
+
+   #bars-icon{
+    border: 0px;
+    background-color: white;
+   }
+
+   #icon{
+    height: 2rem;
+   }
+
+   #bars-icon:hover{
+    cursor: pointer;
+   }
+
+   #nav1{
+    justify-content: space-evenly;
+   }
+
+   #nav2{
+    font-weight: 300;
+    font-size: 1.5rem;
+   }
+    #nav3{
+        display: none;
+    }
+    
+}
 /* Introduction */
 .About{
     height: 600px;
@@ -483,10 +539,11 @@ a{
     color: #8EA7E9;
     text-decoration-line: underline;
     text-underline-offset: 1rem;
+    transition: all;
+    transition-duration:0.4s;
 }
 #contact-me-email{
     height: 2rem;
-    
 }
 
 #contact-me-linkedin{
