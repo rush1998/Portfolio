@@ -13,6 +13,7 @@ body{
 /* HEADER */
 header{
   height: 100px;
+    
 }
 
 li{
@@ -31,6 +32,7 @@ a{
 #nav1{
     height: 100px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
@@ -64,7 +66,8 @@ a{
 
 .nav5{
     display: flex;
-
+    background-color: white;
+    border-style: none;
 }
 
 .sidebar li:hover{
@@ -91,8 +94,12 @@ a{
     width: 100%;
 }
 
-@media screen and (max-width: 1200px) {
-   #nav4{
+@media screen and (max-width: 1300px) {
+    header{
+        height: 150px;  
+      }
+   
+    #nav4{
     display: flex;
    }
 
@@ -110,6 +117,7 @@ a{
    }
 
    #nav1{
+    height: 150px;
     justify-content: space-evenly;
    }
 
@@ -124,13 +132,15 @@ a{
 }
 /* Introduction */
 .About{
-    height: 600px;
+    height: 650px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
 
 #profile-pic{
+    display: flex;
     border-radius: 200px; 
     height: 350px;
     width: 350px;
@@ -223,14 +233,21 @@ a{
     border-radius: 40px;
     display: inline-block;
     position: relative;
-    /* margin: 5px; */
+
 }
 
+@media screen and (max-width: 1300px){
+    #profile-pic{
+        height: 250px;
+        width: 250px;
+    }
+   
+}
 
 /* About me */
-
 #know-me-me{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -247,42 +264,51 @@ a{
 }
 
 #about-me-inner{
-    margin-top: 30px;
-    margin-bottom: 50px;
+    margin-bottom: 5rem;
     display: flex;
     justify-content: center;
-    gap: 10rem;
-}
-
-#about-me-image{
-    border-radius: 30px; 
-    height: 400px;
-    width: 400px;
-    display: inline-block;
-    position: relative;
-    left: 100px;
-}
-
-#experience-section-outer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    gap: 5rem;
 }
 
 #experience-education{
     display: flex;
-    justify-content: left;
-    align-items: left;
-    gap: 2rem;
-    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-#experience-border{
+#about-me-image-outer{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 3rem;
+}
+
+#about-me-image{
+    border-radius: 2rem; 
+    height: 23rem;
+}
+
+#experience-education-inner{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+#experience-education-outer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    
+}
+
+#experience-border {
     border: 1px gray solid;
     border-radius: 30px;
     display: flex;
-    align-items: flex-start;
+    flex-wrap: wrap;
     justify-content: center;
     height: 170px;
     width: 350px;    
@@ -290,52 +316,66 @@ a{
 }
 
 #experience-section-inner{
-    display: inline-block;
-    position: relative;
-    top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #experience-image{
-    height: 40px;
+    height: 3rem;
 }
 
 #experience{
-    font-size: 25px;
-}
-
-#eductation-image{
-    height: 40px;
-}
-
-#education{
-    font-size: 25px;
+    font-size: 1.5rem;
+    font-weight: 400;
 }
 
 #education-border{
     border: 1px gray solid;
     border-radius: 30px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-start;
     height: 170px;
     width: 350px;
-    /* position: relative; */
-    left: 200px;
-    bottom: 250px;
     text-align: center;
 }
 
 #education-section-inner{
-    display: inline-block;
-    position: relative;
-    top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#eductation-image{
+    height: 3rem;
+    display: flex;
+}
+
+#education{
+    font-size: 1.5rem;
+    font-weight: 400;
 }
 
 #about-me-content{
-    width: 750px;
-    line-break: auto;
+    /* display: flex; */
+    flex-wrap: wrap;
+    width: 45rem;
 }
 
+@media screen and (max-width: 1300px){
+    #about-me-image{
+        height: 18rem;
+    }
+
+    #about-me-content{
+        width:30rem;
+    }
+}
+
+/* Experience */
 #explore-experience{
     display: flex;
     flex-direction: column;
