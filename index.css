@@ -144,7 +144,7 @@ a{
     border-radius: 200px; 
     height: 350px;
     width: 350px;
-    background-image: url(IMG_4545.jpg);
+    background-image: url(IMG_7388.png);
     background-size: cover;
 }
 
@@ -381,7 +381,6 @@ a{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 2rem;
 }
 
 #explore-experiencep{
@@ -398,8 +397,9 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 2rem;
-    margin-bottom: 5rem;
+    margin:0rem 2rem 4rem 2rem;
 }
 
 #experience-main-section-border1{
@@ -407,14 +407,17 @@ a{
     border-color: black;
     border-style: solid;
     border-width: 1px;
-    height: 350px;
-    width: 550px;
+    height: 22rem;
+    width: 35rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #awsp{
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 2rem;
     font-weight: 500;
 }
@@ -435,17 +438,21 @@ a{
 }
 
 #experience-main-section-border2{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     border-width: 1px;
     border-color: black;
     border-style: solid;
     border-radius: 2rem;
-    height: 350px;
-    width: 550px;
+    height: 22rem;
+    width: 35rem;
 }
 
 #fdp{
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    display: flex;
     text-align: center;
     font-size: 2rem;
     font-weight: 500;
@@ -465,10 +472,10 @@ a{
     font-size: 1.2rem;
 }
 
+
+/* project-head */
 #project-head{
     text-align: center;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
 }
 
 #project-head1{
@@ -483,6 +490,7 @@ a{
 
 #project-body-border{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
     margin-bottom: 10rem;
@@ -499,7 +507,6 @@ a{
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
-    /* gap: 0.5rem; */
 }
 
 #project-image1{
@@ -527,6 +534,13 @@ a{
     padding-left: 30px;
 }
 
+#project-github-button1:hover{
+    cursor: pointer;
+    background-color: #EF233C;
+    transition: all;
+    transition-duration:1s;
+}
+
 #project-github-button2{
     border-radius: 30px;
     padding: 15px;
@@ -534,6 +548,17 @@ a{
     display: inline-block;
 }
 
+#project-github-button2:hover{
+    cursor: pointer;
+    background-color: black;
+    transition: all;
+    transition-duration:1s;
+    color: white;
+
+}
+
+
+/* Contact Me */
 #contact-me{
     text-align: center;
 }
@@ -545,26 +570,26 @@ a{
 #contact-me-2{
     font-weight: 500;
     font-size: 3rem;
-    margin-bottom: 1.5rem;
 }
 
 #contact-me-outer{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 10rem;
+    margin:0rem 0rem 10rem 0rem;
 }
 
 #contact-me-border{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     border-width: 1px;
     border-color: black;
     border-style: solid;
     border-radius: 2rem;
     height: 5rem;
     width: 32rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
 }
 
 #contact-me-inner{
@@ -610,6 +635,14 @@ a{
 #footer-ul{
     display: flex;
     gap: 2rem;
+}
+
+#footer-ul :hover{
+    color: #8EA7E9;
+    text-decoration-line: underline overline;
+    text-underline-offset: 1rem;
+    transition: all;
+    transition-duration: 0.4s;
 }
 
 #footerp{
