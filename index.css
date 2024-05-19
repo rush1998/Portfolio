@@ -264,7 +264,7 @@ a{
 }
 
 #about-me-inner{
-    margin-bottom: 5rem;
+    margin-bottom: 6rem;
     display: flex;
     justify-content: center;
     gap: 5rem;
@@ -367,7 +367,7 @@ a{
 
 @media screen and (max-width: 1300px){
     #about-me-image{
-        height: 18rem;
+        height: 12rem;
     }
 
     #about-me-content{
@@ -399,7 +399,7 @@ a{
     align-items: center;
     flex-wrap: wrap;
     gap: 2rem;
-    margin:0rem 2rem 4rem 2rem;
+    margin:0rem 2rem 10rem 2rem;
 }
 
 #experience-main-section-border1{
@@ -493,7 +493,7 @@ a{
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
-    margin-bottom: 10rem;
+    margin-bottom: 14rem;
 }
 
 #project-body-element{
