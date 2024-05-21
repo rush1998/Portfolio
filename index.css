@@ -631,7 +631,7 @@ a{
 
 @media screen and (max-width:1300px){
     #contact-me-inner{
-        gap: 1rem;
+        gap: 0.5rem;
     }
 
     #contact-me-border{
