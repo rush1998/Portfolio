@@ -399,7 +399,7 @@ a{
     align-items: center;
     flex-wrap: wrap;
     gap: 2rem;
-    margin:0rem 2rem 10rem 2rem;
+    margin:0rem 2rem 15rem 2rem;
 }
 
 #experience-main-section-border1{
@@ -629,6 +629,18 @@ a{
     height: 2.1rem;
 }
 
+@media screen and (max-width:1300px){
+    #contact-me-inner{
+        gap: 1rem;
+    }
+
+    #contact-me-border{
+        width: 27rem;
+    }
+}
+
+
+/* Footer */
 #footer{
     display: flex;
     justify-content: center;
@@ -657,4 +669,11 @@ a{
     font-weight: 300;
     font-size: 1rem;
     margin-bottom: 3rem;
+}
+
+@media screen and (max-width:1300px){
+    #footer-ul{
+        gap: 1rem;
+    }
+
 }
