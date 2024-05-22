@@ -139,13 +139,33 @@ a{
     align-items: center;
 }
 
-#profile-pic{
+#profile-pic-border{
     display: flex;
+    border-radius: 200px; 
+    border: 0.5rem solid white;
+    border-top: 0.5rem solid #8EA7E9;
+    /* animation: PorfileBorder 10s ease-in 0s infinite; */
+}
+
+#profile-pic{
+    display: block;
     border-radius: 200px; 
     height: 350px;
     width: 350px;
-    background-image: url(IMG_7388.png);
-    background-size: cover;
+    /* background-image: url(IMG_7388.png); */
+    /* background-size: cover; */
+}
+
+
+@keyframes PorfileBorder {
+    from{
+        transform: rotate(0deg)
+    }
+
+    to{
+        transform: rotate(360deg);
+    }
+    
 }
 
 #about-me{
