@@ -140,20 +140,22 @@ a{
 }
 
 #profile-pic-border{
-    display: flex;
+    position: absolute;
+    left: 383px;
+    top: 246px;
+    height: 350px;
+    width: 350px;
     border-radius: 200px; 
-    border: 0.5rem solid white;
-    border-top: 0.5rem solid #8EA7E9;
-    /* animation: PorfileBorder 10s ease-in 0s infinite; */
+    border: 0rem solid transparent;
+    border-bottom: 0.4rem solid black;
+    animation: PorfileBorder 3s ease-in-out 0s infinite;
 }
 
 #profile-pic{
-    display: block;
+    display: flex;
     border-radius: 200px; 
     height: 350px;
     width: 350px;
-    /* background-image: url(IMG_7388.png); */
-    /* background-size: cover; */
 }
 
 
@@ -261,7 +263,9 @@ a{
         height: 250px;
         width: 250px;
     }
-   
+    #profile-pic-border{
+        display: none;
+    }
 }
 
 /* About me */
