@@ -6,6 +6,10 @@
     border: border-box;
 }
 
+:root{
+    --main-color: black;
+}
+
 body{
     font-family: "Kanit", sans-serif;
 }
@@ -156,6 +160,7 @@ a{
     border-radius: 200px; 
     height: 350px;
     width: 350px;
+    box-shadow: 0px 0px 25px var(--main-color);
 }
 
 
