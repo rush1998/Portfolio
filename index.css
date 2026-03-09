@@ -76,7 +76,6 @@ header.scrolled {
     box-shadow: 0 4px 28px rgba(0, 0, 0, 0.4);
 }
 
-/* Scroll progress bar */
 .scroll-progress {
     position: absolute;
     bottom: 0;
@@ -106,7 +105,6 @@ header.scrolled {
     margin: 0 auto;
 }
 
-/* ─── LOGO ────────────────────────────────────────────────── */
 .logo-link {
     display: flex;
     align-items: center;
@@ -145,7 +143,6 @@ header.scrolled {
 
 .logo-link:hover .logo-name { color: var(--main-color); }
 
-/* ─── DESKTOP NAV ──────────────────────────────────────────── */
 #nav3 {
     display: flex;
     align-items: center;
@@ -174,7 +171,6 @@ header.scrolled {
     font-weight: 400;
 }
 
-/* Hire Me CTA */
 .nav-cta {
     background: linear-gradient(135deg, var(--main-color), var(--main-color-dark)) !important;
     color: #fff !important;
@@ -192,14 +188,12 @@ header.scrolled {
     transform: translateY(-2px) scale(1.04) !important;
 }
 
-/* ─── RIGHT CLUSTER ─────────────────────────────────────────── */
 #nav-right {
     display: flex;
     align-items: center;
     gap: 0.75rem;
 }
 
-/* ─── THEME TOGGLE ─────────────────────────────────────────── */
 .theme-toggle {
     background: transparent;
     border: 1.5px solid var(--border);
@@ -231,11 +225,7 @@ header.scrolled {
     to   { transform: rotate(360deg) scale(1); }
 }
 
-/* ─── ANIMATED HAMBURGER ────────────────────────────────────── */
-#nav4 {
-    display: none;
-    position: relative;
-}
+#nav4 { display: none; position: relative; }
 
 .hamburger {
     background: transparent;
@@ -269,7 +259,6 @@ header.scrolled {
 .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
 .hamburger.open span:last-child   { transform: translateY(-7px) rotate(-45deg); width: 100%; }
 
-/* ─── MOBILE OVERLAY ────────────────────────────────────────── */
 .mobile-overlay {
     display: none;
     position: fixed;
@@ -281,7 +270,6 @@ header.scrolled {
 
 .mobile-overlay.visible { display: block; }
 
-/* ─── SLIDE-IN SIDEBAR ────────────────────────────────────────── */
 .sidebar {
     position: fixed;
     top: 0;
@@ -307,10 +295,7 @@ header.scrolled {
     border-bottom: 1px solid var(--border);
 }
 
-.sidebar li {
-    width: 100%;
-    display: block;
-}
+.sidebar li { width: 100%; display: block; }
 
 .sidebar li a {
     display: block;
@@ -341,10 +326,7 @@ header.scrolled {
     transition: color 0.2s, transform 0.3s;
 }
 
-.sidebar-close:hover {
-    color: var(--accent);
-    transform: rotate(90deg);
-}
+.sidebar-close:hover { color: var(--accent); transform: rotate(90deg); }
 
 .sidebar-cta {
     margin: 1.25rem 1.5rem 0 !important;
@@ -358,11 +340,7 @@ header.scrolled {
     box-shadow: 0 2px 14px rgba(99, 102, 241, 0.35);
 }
 
-.sidebar-cta:hover {
-    padding-left: 1rem !important;
-    border-left-color: transparent !important;
-    opacity: 0.9;
-}
+.sidebar-cta:hover { padding-left: 1rem !important; border-left-color: transparent !important; opacity: 0.9; }
 
 @media screen and (max-width: 900px) {
     #nav1 { padding: 0 1.5rem; height: 70px; }
@@ -382,9 +360,20 @@ header.scrolled {
     padding: 4rem 2rem;
     background-color: var(--bg);
     background-image:
-        radial-gradient(ellipse at 15% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 55%),
-        radial-gradient(ellipse at 85% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
+        radial-gradient(ellipse at 15% 50%, rgba(99, 102, 241, 0.13) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 20%, rgba(99, 102, 241, 0.09) 0%, transparent 50%),
+        radial-gradient(ellipse at 55% 88%, rgba(167, 139, 250, 0.08) 0%, transparent 45%);
     transition: background-color 0.35s ease;
+}
+
+/* Floating animation on profile image wrapper */
+.hero-image-wrap {
+    animation: heroFloat 6s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-18px); }
 }
 
 #profile-pic {
@@ -394,11 +383,12 @@ header.scrolled {
     object-fit: cover;
     box-shadow: 0 0 0 6px var(--bg), 0 0 0 9px var(--main-color), 0 16px 48px rgba(99, 102, 241, 0.35);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: block;
 }
 
 #profile-pic:hover {
     transform: scale(1.03);
-    box-shadow: 0 0 0 6px var(--bg), 0 0 0 9px var(--main-color-dark), 0 20px 56px rgba(99, 102, 241, 0.5);
+    box-shadow: 0 0 0 6px var(--bg), 0 0 0 12px var(--main-color-dark), 0 20px 60px rgba(99, 102, 241, 0.5);
 }
 
 #about-me {
@@ -408,9 +398,48 @@ header.scrolled {
     max-width: 420px;
 }
 
+/* Staggered entrance animations */
+.hero-animate {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: heroFadeIn 0.65s ease forwards;
+}
+
+.hero-animate:nth-child(1) { animation-delay: 0.05s; }
+.hero-animate:nth-child(2) { animation-delay: 0.20s; }
+.hero-animate:nth-child(3) { animation-delay: 0.35s; }
+.hero-animate:nth-child(4) { animation-delay: 0.50s; }
+.hero-animate:nth-child(5) { animation-delay: 0.65s; }
+
+@keyframes heroFadeIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Gradient name */
+.gradient-name {
+    background: linear-gradient(135deg, var(--main-color) 0%, var(--main-color-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Typewriter cursor */
+.cursor {
+    display: inline-block;
+    color: var(--main-color);
+    font-weight: 300;
+    margin-left: 1px;
+    animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
 #hello { font-size: 1.1rem; font-weight: 300; color: var(--text-light); margin-bottom: 0.2rem; }
 #rushabh { font-size: 2.8rem; font-weight: 600; line-height: 1.1; margin-bottom: 0.35rem; }
-#frontend { font-size: 1.2rem; font-weight: 300; color: var(--main-color-dark); letter-spacing: 0.04em; margin-bottom: 1.6rem; }
+#frontend { font-size: 1.2rem; font-weight: 300; color: var(--main-color); letter-spacing: 0.04em; margin-bottom: 1.6rem; min-height: 1.8rem; }
 
 #download-contact { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
 
