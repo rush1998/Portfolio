@@ -10,23 +10,47 @@ html {
     scroll-behavior: smooth;
 }
 
-:root {
+/* ─── LIGHT THEME (default) ──────────────────────────────── */
+:root,
+[data-theme="light"] {
     --main-color: #8EA7E9;
     --main-color-dark: #6A89D4;
     --accent: #EF233C;
+    --bg: #ffffff;
+    --bg-hero: #ffffff;
+    --card-bg: #ffffff;
+    --header-bg: rgba(255, 255, 255, 0.88);
+    --footer-bg: #f8f8f8;
     --text-dark: #1a1a2e;
     --text-light: #666;
     --border: #e0e0e0;
     --shadow: 0 4px 20px rgba(142, 167, 233, 0.15);
     --shadow-hover: 0 8px 32px rgba(142, 167, 233, 0.35);
+    --toggle-icon: '\f186'; /* moon */
     --transition: all 0.3s ease;
     --section-gap: 5rem;
 }
 
+/* ─── DARK THEME ─────────────────────────────────────────── */
+[data-theme="dark"] {
+    --bg: #0d0d1a;
+    --bg-hero: #0d0d1a;
+    --card-bg: #15152a;
+    --header-bg: rgba(13, 13, 26, 0.90);
+    --footer-bg: #0a0a16;
+    --text-dark: #e8e8f2;
+    --text-light: #9090b0;
+    --border: #2a2a44;
+    --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    --shadow-hover: 0 8px 32px rgba(142, 167, 233, 0.25);
+}
+
+/* ─── BASE ───────────────────────────────────────────────── */
 body {
     font-family: "Kanit", sans-serif;
     color: var(--text-dark);
-    background-color: #ffffff;
+    background-color: var(--bg);
+    transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 a {
@@ -43,11 +67,12 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.88);
+    background: var(--header-bg);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
     height: 80px;
+    transition: background 0.35s ease, border-color 0.35s ease;
 }
 
 #nav1 {
@@ -97,14 +122,52 @@ header {
     transition: width 0.3s ease;
 }
 
-#nav3 li a:hover {
-    color: var(--main-color);
+#nav3 li a:hover { color: var(--main-color); }
+#nav3 li a:hover::after { width: 100%; }
+
+/* Right cluster: theme toggle + hamburger */
+#nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
 }
 
-#nav3 li a:hover::after {
-    width: 100%;
+/* ─── THEME TOGGLE BUTTON ─────────────────────────────────── */
+.theme-toggle {
+    background: transparent;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    color: var(--text-dark);
+    transition: var(--transition);
+    flex-shrink: 0;
 }
 
+.theme-toggle:hover {
+    background: var(--main-color);
+    border-color: var(--main-color);
+    color: #fff;
+    transform: rotate(20deg) scale(1.1);
+}
+
+/* Spin animation on toggle */
+.theme-toggle.spin {
+    animation: spinOnce 0.45s ease;
+}
+
+@keyframes spinOnce {
+    from { transform: rotate(0deg) scale(1); }
+    50%  { transform: rotate(180deg) scale(1.15); }
+    to   { transform: rotate(360deg) scale(1); }
+}
+
+/* ─── MOBILE MENU ────────────────────────────────────────── */
 #nav4 {
     display: none;
     position: relative;
@@ -125,14 +188,15 @@ header {
     top: 48px;
     right: 0;
     min-width: 180px;
-    background: rgba(255, 255, 255, 0.97);
+    background: var(--card-bg);
     backdrop-filter: blur(12px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    box-shadow: var(--shadow-hover);
     border-radius: 1rem;
     border: 1px solid var(--border);
     display: none;
     flex-direction: column;
     overflow: hidden;
+    transition: background 0.35s ease;
 }
 
 .sidebar li {
@@ -145,11 +209,12 @@ header {
     padding: 0.8rem 1.5rem;
     font-size: 1rem;
     font-weight: 300;
+    color: var(--text-dark);
     transition: background 0.2s, color 0.2s;
 }
 
 .sidebar li a:hover {
-    background: rgba(142, 167, 233, 0.1);
+    background: rgba(142, 167, 233, 0.12);
     color: var(--main-color);
 }
 
@@ -165,9 +230,7 @@ header {
     transition: background 0.2s;
 }
 
-.sidebar-close:hover {
-    background: rgba(0,0,0,0.05);
-}
+.sidebar-close:hover { background: rgba(0,0,0,0.06); }
 
 @media screen and (max-width: 900px) {
     #nav1 { padding: 0 1.5rem; height: 70px; }
@@ -176,7 +239,7 @@ header {
     #nav3 { display: none; }
 }
 
-/* ─── HERO ──────────────────────────────────────────────── */
+/* ─── HERO ───────────────────────────────────────────────── */
 .hero-section {
     min-height: calc(100vh - 80px);
     display: flex;
@@ -185,9 +248,11 @@ header {
     align-items: center;
     gap: 5rem;
     padding: 4rem 2rem;
-    background:
+    background-color: var(--bg-hero);
+    background-image:
         radial-gradient(ellipse at 15% 50%, rgba(142, 167, 233, 0.1) 0%, transparent 55%),
         radial-gradient(ellipse at 85% 20%, rgba(142, 167, 233, 0.07) 0%, transparent 50%);
+    transition: background-color 0.35s ease;
 }
 
 #profile-pic {
@@ -195,13 +260,13 @@ header {
     height: 320px;
     width: 320px;
     object-fit: cover;
-    box-shadow: 0 0 0 6px #fff, 0 0 0 9px var(--main-color), 0 16px 48px rgba(142, 167, 233, 0.4);
+    box-shadow: 0 0 0 6px var(--bg), 0 0 0 9px var(--main-color), 0 16px 48px rgba(142, 167, 233, 0.4);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 #profile-pic:hover {
     transform: scale(1.03);
-    box-shadow: 0 0 0 6px #fff, 0 0 0 9px var(--main-color-dark), 0 20px 56px rgba(142, 167, 233, 0.5);
+    box-shadow: 0 0 0 6px var(--bg), 0 0 0 9px var(--main-color-dark), 0 20px 56px rgba(142, 167, 233, 0.5);
 }
 
 #about-me {
@@ -246,6 +311,7 @@ header {
     font-size: 0.95rem;
     border: 2px solid var(--text-dark);
     background: transparent;
+    color: var(--text-dark);
     cursor: pointer;
     font-family: "Kanit", sans-serif;
     transition: var(--transition);
@@ -253,7 +319,7 @@ header {
 
 #download:hover {
     background: var(--text-dark);
-    color: #fff;
+    color: var(--bg);
 }
 
 #contact {
@@ -290,6 +356,11 @@ header {
     transition: transform 0.3s ease, opacity 0.3s;
 }
 
+/* Invert GitHub icon in dark mode so it stays visible */
+[data-theme="dark"] .social-icon[alt="GitHub"] {
+    filter: invert(1);
+}
+
 .social-icon:hover {
     transform: translateY(-4px);
     opacity: 1;
@@ -323,6 +394,7 @@ section {
     font-size: 2.6rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
+    color: var(--text-dark);
 }
 
 /* ─── ABOUT ME ───────────────────────────────────────────── */
@@ -330,6 +402,8 @@ section {
     display: flex;
     justify-content: center;
     padding: 2rem 2rem var(--section-gap);
+    background-color: var(--bg);
+    transition: background-color 0.35s ease;
 }
 
 #experience-education {
@@ -340,10 +414,7 @@ section {
     max-width: 1200px;
 }
 
-#about-me-image-outer {
-    display: flex;
-    align-items: center;
-}
+#about-me-image-outer { display: flex; align-items: center; }
 
 #about-me-image {
     border-radius: 1.5rem;
@@ -352,9 +423,7 @@ section {
     transition: box-shadow 0.4s ease;
 }
 
-#about-me-image:hover {
-    box-shadow: 0 8px 32px rgba(142, 167, 233, 0.4);
-}
+#about-me-image:hover { box-shadow: 0 8px 32px rgba(142, 167, 233, 0.4); }
 
 #experience-education-inner {
     display: flex;
@@ -381,8 +450,9 @@ section {
     justify-content: center;
     align-items: center;
     padding: 1.5rem;
+    background: var(--card-bg);
     box-shadow: var(--shadow);
-    transition: var(--transition);
+    transition: var(--transition), background 0.35s ease;
     text-align: center;
 }
 
@@ -398,15 +468,8 @@ section {
     gap: 0.4rem;
 }
 
-.info-icon {
-    height: 2.4rem;
-    margin-bottom: 0.2rem;
-}
-
-.info-card-title {
-    font-size: 1.1rem;
-    font-weight: 500;
-}
+.info-icon { height: 2.4rem; margin-bottom: 0.2rem; }
+.info-card-title { font-size: 1.1rem; font-weight: 500; }
 
 .info-card-inner p {
     font-size: 0.9rem;
@@ -429,7 +492,7 @@ section {
     .info-card { width: 42vw; min-width: 140px; }
 }
 
-/* ─── SKILLS / EXPERIENCE ────────────────────────────────── */
+/* ─── SKILLS ─────────────────────────────────────────────── */
 #experience-main-section {
     display: flex;
     justify-content: center;
@@ -437,6 +500,8 @@ section {
     flex-wrap: wrap;
     gap: 2rem;
     padding: 2rem 2rem var(--section-gap);
+    background-color: var(--bg);
+    transition: background-color 0.35s ease;
 }
 
 .skill-card {
@@ -448,8 +513,9 @@ section {
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+    background: var(--card-bg);
     box-shadow: var(--shadow);
-    transition: var(--transition);
+    transition: var(--transition), background 0.35s ease;
 }
 
 .skill-card:hover {
@@ -457,11 +523,7 @@ section {
     transform: translateY(-4px);
 }
 
-.skill-card-title {
-    font-size: 1.35rem;
-    font-weight: 500;
-    text-align: center;
-}
+.skill-card-title { font-size: 1.35rem; font-weight: 500; text-align: center; }
 
 .skill-grid {
     display: grid;
@@ -476,12 +538,10 @@ section {
     gap: 0.6rem;
     font-weight: 300;
     font-size: 0.95rem;
+    color: var(--text-dark);
 }
 
-.checkmarkimg {
-    height: 1.3rem;
-    flex-shrink: 0;
-}
+.checkmarkimg { height: 1.3rem; flex-shrink: 0; }
 
 @media screen and (max-width: 900px) {
     .skill-card { width: 90vw; max-width: 360px; }
@@ -494,6 +554,8 @@ section {
     justify-content: center;
     gap: 2rem;
     padding: 2rem 2rem var(--section-gap);
+    background-color: var(--bg);
+    transition: background-color 0.35s ease;
 }
 
 .card {
@@ -506,8 +568,9 @@ section {
     align-items: center;
     flex-direction: column;
     padding: 1.5rem;
+    background: var(--card-bg);
     box-shadow: var(--shadow);
-    transition: var(--transition);
+    transition: var(--transition), background 0.35s ease;
     text-align: center;
 }
 
@@ -528,12 +591,10 @@ section {
     font-weight: 500;
     padding: 0 0.25rem;
     line-height: 1.4;
+    color: var(--text-dark);
 }
 
-.card-buttons {
-    display: flex;
-    gap: 0.75rem;
-}
+.card-buttons { display: flex; gap: 0.75rem; }
 
 .btn-outline {
     border-radius: 30px;
@@ -542,6 +603,7 @@ section {
     font-size: 0.88rem;
     border: 2px solid var(--text-dark);
     background: transparent;
+    color: var(--text-dark);
     cursor: pointer;
     font-family: "Kanit", sans-serif;
     transition: var(--transition);
@@ -549,7 +611,7 @@ section {
 
 .btn-outline:hover {
     background: var(--text-dark);
-    color: #fff;
+    color: var(--bg);
 }
 
 .btn-solid {
@@ -558,7 +620,7 @@ section {
     font-weight: 600;
     font-size: 0.88rem;
     background: var(--text-dark);
-    color: #fff;
+    color: var(--bg);
     border: 2px solid var(--text-dark);
     cursor: pointer;
     font-family: "Kanit", sans-serif;
@@ -568,6 +630,7 @@ section {
 .btn-solid:hover {
     background: var(--main-color);
     border-color: var(--main-color);
+    color: #fff;
 }
 
 @media screen and (max-width: 900px) {
@@ -579,19 +642,20 @@ section {
     display: flex;
     justify-content: center;
     padding: 2rem 1rem var(--section-gap);
+    background-color: var(--bg);
+    transition: background-color 0.35s ease;
 }
 
 #contact-me-border {
     border: 1px solid var(--border);
     border-radius: 1.5rem;
     padding: 2.5rem 3.5rem;
+    background: var(--card-bg);
     box-shadow: var(--shadow);
-    transition: var(--transition);
+    transition: var(--transition), background 0.35s ease;
 }
 
-#contact-me-border:hover {
-    box-shadow: var(--shadow-hover);
-}
+#contact-me-border:hover { box-shadow: var(--shadow-hover); }
 
 #contact-me-inner {
     display: flex;
@@ -607,21 +671,13 @@ section {
     gap: 0.75rem;
     font-size: 1rem;
     font-weight: 300;
+    color: var(--text-dark);
     transition: color 0.3s;
 }
 
-.contact-item:hover {
-    color: var(--main-color);
-}
-
-.contact-item a {
-    color: inherit;
-    transition: color 0.3s;
-}
-
-.contact-icon {
-    height: 1.8rem;
-}
+.contact-item:hover { color: var(--main-color); }
+.contact-item a { color: inherit; transition: color 0.3s; }
+.contact-icon { height: 1.8rem; }
 
 @media screen and (max-width: 600px) {
     #contact-me-border { padding: 2rem 1.5rem; }
@@ -630,16 +686,13 @@ section {
 
 /* ─── FOOTER ─────────────────────────────────────────────── */
 footer {
-    background: #f8f8f8;
+    background: var(--footer-bg);
     border-top: 1px solid var(--border);
     padding: 2.5rem 2rem 2rem;
+    transition: background 0.35s ease, border-color 0.35s ease;
 }
 
-#footer {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
-}
+#footer { display: flex; justify-content: center; margin-bottom: 1rem; }
 
 #footer-ul {
     display: flex;
@@ -653,27 +706,22 @@ footer {
 #footer-ul li a {
     position: relative;
     padding-bottom: 3px;
+    color: var(--text-dark);
     transition: color 0.3s;
 }
 
 #footer-ul li a::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: 0; left: 0;
     width: 0;
     height: 1.5px;
     background: var(--main-color);
     transition: width 0.3s ease;
 }
 
-#footer-ul li a:hover {
-    color: var(--main-color);
-}
-
-#footer-ul li a:hover::after {
-    width: 100%;
-}
+#footer-ul li a:hover { color: var(--main-color); }
+#footer-ul li a:hover::after { width: 100%; }
 
 #footerp {
     text-align: center;
@@ -682,6 +730,4 @@ footer {
     color: var(--text-light);
 }
 
-@media screen and (max-width: 600px) {
-    #footer-ul { gap: 1rem; }
-}
+@media screen and (max-width: 600px) { #footer-ul { gap: 1rem; } }
