@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script>
-        // Apply saved theme before page renders to avoid flash
         (function () {
             const saved = localStorage.getItem('theme') || 'light';
             document.documentElement.setAttribute('data-theme', saved);
@@ -18,38 +17,50 @@
 
 <!-- HEADER -->
 <header id="header">
+    <div class="scroll-progress" id="scroll-progress"></div>
     <div id="nav1">
-        <div id="nav2">
-            <a href="#">Rushabh Patel</a>
-        </div>
+
+        <!-- Logo -->
+        <a href="#" class="logo-link">
+            <span class="logo-badge">RP</span>
+            <span class="logo-name">Rushabh Patel</span>
+        </a>
+
+        <!-- Desktop Nav -->
         <nav>
             <ul id="nav3">
                 <li><a href="#know-me-me">About</a></li>
                 <li><a href="#explore-experience">Experience</a></li>
                 <li><a href="#cert-head">Certifications</a></li>
                 <li><a href="#project-head">Projects</a></li>
-                <li><a href="#contact-me">Contact</a></li>
+                <li><a href="#contact-me" class="nav-cta">Hire Me</a></li>
             </ul>
         </nav>
+
+        <!-- Right controls -->
         <div id="nav-right">
             <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light theme" onclick="toggleTheme()">
                 <i class="fa-solid fa-moon"></i>
             </button>
             <div id="nav4">
-                <button class="nav5" aria-label="Open menu" onclick="showSidebar()">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="currentColor"><path d="M120-240v-66.67h720V-240H120Zm0-206.67v-66.66h720v66.66H120Zm0-206.66V-720h720v66.67H120Z"/></svg>
+                <button class="hamburger" id="hamburger-btn" aria-label="Open menu" onclick="showSidebar()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
+                <div class="mobile-overlay" id="mobile-overlay" onclick="hideSidebar()"></div>
                 <ul class="sidebar" id="sidebar">
-                    <li>
+                    <div class="sidebar-header">
+                        <span class="logo-badge" style="width:32px;height:32px;font-size:0.8rem;">RP</span>
                         <button class="sidebar-close" aria-label="Close menu" onclick="hideSidebar()">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="currentColor"><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z"/></svg>
+                            <i class="fa-solid fa-xmark"></i>
                         </button>
-                    </li>
+                    </div>
                     <li><a href="#know-me-me" onclick="hideSidebar()">About</a></li>
                     <li><a href="#explore-experience" onclick="hideSidebar()">Experience</a></li>
                     <li><a href="#cert-head" onclick="hideSidebar()">Certifications</a></li>
                     <li><a href="#project-head" onclick="hideSidebar()">Projects</a></li>
-                    <li><a href="#contact-me" onclick="hideSidebar()">Contact</a></li>
+                    <li><a href="#contact-me" class="sidebar-cta" onclick="hideSidebar()">Hire Me</a></li>
                 </ul>
             </div>
         </div>
