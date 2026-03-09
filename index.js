@@ -1,38 +1,14 @@
-/* ─── SIDEBAR ─────────────────────────────────────────────── */
-function showSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    if (sidebar) sidebar.style.display = 'flex';
-}
-
-function hideSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    if (sidebar) sidebar.style.display = 'none';
-}
-
-// Close sidebar when clicking outside
-document.addEventListener('click', function (e) {
-    const sidebar = document.getElementById('sidebar');
-    const nav4 = document.getElementById('nav4');
-    if (sidebar && nav4 && !nav4.contains(e.target)) {
-        sidebar.style.display = 'none';
-    }
-});
-
-/* ─── DARK / LIGHT THEME ──────────────────────────────────── */
+/* ─── THEME TOGGLE ────────────────────────────────────────── */
 function toggleTheme() {
     const html = document.documentElement;
-    const current = html.getAttribute('data-theme');
-    const next = current === 'dark' ? 'light' : 'dark';
-
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     html.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
     updateToggleIcon(next);
-
-    // Spin animation
     const btn = document.getElementById('theme-toggle');
     if (btn) {
         btn.classList.remove('spin');
-        void btn.offsetWidth; // force reflow to restart animation
+        void btn.offsetWidth;
         btn.classList.add('spin');
     }
 }
@@ -40,18 +16,66 @@ function toggleTheme() {
 function updateToggleIcon(theme) {
     const btn = document.getElementById('theme-toggle');
     if (!btn) return;
-    // Moon = go to dark | Sun = go to light
     btn.innerHTML = theme === 'dark'
         ? '<i class="fa-solid fa-sun"></i>'
         : '<i class="fa-solid fa-moon"></i>';
 }
 
-/* ─── ON PAGE LOAD ────────────────────────────────────────── */
 (function () {
     const saved = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', saved);
-    // Update icon once DOM is ready
     document.addEventListener('DOMContentLoaded', function () {
         updateToggleIcon(saved);
     });
 })();
+
+/* ─── SIDEBAR ─────────────────────────────────────────────── */
+function showSidebar() {
+    document.getElementById('sidebar')?.classList.add('open');
+    document.getElementById('mobile-overlay')?.classList.add('visible');
+    document.getElementById('hamburger-btn')?.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function hideSidebar() {
+    document.getElementById('sidebar')?.classList.remove('open');
+    document.getElementById('mobile-overlay')?.classList.remove('visible');
+    document.getElementById('hamburger-btn')?.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+/* ─── SCROLL PROGRESS BAR ─────────────────────────────────── */
+window.addEventListener('scroll', function () {
+    const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    const bar = document.getElementById('scroll-progress');
+    if (bar) bar.style.width = (scrolled * 100) + '%';
+
+    const header = document.getElementById('header');
+    if (header) header.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+
+/* ─── ACTIVE NAV LINK (IntersectionObserver) ────────────────── */
+document.addEventListener('DOMContentLoaded', function () {
+    const navLinks = document.querySelectorAll('#nav3 li a:not(.nav-cta)');
+    const sections = document.querySelectorAll('section[id]');
+
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                navLinks.forEach(function (link) {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + entry.target.id) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.4, rootMargin: '-80px 0px -40% 0px' });
+
+    sections.forEach(function (s) { observer.observe(s); });
+});
+
+/* Close sidebar on Escape key */
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') hideSidebar();
+});
