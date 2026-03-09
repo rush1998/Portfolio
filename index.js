@@ -44,17 +44,16 @@ function hideSidebar() {
     document.body.style.overflow = '';
 }
 
-/* ─── SCROLL PROGRESS BAR ─────────────────────────────────── */
+/* ─── SCROLL PROGRESS + HEADER STATE ───────────────────────── */
 window.addEventListener('scroll', function () {
     const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
     const bar = document.getElementById('scroll-progress');
     if (bar) bar.style.width = (scrolled * 100) + '%';
-
     const header = document.getElementById('header');
     if (header) header.classList.toggle('scrolled', window.scrollY > 20);
 }, { passive: true });
 
-/* ─── ACTIVE NAV LINK (IntersectionObserver) ────────────────── */
+/* ─── ACTIVE NAV LINK ────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.querySelectorAll('#nav3 li a:not(.nav-cta)');
     const sections = document.querySelectorAll('section[id]');
@@ -73,6 +72,32 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { threshold: 0.4, rootMargin: '-80px 0px -40% 0px' });
 
     sections.forEach(function (s) { observer.observe(s); });
+});
+
+/* ─── TYPEWRITER ────────────────────────────────────────────── */
+var roles = ['DevOps Engineer', 'Cloud Architect', 'Full Stack Developer', 'Software Engineer'];
+var roleIdx = 0, charIdx = 0, deleting = false;
+
+function runTypewriter() {
+    var el = document.getElementById('typewriter');
+    if (!el) return;
+    var word = roles[roleIdx];
+    charIdx += deleting ? -1 : 1;
+    el.textContent = word.substring(0, charIdx);
+    var delay = deleting ? 55 : 95;
+    if (!deleting && charIdx === word.length) {
+        delay = 2200;
+        deleting = true;
+    } else if (deleting && charIdx === 0) {
+        deleting = false;
+        roleIdx = (roleIdx + 1) % roles.length;
+        delay = 350;
+    }
+    setTimeout(runTypewriter, delay);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(runTypewriter, 900);
 });
 
 /* Close sidebar on Escape key */
