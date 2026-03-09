@@ -1,19 +1,18 @@
-function showSidebar(){
-    const sidebar = document.querySelector('.sidebar')
-    sidebar.style.display = 'flex'
+function showSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar) sidebar.style.display = 'flex';
 }
 
-function hideLines(){
-    const nav5 = document.querySelector('.nav5')
-    nav5.style.display = 'none'
-}   
-
-function hideSidebar(){
-    const sidebar = document.querySelector('.sidebar')
-    sidebar.style.display = 'none'
+function hideSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar) sidebar.style.display = 'none';
 }
 
-// function hideLines(){
-//     const nav5 = document.querySelector('.nav5')
-//     nav5.style.display = 'flex'
-// }   
+// Close sidebar when clicking outside of it
+document.addEventListener('click', function (e) {
+    const sidebar = document.getElementById('sidebar');
+    const nav4 = document.getElementById('nav4');
+    if (sidebar && nav4 && !nav4.contains(e.target)) {
+        sidebar.style.display = 'none';
+    }
+});

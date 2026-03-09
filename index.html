@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rushabh's Portfolio</title>
+    <title>Rushabh Patel | Software Engineer</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-<!--HEADER-->
-<header>
+
+<!-- HEADER -->
+<header id="header">
     <div id="nav1">
         <div id="nav2">
-            <a href="">Rushabh Patel</a>
+            <a href="#">Rushabh Patel</a>
         </div>
-        <div>
+        <nav>
             <ul id="nav3">
                 <li><a href="#know-me-me">About</a></li>
                 <li><a href="#explore-experience">Experience</a></li>
@@ -22,342 +23,222 @@
                 <li><a href="#project-head">Projects</a></li>
                 <li><a href="#contact-me">Contact</a></li>
             </ul>
+        </nav>
+        <div id="nav4">
+            <button class="nav5" aria-label="Open menu" onclick="showSidebar()">
+                <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill="currentColor"><path d="M120-240v-66.67h720V-240H120Zm0-206.67v-66.66h720v66.66H120Zm0-206.66V-720h720v66.67H120Z"/></svg>
+            </button>
+            <ul class="sidebar" id="sidebar">
+                <li>
+                    <button class="sidebar-close" aria-label="Close menu" onclick="hideSidebar()">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="currentColor"><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z"/></svg>
+                    </button>
+                </li>
+                <li><a href="#know-me-me" onclick="hideSidebar()">About</a></li>
+                <li><a href="#explore-experience" onclick="hideSidebar()">Experience</a></li>
+                <li><a href="#cert-head" onclick="hideSidebar()">Certifications</a></li>
+                <li><a href="#project-head" onclick="hideSidebar()">Projects</a></li>
+                <li><a href="#contact-me" onclick="hideSidebar()">Contact</a></li>
+            </ul>
         </div>
-            <div id="nav4">
-                <button onclick=hideLines() class="nav5">
-                    <svg onclick=showSidebar() xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#000000"><path d="M120-240v-66.67h720V-240H120Zm0-206.67v-66.66h720v66.66H120Zm0-206.66V-720h720v66.67H120Z"/></svg>
-                </button>
-                <ul class="sidebar">
-                <li><a href=""><svg onclick=hideSidebar() xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#000000"><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z"/></svg></a></li>
-                <li><a href="#know-me-me">About</a></li>
-                <li><a href="#explore-experience">Experience</a></li>
-                <li><a href="#cert-head">Certifications</a></li>
-                <li><a href="#project-head">Projects</a></li>
-                <li><a href="#contact-me">Contact</a></li>
-                </ul>
-            </div>
     </div>
 </header>
-<!--Introduction-->
-    <div class="About">
-            <div>
-                <img id="profile-pic" src="main.jpg" alt="profile-pic"> 
-            </div>     
-            <div id="profile-pic-border">
-            </div>          
-            <div id="about-me">
-                <p id="hello">Hello, I'm</p>
-                <p id="rushabh">Rushabh Patel</p>
-                <p id="frontend">Software Engineer</p>
-                <div id="download-contact">
-                    <button id="download">Download CV</button>
-                    <button id="contact" onclick="location.href='#contact-me'">Contact Info</button>
-                </div>    
-             <div id="social-media-main">
-             <a href="" onclick="window.open('https://www.linkedin.com/in/rushabh19/')"><img id="linkedin-image" src="in.png" alt="linkedin"></a>
-             <a href="" onclick="window.open('https://github.com/rush1998')"><img id="git-hub-image" src="github-mark.png" alt="github"></a> 
-             <a href="" onclick="window.open('https://medium.com/@rushpatel')"><img id="medium" src="logo-medium-icon.png" alt="medium"></a> 
-            </div>
-        </div>
-    </div>  
-<!--About me-->
-<div id="know-me-me">
-    <p id="know-me">Get to know more</p>
-    <p id="me">About Me</p>
-</div>
-<div id="about-me-inner">  
-<div id="experience-education">
-    <div id="about-me-image-outer">
-        <img src="IMG_5101.png" alt="abotmeimage" id="about-me-image">
-    </div>
-    <div id="experience-education-inner">
-        <div id="experience-education-outer">
-            <div id="experience-border">
-                <div id="experience-section-inner">
-                <img  id="experience-image" src="experience.png" alt="experience">
-                <p id="experience">Experience</p>
-                <p>3+ Years</p>
-               <!-- <p>Frontend Development</p> -->
-                </div>
-            </div> 
-            <div id="education-border">
-                <div id="education-section-inner">
-                    <img src="education.png" alt="education" id="eductation-image">
-                    <p id="education">Education</p>
-                    <p>M.S in Infomatics</p>
-                    <p>B.E in Computer science</p>
-                </div>   
-            </div>
-        </div>
-            <p id="about-me-content">
-                🙏Hello, My name is Rushabh Patel, and I am a graduate with a Master of Science in Informatics from Northeastern University. I also had my Bachelor of Science from G.T.U. in Computer Science. During my educational journey, I learned about web development, software engineering, and cloud computing.
-            </p>
-    </div>
-</div>
-</div>
-<!-- Experience -->
-<div id="explore-experience"> 
-    <p id="explore-experiencep">Explore My</p>
-    <p id="explore-experiencep2">Experience</p>
-</div>
-<div id="experience-main-section">
-    <div id="experience-main-section-border1">
-        <p id="awsp">Amazon Web Services</p>
-        <div id="experience-name1">
-            <div id="experience-name1-section1">
-                <div id="skills-aws">
-                    <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                    <p>IAM</p>
-                </div>
-                <div id="skills-aws">
-                <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                <p>EC2</p>
-                </div>
-                <div id="skills-aws">
-                    <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                    <p>S3</p>
-                </div>
-                <div id="skills-aws">
-                <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                <p>Cloud Watch</p>
-                </div>
-            </div>
-            <div id="experience-name1-section1">
-                <div id="skills-aws">
-                    <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                    <p>Lambda</p>
-                </div>
-                <div id="skills-aws">
-                <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                <p>AWS CodePipeline</p>
-                </div>
-                <div id="skills-aws">
-                    <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                    <p>AWS Cost Explorer</p>
-                </div>
-                <div id="skills-aws">
-                <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                <p>Kubernetes</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="experience-main-section-border2">
-        <p id="fdp">Full Stack developer</p>
-        <div id="experience-name1">
-            <div id="experience-name1-section1">
-                <div id="skills-fdp">
-                    <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                    <p>HTML</p>
-                </div>
-                <div id="skills-fdp">
-                <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                <p>CSS</p>
-                </div>
-                <div id="skills-fdp">
-                    <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                    <p>JS</p>
-                </div>
-                
-            </div>
-            <div id="experience-name1-section1">
-                <div id="skills-fdp">
-                    <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                    <p>Node.Js</p>
-                </div>
-                <div id="skills-fdp">
-                        <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                        <p>Mongo DB</p>
-                </div>
-                <div id="skills-fdp">
-                    <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                    <p>Git</p>
-                </div>
-                <!-- <div id="skills-fdp">
-                <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                <p>AWS CodePipeline</p>
-                </div>
-                <div id="skills-fdp">
-                    <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                    <p>AWS Cost Explorer</p>
-                </div>
-                <div id="skills-fdp">
-                <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                <p>Kubernetes</p>
-                </div> -->
-            </div>
-        </div>
-    </div>
-    <div id="experience-main-section-border1">
-        <p id="awsp">Microsoft Azure</p>
-        <div id="experience-name1">
-            <div id="experience-name1-section1">
-                <div id="skills-aws">
-                    <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                    <p>Microsoft Entra ID</p>
-                </div>
-                <div id="skills-aws">
-                <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                <p>Azure Monitor</p>
-                </div>
-                <div id="skills-aws">
-                    <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                    <p>Azure Cost Management</p>
-                </div>
-            </div>
-            <div id="experience-name1-section1">
-                <div id="skills-aws">
-                    <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                    <p>Azure Compute</p>
-                </div>
-                <div id="skills-aws">
-                <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                <p>Azure Networking</p>
-                </div>
-                <div id="skills-aws">
-                    <img id="checkmarkimg" src="checkmark.png" alt="checkmark">
-                    <p>Azure Load Balancer</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!--Certifications-->
-<div id="cert-head">
-    <p id="cert-head1">
-        My current 
-    </p>
-    <p id="cert-head2">
-        Certifications
-    </p>
-</div>
-<div id="cert-body-border">
-    <div id="cert-body-element">
-            <img  id="cert-image1" src="blob.png" alt="figmalink">
-            <p id="project-title1">
-                HashiCorp Certified
-            </p>
-            <!-- <div id="project-body-element-social">
-                <button id="project-github-button1" onclick="window.open('https://github.com/rush1998')">GitHub</button>
-                <button id="project-github-button2" onclick="window.open('https://www.figma.com/proto/l86d06P47h7vPOUxMwnHGD/New-website?node-id=1-2&starting-point-node-id=1%3A2')">Live Demo</button>
-            </div> -->
+<!-- HERO -->
+<section class="hero-section">
+    <div class="hero-image-wrap">
+        <img id="profile-pic" src="main.jpg" alt="Rushabh Patel profile photo">
     </div>
-    <div id="project-body-element">
-        <img  id="project-image1" src="aws-1.png" alt="figmalink">
-            <p id="project-title1">
-                AWS Certified Cloud Practitioner
-            </p>
-            <!-- <div id="project-body-element-social">
-                <button id="project-github-button1" onclick="window.open('https://github.com/rush1998')">GitHub</button>
-                <button id="project-github-button2" onclick="window.open('https://www.figma.com/proto/j9ZXbhAjOAdJmidsKjAC2i/ITC6040?node-id=1-4&starting-point-node-id=1%3A4')">Live Demo</button>
-            </div> -->
-    </div>
-    <div id="project-body-element">
-        <img  id="project-image1" src="aws-2.png" alt="figmalink">
-            <p id="project-title1">
-                AWS Certified Solutions Architect 
-            </p>
-            <!-- <div id="project-body-element-social">
-                <button id="project-github-button1" onclick="window.open('https://github.com/rush1998')">GitHub</button>
-                <button id="project-github-button2" onclick="window.open('https://github.com/rush1998/Future_website.git')">Live Demo</button>
-            </div> -->
-    </div>
-    <div id="project-body-element">
-        <img  id="project-image1" src="az-900.jpg" alt="figmalink">
-            <p id="project-title1">
-                Microsoft Azure Fundamentals
-            </p>
-    </div>
-</div>
-
-<!-- Projects -->
-<div id="project-head">
-    <p id="project-head1">
-        Browse My Recent
-    </p>
-    <p id="project-head2">
-        Projects
-    </p>
-</div>
-<div id="project-body-border">
-    <div id="project-body-element">
-            <img  id="project-image1" src="Figma-site1.png" alt="figmalink">
-            <p id="project-title1">
-                Experiential Network Project
-            </p>
-            <div id="project-body-element-social">
-                <button id="project-github-button1" onclick="window.open('https://github.com/rush1998')">GitHub</button>
-                <button id="project-github-button2" onclick="window.open('https://www.figma.com/proto/l86d06P47h7vPOUxMwnHGD/New-website?node-id=1-2&starting-point-node-id=1%3A2')">Live Demo</button>
-            </div>
-    </div>
-    <div id="project-body-element">
-        <img  id="project-image1" src="Figma-site2.png" alt="figmalink">
-            <p id="project-title1">
-                Capstone Project
-            </p>
-            <div id="project-body-element-social">
-                <button id="project-github-button1" onclick="window.open('https://github.com/rush1998')">GitHub</button>
-                <button id="project-github-button2" onclick="window.open('https://www.figma.com/proto/j9ZXbhAjOAdJmidsKjAC2i/ITC6040?node-id=1-4&starting-point-node-id=1%3A4')">Live Demo</button>
-            </div>
-    </div>
-    <div id="project-body-element">
-        <img  id="project-image1" src="Figma-site3.png" alt="figmalink">
-            <p id="project-title1">
-                E-commerce Website Project
-            </p>
-            <div id="project-body-element-social">
-                <button id="project-github-button1" onclick="window.open('https://github.com/rush1998')">GitHub</button>
-                <button id="project-github-button2" onclick="window.open('https://github.com/rush1998/Future_website.git')">Live Demo</button>
-            </div>
-    </div>
-</div>
-<!-- Contact me -->
-<div id="contact-me">
-    <p id="contact-me-1">
-        Get in Touch
-    </p>
-    <p id="contact-me-2">
-        Contact Me
-    </p>
-</div>
-<div id="contact-me-outer">
-    <div id="contact-me-border">    
-        <div id="contact-me-inner">
-           <div id="contact-me-inner-email">
-            <img id="contact-me-email" src="download.png" alt="email">
-            <p id="contact-me-email"><a href="mailto:rushabh.patel1998@gmail.com">
-             rushabh.patel1998@gmail.com
+    <div id="about-me">
+        <p id="hello">Hello, I'm</p>
+        <p id="rushabh">Rushabh Patel</p>
+        <p id="frontend">Software Engineer</p>
+        <div id="download-contact">
+            <button id="download" onclick="window.open('resume.pdf','_blank')">Download CV</button>
+            <button id="contact" onclick="location.href='#contact-me'">Contact Info</button>
+        </div>
+        <div id="social-media-main">
+            <a href="https://www.linkedin.com/in/rushabh19/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <img class="social-icon" src="in.png" alt="LinkedIn">
             </a>
+            <a href="https://github.com/rush1998" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <img class="social-icon" src="github-mark.png" alt="GitHub">
+            </a>
+            <a href="https://medium.com/@rushpatel" target="_blank" rel="noopener noreferrer" aria-label="Medium">
+                <img class="social-icon" src="logo-medium-icon.png" alt="Medium">
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT ME -->
+<section id="know-me-me">
+    <p class="section-subtitle">Get to know more</p>
+    <p class="section-title">About Me</p>
+</section>
+<div id="about-me-inner">
+    <div id="experience-education">
+        <div id="about-me-image-outer">
+            <img src="IMG_5101.png" alt="Rushabh Patel" id="about-me-image">
+        </div>
+        <div id="experience-education-inner">
+            <div id="experience-education-outer">
+                <div class="info-card">
+                    <div class="info-card-inner">
+                        <img class="info-icon" src="experience.png" alt="Experience">
+                        <p class="info-card-title">Experience</p>
+                        <p>3+ Years</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-inner">
+                        <img class="info-icon" src="education.png" alt="Education">
+                        <p class="info-card-title">Education</p>
+                        <p>M.S in Informatics</p>
+                        <p>B.E in Computer Science</p>
+                    </div>
+                </div>
+            </div>
+            <p id="about-me-content">
+                Hello, my name is Rushabh Patel. I am a graduate with a Master of Science in Informatics from Northeastern University, and a Bachelor of Engineering in Computer Science from G.T.U. I have built skills across web development, software engineering, and cloud computing.
             </p>
-           </div>
-           <div id="contact-me-inner-email">
-            <a href="" onclick="window.open('https://www.linkedin.com/in/rushabh19/')">
-        <img id="contact-me-linkedin" src="linkedin.png" alt="">
-        <p>
-            Linkedin
-        </a>
-        </p>
-           </div>
         </div>
     </div>
 </div>
-<!--FOOTER-->
+
+<!-- EXPERIENCE -->
+<section id="explore-experience">
+    <p class="section-subtitle">Explore My</p>
+    <p class="section-title">Experience</p>
+</section>
+<div id="experience-main-section">
+    <div class="skill-card">
+        <p class="skill-card-title">Amazon Web Services</p>
+        <div class="skill-grid">
+            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>IAM</span></div>
+            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>EC2</span></div>
+            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>S3</span></div>
+            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>CloudWatch</span></div>
+            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Lambda</span></div>
+            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>CodePipeline</span></div>
+            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Cost Explorer</span></div>
+            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Kubernetes</span></div>
+        </div>
+    </div>
+    <div class="skill-card">
+        <p class="skill-card-title">Full Stack Developer</p>
+        <div class="skill-grid">
+            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>HTML</span></div>
+            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>CSS</span></div>
+            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>JavaScript</span></div>
+            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Node.js</span></div>
+            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>MongoDB</span></div>
+            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Git</span></div>
+        </div>
+    </div>
+    <div class="skill-card">
+        <p class="skill-card-title">Microsoft Azure</p>
+        <div class="skill-grid">
+            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Entra ID</span></div>
+            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Azure Monitor</span></div>
+            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Cost Management</span></div>
+            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Azure Compute</span></div>
+            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Networking</span></div>
+            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Load Balancer</span></div>
+        </div>
+    </div>
+</div>
+
+<!-- CERTIFICATIONS -->
+<section id="cert-head">
+    <p class="section-subtitle">My Current</p>
+    <p class="section-title">Certifications</p>
+</section>
+<div class="card-grid">
+    <div class="card">
+        <img class="card-image" src="blob.png" alt="HashiCorp Certified">
+        <p class="card-title">HashiCorp Certified</p>
+    </div>
+    <div class="card">
+        <img class="card-image" src="aws-1.png" alt="AWS Cloud Practitioner">
+        <p class="card-title">AWS Certified Cloud Practitioner</p>
+    </div>
+    <div class="card">
+        <img class="card-image" src="aws-2.png" alt="AWS Solutions Architect">
+        <p class="card-title">AWS Certified Solutions Architect</p>
+    </div>
+    <div class="card">
+        <img class="card-image" src="az-900.jpg" alt="Azure Fundamentals">
+        <p class="card-title">Microsoft Azure Fundamentals</p>
+    </div>
+</div>
+
+<!-- PROJECTS -->
+<section id="project-head">
+    <p class="section-subtitle">Browse My Recent</p>
+    <p class="section-title">Projects</p>
+</section>
+<div class="card-grid">
+    <div class="card">
+        <img class="card-image" src="Figma-site1.png" alt="Experiential Network Project">
+        <p class="card-title">Experiential Network Project</p>
+        <div class="card-buttons">
+            <button class="btn-outline" onclick="window.open('https://github.com/rush1998','_blank')">GitHub</button>
+            <button class="btn-solid" onclick="window.open('https://www.figma.com/proto/l86d06P47h7vPOUxMwnHGD/New-website?node-id=1-2&starting-point-node-id=1%3A2','_blank')">Live Demo</button>
+        </div>
+    </div>
+    <div class="card">
+        <img class="card-image" src="Figma-site2.png" alt="Capstone Project">
+        <p class="card-title">Capstone Project</p>
+        <div class="card-buttons">
+            <button class="btn-outline" onclick="window.open('https://github.com/rush1998','_blank')">GitHub</button>
+            <button class="btn-solid" onclick="window.open('https://www.figma.com/proto/j9ZXbhAjOAdJmidsKjAC2i/ITC6040?node-id=1-4&starting-point-node-id=1%3A4','_blank')">Live Demo</button>
+        </div>
+    </div>
+    <div class="card">
+        <img class="card-image" src="Figma-site3.png" alt="E-commerce Website Project">
+        <p class="card-title">E-commerce Website Project</p>
+        <div class="card-buttons">
+            <button class="btn-outline" onclick="window.open('https://github.com/rush1998','_blank')">GitHub</button>
+            <button class="btn-solid" onclick="window.open('https://github.com/rush1998/Future_website.git','_blank')">Live Demo</button>
+        </div>
+    </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact-me">
+    <p class="section-subtitle">Get in Touch</p>
+    <p class="section-title">Contact Me</p>
+</section>
+<div id="contact-me-outer">
+    <div id="contact-me-border">
+        <div id="contact-me-inner">
+            <div class="contact-item">
+                <img class="contact-icon" src="download.png" alt="Email">
+                <a href="mailto:rushabh.patel1998@gmail.com">rushabh.patel1998@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <img class="contact-icon" src="linkedin.png" alt="LinkedIn">
+                <a href="https://www.linkedin.com/in/rushabh19/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
 <footer>
-      <div id="footer">
-            <ul id="footer-ul">
-                <li><a href="#know-me-me">About</a></li>
-                <li><a href="#explore-experience">Experience</a></li>
-                <li><a href="#cert-head">Certifications</a></li>
-                <li><a href="#project-head">Projects</a></li>
-                <li><a href="#contact-me">Contact</a></li>
-            </ul>
-      </div>
-      <p id="footerp">
-        Copyright © 2023 Rushabh Patel. All Rights Reserved.
-      </p>
+    <div id="footer">
+        <ul id="footer-ul">
+            <li><a href="#know-me-me">About</a></li>
+            <li><a href="#explore-experience">Experience</a></li>
+            <li><a href="#cert-head">Certifications</a></li>
+            <li><a href="#project-head">Projects</a></li>
+            <li><a href="#contact-me">Contact</a></li>
+        </ul>
+    </div>
+    <p id="footerp">Copyright &copy; 2026 Rushabh Patel. All Rights Reserved.</p>
 </footer>
-<script src="index.js">
-</script>
+
+<script src="index.js"></script>
 </body>
 </html>
