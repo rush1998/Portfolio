@@ -1,261 +1,587 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rushabh Patel | DevOps Engineer</title>
+    <title>Rushabh Patel — DevOps Engineer</title>
+        <meta name="description" content="Rushabh Patel is a DevOps Engineer and Cloud Architect specializing in AWS, Azure, Terraform, Kubernetes, CI/CD, and full-stack development.">
+        <meta name="keywords" content="Rushabh Patel, DevOps Engineer, Cloud Architect, AWS, Azure, Terraform, Kubernetes, CI/CD, Full Stack Developer">
+        <meta name="author" content="Rushabh Patel">
+        <meta name="robots" content="index, follow, max-image-preview:large">
+        <meta name="theme-color" content="#0a0a0a">
+
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Rushabh Patel — DevOps Engineer">
+        <meta property="og:description" content="Portfolio of Rushabh Patel: DevOps Engineer, Cloud Architect, and Full-Stack Developer.">
+        <meta property="og:image" content="main.jpg">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Rushabh Patel — DevOps Engineer">
+        <meta name="twitter:description" content="DevOps Engineer and Cloud Architect specializing in AWS, Azure, Terraform, and Kubernetes.">
+        <meta name="twitter:image" content="main.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script>
-        (function () {
-            const saved = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', saved);
-        })();
-    </script>
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Rushabh Patel",
+            "jobTitle": "DevOps Engineer",
+            "description": "DevOps Engineer and Cloud Architect specializing in AWS, Azure, Terraform, Kubernetes, and CI/CD.",
+            "url": "./",
+            "image": "main.jpg",
+            "homeLocation": {
+                "@type": "Country",
+                "name": "Canada"
+            },
+            "sameAs": [
+                "https://www.linkedin.com/in/rushabh19/",
+                "https://github.com/rush1998",
+                "https://medium.com/@rushpatel"
+            ],
+            "knowsAbout": [
+                "AWS",
+                "Azure",
+                "Terraform",
+                "Kubernetes",
+                "CI/CD",
+                "DevOps",
+                "Full Stack Development"
+            ]
+        }
+        </script>
 </head>
 <body>
 
-<!-- HEADER -->
-<header id="header">
-    <div class="scroll-progress" id="scroll-progress"></div>
-    <div id="nav1">
-        <a href="#" class="logo-link">
-            <span class="logo-badge">RP</span>
-            <span class="logo-name">Rushabh Patel</span>
-        </a>
-        <nav>
-            <ul id="nav3">
-                <li><a href="#know-me-me">About</a></li>
-                <li><a href="#explore-experience">Experience</a></li>
-                <li><a href="#cert-head">Certifications</a></li>
-                <li><a href="#project-head">Projects</a></li>
-                <li><a href="#contact-me" class="nav-cta">Hire Me</a></li>
-            </ul>
-        </nav>
-        <div id="nav-right">
-            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light theme" onclick="toggleTheme()">
-                <i class="fa-solid fa-moon"></i>
-            </button>
-            <div id="nav4">
-                <button class="hamburger" id="hamburger-btn" aria-label="Open menu" onclick="showSidebar()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <div class="mobile-overlay" id="mobile-overlay" onclick="hideSidebar()"></div>
-                <ul class="sidebar" id="sidebar">
-                    <div class="sidebar-header">
-                        <span class="logo-badge" style="width:32px;height:32px;font-size:0.8rem;">RP</span>
-                        <button class="sidebar-close" aria-label="Close menu" onclick="hideSidebar()">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
-                    </div>
-                    <li><a href="#know-me-me" onclick="hideSidebar()">About</a></li>
-                    <li><a href="#explore-experience" onclick="hideSidebar()">Experience</a></li>
-                    <li><a href="#cert-head" onclick="hideSidebar()">Certifications</a></li>
-                    <li><a href="#project-head" onclick="hideSidebar()">Projects</a></li>
-                    <li><a href="#contact-me" class="sidebar-cta" onclick="hideSidebar()">Hire Me</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</header>
+<!-- ══════════════════════════════════════════
+     STICKY NAV PILL
+══════════════════════════════════════════ -->
+<nav class="nav-pill" id="nav-pill">
+    <a href="#hero" class="nav-logo-link">
+        <span class="logo-mark">R</span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+        <li>
+            <a href="#about" class="pill-link" aria-label="about section">
+                <span class="pill-hover-circle" aria-hidden="true"></span>
+                <span class="label-stack">
+                    <span class="pill-label">about</span>
+                    <span class="pill-label-hover" aria-hidden="true">about</span>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="#skills" class="pill-link" aria-label="skills section">
+                <span class="pill-hover-circle" aria-hidden="true"></span>
+                <span class="label-stack">
+                    <span class="pill-label">skills</span>
+                    <span class="pill-label-hover" aria-hidden="true">skills</span>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="#projects" class="pill-link" aria-label="projects section">
+                <span class="pill-hover-circle" aria-hidden="true"></span>
+                <span class="label-stack">
+                    <span class="pill-label">projects</span>
+                    <span class="pill-label-hover" aria-hidden="true">projects</span>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="#contact" class="pill-link" aria-label="contact section">
+                <span class="pill-hover-circle" aria-hidden="true"></span>
+                <span class="label-stack">
+                    <span class="pill-label">contact</span>
+                    <span class="pill-label-hover" aria-hidden="true">contact</span>
+                </span>
+            </a>
+        </li>
+    </ul>
+    <a href="#contact" class="nav-cta-pill wobble-btn">get in touch</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="open menu" onclick="toggleMobileNav()">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
 
-<!-- HERO -->
-<section class="hero-section">
-    <div class="hero-image-wrap">
-        <img id="profile-pic" src="main.jpg" alt="Rushabh Patel profile photo">
-    </div>
-    <div id="about-me">
-        <p id="hello" class="hero-animate">Hello, I'm</p>
-        <p id="rushabh" class="hero-animate"><span class="gradient-name">Rushabh Patel</span></p>
-        <p id="frontend" class="hero-animate"><span id="typewriter"></span><span class="cursor">|</span></p>
-        <div id="download-contact" class="hero-animate">
-            <button id="download" onclick="window.open('resume.pdf','_blank')">Download CV</button>
-            <button id="contact" onclick="location.href='#contact-me'">Contact Info</button>
+<div class="mobile-nav-overlay" id="mobile-overlay" onclick="toggleMobileNav()"></div>
+<div class="mobile-nav-drawer" id="mobile-drawer">
+    <button class="drawer-close-btn" onclick="toggleMobileNav()" aria-label="close menu">
+        <i class="fas fa-xmark"></i>
+    </button>
+    <ul>
+        <li><a href="#about" onclick="toggleMobileNav()">about</a></li>
+        <li><a href="#skills" onclick="toggleMobileNav()">skills</a></li>
+        <li><a href="#projects" onclick="toggleMobileNav()">projects</a></li>
+        <li><a href="#faq" onclick="toggleMobileNav()">faq</a></li>
+        <li><a href="#contact" class="drawer-cta" onclick="toggleMobileNav()">get in touch →</a></li>
+    </ul>
+</div>
+
+<main id="main-content">
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section class="hero" id="hero">
+    <!-- Decorative background blobs -->
+    <div class="hero-blob hero-blob--purple" aria-hidden="true"></div>
+    <div class="hero-blob hero-blob--pink"   aria-hidden="true"></div>
+
+    <!-- LEFT: headline + cta -->
+    <div class="hero-left">
+        <span class="hero-eyebrow">👋 hey, i'm</span>
+        <h1 class="hero-headline">
+            Rushabh<br>
+            <span class="gradient-text">Patel.</span>
+        </h1>
+        <p class="hero-sub">
+            <span class="hero-role-line">
+                <span class="hero-role-text" id="hero-role-text">devops engineer</span>
+                <span class="hero-role-cursor" aria-hidden="true"></span>
+            </span><br>
+            i build infrastructure that <em>doesn't</em> break at 3 am.
+        </p>
+        <div class="hero-cta-row">
+            <a href="resume.pdf" target="_blank" rel="noopener" class="btn-brutal btn-brutal--black wobble-btn">
+                <i class="fas fa-download"></i> download cv
+            </a>
+            <a href="#contact" class="btn-brutal btn-brutal--white wobble-btn">
+                let's talk →
+            </a>
         </div>
-        <div id="social-media-main" class="hero-animate">
-            <a href="https://www.linkedin.com/in/rushabh19/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <img class="social-icon" src="in.png" alt="LinkedIn">
+        <div class="hero-socials">
+            <a href="https://www.linkedin.com/in/rushabh19/" target="_blank" rel="noopener noreferrer" class="social-chip">
+                <i class="fab fa-linkedin-in"></i> linkedin
             </a>
-            <a href="https://github.com/rush1998" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <img class="social-icon" src="github-mark.png" alt="GitHub">
+            <a href="https://github.com/rush1998" target="_blank" rel="noopener noreferrer" class="social-chip">
+                <i class="fab fa-github"></i> github
             </a>
-            <a href="https://medium.com/@rushpatel" target="_blank" rel="noopener noreferrer" aria-label="Medium">
-                <img class="social-icon" src="logo-medium-icon.png" alt="Medium">
+            <a href="https://medium.com/@rushpatel" target="_blank" rel="noopener noreferrer" class="social-chip">
+                <i class="fab fa-medium"></i> medium
             </a>
+        </div>
+    </div>
+
+    <!-- RIGHT: phone mockup + floating stickers -->
+    <div class="hero-right">
+        <div class="sticker sticker-1" aria-hidden="true">☁️</div>
+        <div class="sticker sticker-2" aria-hidden="true">⚡</div>
+        <div class="sticker sticker-3" aria-hidden="true">🚀</div>
+        <div class="sticker sticker-4" aria-hidden="true">🔥</div>
+        <div class="sticker sticker-5" aria-hidden="true">✨</div>
+
+        <div class="phone-mockup">
+            <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                    <div class="phone-header">
+                        <span class="phone-header-title">my stack</span>
+                        <span class="phone-header-badge">live</span>
+                    </div>
+                    <div class="phone-feed">
+                        <div class="phone-post phone-post--aws">
+                            <span class="phone-post-icon">☁️</span>
+                            <div>
+                                <div class="phone-post-name">amazon web services</div>
+                                <div class="phone-post-role">ec2 · s3 · lambda · eks</div>
+                            </div>
+                        </div>
+                        <div class="phone-post phone-post--tf">
+                            <span class="phone-post-icon">🏗️</span>
+                            <div>
+                                <div class="phone-post-name">terraform / iac</div>
+                                <div class="phone-post-role">hashicorp certified</div>
+                            </div>
+                        </div>
+                        <div class="phone-post phone-post--k8s">
+                            <span class="phone-post-icon">🐳</span>
+                            <div>
+                                <div class="phone-post-name">kubernetes</div>
+                                <div class="phone-post-role">eks · argocd · helm</div>
+                            </div>
+                        </div>
+                        <div class="phone-post phone-post--azure">
+                            <span class="phone-post-icon">🔷</span>
+                            <div>
+                                <div class="phone-post-name">microsoft azure</div>
+                                <div class="phone-post-role">entra id · monitor · networking</div>
+                            </div>
+                        </div>
+                        <div class="phone-post phone-post--dev">
+                            <span class="phone-post-icon">💻</span>
+                            <div>
+                                <div class="phone-post-name">full stack</div>
+                                <div class="phone-post-role">js · node · react</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phone-tabbar">
+                        <span>🏠</span>
+                        <span>🔍</span>
+                        <span class="phone-tab-action">＋</span>
+                        <span>📊</span>
+                        <span>👤</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- ABOUT ME -->
-<section id="know-me-me">
-    <p class="section-subtitle">Get to know more</p>
-    <p class="section-title">About Me</p>
-</section>
-<div id="about-me-inner">
-    <div id="experience-education">
-        <div id="about-me-image-outer">
-            <img src="IMG_5101.png" alt="Rushabh Patel" id="about-me-image">
+
+<!-- ══════════════════════════════════════════
+     MARQUEE
+══════════════════════════════════════════ -->
+<div class="marquee-outer" aria-hidden="true">
+    <div class="marquee-wrap">
+        <div class="marquee-track" id="marquee-track">
+            <span>devops engineer</span><span class="marquee-sep">✦</span>
+            <span>cloud architect</span><span class="marquee-sep">✦</span>
+            <span>terraform &amp; aws</span><span class="marquee-sep">✦</span>
+            <span>kubernetes fanatic</span><span class="marquee-sep">✦</span>
+            <span>full stack dev</span><span class="marquee-sep">✦</span>
+            <span>ci/cd pipelines</span><span class="marquee-sep">✦</span>
+            <span>open source nerd</span><span class="marquee-sep">✦</span>
+            <span>northeastern alum</span><span class="marquee-sep">✦</span>
         </div>
-        <div id="experience-education-inner">
-            <div id="experience-education-outer">
-                <div class="info-card">
-                    <div class="info-card-inner">
-                        <img class="info-icon" src="experience.png" alt="Experience">
-                        <p class="info-card-title">Experience</p>
-                        <p>3+ Years</p>
-                    </div>
-                </div>
-                <div class="info-card">
-                    <div class="info-card-inner">
-                        <img class="info-icon" src="education.png" alt="Education">
-                        <p class="info-card-title">Education</p>
-                        <p>M.S in Informatics</p>
-                        <p>B.E in Computer Science</p>
-                    </div>
-                </div>
-            </div>
-            <p id="about-me-content">
-                Hello, my name is Rushabh Patel. I am a graduate with a Master of Science in Informatics from Northeastern University, and a Bachelor of Engineering in Computer Science from G.T.U. I have built skills across web development, software engineering, and cloud computing.
+    </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     ABOUT
+══════════════════════════════════════════ -->
+<section class="about-section" id="about">
+    <div class="section-header">
+        <span class="section-label">get to know me</span>
+        <h2 class="section-title">about me.</h2>
+    </div>
+    <div class="about-grid">
+        <div class="about-photo-wrap">
+            <img src="main.jpg" alt="Rushabh Patel" class="about-photo" loading="lazy" decoding="async">
+            <div class="sticker sticker-about-1" aria-hidden="true">🎓</div>
+            <div class="sticker sticker-about-2" aria-hidden="true">🌍</div>
+        </div>
+        <div class="about-text-wrap">
+            <p class="about-text">
+                hey! i'm rushabh — a <strong>devops engineer &amp; cloud architect</strong> based in Canada.
+                i graduated with an MS in Informatics from <strong>Northeastern University</strong>
+                and a BE in Computer Science from <strong>GTU</strong>.
             </p>
-        </div>
-    </div>
-</div>
-
-<!-- EXPERIENCE -->
-<section id="explore-experience">
-    <p class="section-subtitle">Explore My</p>
-    <p class="section-title">Experience</p>
-</section>
-<div id="experience-main-section">
-    <div class="skill-card">
-        <p class="skill-card-title">Amazon Web Services</p>
-        <div class="skill-grid">
-            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>IAM</span></div>
-            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>EC2</span></div>
-            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>S3</span></div>
-            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>CloudWatch</span></div>
-            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Lambda</span></div>
-            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>CodePipeline</span></div>
-            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Cost Explorer</span></div>
-            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Kubernetes</span></div>
-        </div>
-    </div>
-    <div class="skill-card">
-        <p class="skill-card-title">Full Stack Developer</p>
-        <div class="skill-grid">
-            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>HTML</span></div>
-            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>CSS</span></div>
-            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>JavaScript</span></div>
-            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Node.js</span></div>
-            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>MongoDB</span></div>
-            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Git</span></div>
-        </div>
-    </div>
-    <div class="skill-card">
-        <p class="skill-card-title">Microsoft Azure</p>
-        <div class="skill-grid">
-            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Entra ID</span></div>
-            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Azure Monitor</span></div>
-            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Cost Management</span></div>
-            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Azure Compute</span></div>
-            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Networking</span></div>
-            <div class="skill-item"><img class="checkmarkimg" src="checkmark.png" alt=""><span>Load Balancer</span></div>
-        </div>
-    </div>
-</div>
-
-<!-- CERTIFICATIONS -->
-<section id="cert-head">
-    <p class="section-subtitle">My Current</p>
-    <p class="section-title">Certifications</p>
-</section>
-<div class="card-grid">
-    <div class="card">
-        <img class="card-image" src="blob.png" alt="HashiCorp Certified">
-        <p class="card-title">HashiCorp Certified</p>
-    </div>
-    <div class="card">
-        <img class="card-image" src="aws-1.png" alt="AWS Cloud Practitioner">
-        <p class="card-title">AWS Certified Cloud Practitioner</p>
-    </div>
-    <div class="card">
-        <img class="card-image" src="aws-2.png" alt="AWS Solutions Architect">
-        <p class="card-title">AWS Certified Solutions Architect</p>
-    </div>
-    <div class="card">
-        <img class="card-image" src="az-900.jpg" alt="Azure Fundamentals">
-        <p class="card-title">Microsoft Azure Fundamentals</p>
-    </div>
-</div>
-
-<!-- PROJECTS -->
-<section id="project-head">
-    <p class="section-subtitle">Browse My Recent</p>
-    <p class="section-title">Projects</p>
-</section>
-<div class="card-grid">
-    <div class="card">
-        <img class="card-image" src="Figma-site1.png" alt="Experiential Network Project">
-        <p class="card-title">Experiential Network Project</p>
-        <div class="card-buttons">
-            <button class="btn-outline" onclick="window.open('https://github.com/rush1998','_blank')">GitHub</button>
-            <button class="btn-solid" onclick="window.open('https://www.figma.com/proto/l86d06P47h7vPOUxMwnHGD/New-website?node-id=1-2&starting-point-node-id=1%3A2','_blank')">Live Demo</button>
-        </div>
-    </div>
-    <div class="card">
-        <img class="card-image" src="Figma-site2.png" alt="Capstone Project">
-        <p class="card-title">Capstone Project</p>
-        <div class="card-buttons">
-            <button class="btn-outline" onclick="window.open('https://github.com/rush1998','_blank')">GitHub</button>
-            <button class="btn-solid" onclick="window.open('https://www.figma.com/proto/j9ZXbhAjOAdJmidsKjAC2i/ITC6040?node-id=1-4&starting-point-node-id=1%3A4','_blank')">Live Demo</button>
-        </div>
-    </div>
-    <div class="card">
-        <img class="card-image" src="Figma-site3.png" alt="E-commerce Website Project">
-        <p class="card-title">E-commerce Website Project</p>
-        <div class="card-buttons">
-            <button class="btn-outline" onclick="window.open('https://github.com/rush1998','_blank')">GitHub</button>
-            <button class="btn-solid" onclick="window.open('https://github.com/rush1998/Future_website.git','_blank')">Live Demo</button>
-        </div>
-    </div>
-</div>
-
-<!-- CONTACT -->
-<section id="contact-me">
-    <p class="section-subtitle">Get in Touch</p>
-    <p class="section-title">Contact Me</p>
-</section>
-<div id="contact-me-outer">
-    <div id="contact-me-border">
-        <div id="contact-me-inner">
-            <div class="contact-item">
-                <img class="contact-icon" src="download.png" alt="Email">
-                <a href="mailto:rushabh.patel1998@gmail.com">rushabh.patel1998@gmail.com</a>
-            </div>
-            <div class="contact-item">
-                <img class="contact-icon" src="linkedin.png" alt="LinkedIn">
-                <a href="https://www.linkedin.com/in/rushabh19/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <p class="about-text">
+                i specialize in designing resilient cloud infrastructure, automating ci/cd pipelines,
+                and bridging the gap between dev teams and ops.
+                <strong>3+ years</strong> of building things that actually scale.
+            </p>
+            <div class="about-badges">
+                <span class="badge badge--green">ms informatics</span>
+                <span class="badge badge--purple">3+ yrs exp</span>
+                <span class="badge badge--orange">open to work</span>
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<!-- FOOTER -->
-<footer>
-    <div id="footer">
-        <ul id="footer-ul">
-            <li><a href="#know-me-me">About</a></li>
-            <li><a href="#explore-experience">Experience</a></li>
-            <li><a href="#cert-head">Certifications</a></li>
-            <li><a href="#project-head">Projects</a></li>
-            <li><a href="#contact-me">Contact</a></li>
-        </ul>
+
+<!-- ══════════════════════════════════════════
+     BENTO — SKILLS & CERTS
+══════════════════════════════════════════ -->
+<section class="bento-section" id="skills">
+    <div class="section-header">
+        <span class="section-label">what i know</span>
+        <h2 class="section-title">experience &amp; certs.</h2>
     </div>
-    <p id="footerp">Copyright &copy; 2026 Rushabh Patel. All Rights Reserved.</p>
+
+    <div class="bento-grid">
+
+        <!-- Card A: AWS — 7 cols, light gray bg -->
+        <div class="bento-card bento-card--a" style="--rot: -1deg">
+            <p class="bento-card-label">amazon web services</p>
+            <div class="skill-chips">
+                <span class="chip">IAM</span>
+                <span class="chip">EC2</span>
+                <span class="chip">S3</span>
+                <span class="chip">Lambda</span>
+                <span class="chip">EKS</span>
+                <span class="chip">CloudWatch</span>
+                <span class="chip">CodePipeline</span>
+                <span class="chip">Cost Explorer</span>
+            </div>
+            <div class="bento-icon-pop" aria-hidden="true">☁️</div>
+        </div>
+
+        <!-- Card B: DevOps Toolkit — 5 cols, black bg / neon text -->
+        <div class="bento-card bento-card--b" style="--rot: 2deg">
+            <p class="bento-card-label bento-card-label--light">devops toolkit</p>
+            <ul class="neon-list">
+                <li><span class="neon-dot">✦</span> Terraform / HCL</li>
+                <li><span class="neon-dot">✦</span> Kubernetes &amp; Helm</li>
+                <li><span class="neon-dot">✦</span> ArgoCD / GitOps</li>
+                <li><span class="neon-dot">✦</span> Jenkins / GitHub Actions</li>
+                <li><span class="neon-dot">✦</span> Ansible / Puppet</li>
+                <li><span class="neon-dot">✦</span> Docker</li>
+            </ul>
+        </div>
+
+        <!-- Card C: Certs — 12 cols, hot pink full-width -->
+        <div class="bento-card bento-card--c" style="--rot: -0.5deg">
+            <p class="bento-card-label bento-card-label--light">my certifications</p>
+            <div class="cert-dashboard">
+                <div class="cert-item">
+                    <img src="blob.png" alt="HashiCorp Terraform" class="cert-img" loading="lazy" decoding="async">
+                    <span>HashiCorp Terraform</span>
+                </div>
+                <div class="cert-item">
+                    <img src="aws-1.png" alt="AWS Cloud Practitioner" class="cert-img" loading="lazy" decoding="async">
+                    <span>AWS Cloud Practitioner</span>
+                </div>
+                <div class="cert-item">
+                    <img src="aws-2.png" alt="AWS Solutions Architect" class="cert-img" loading="lazy" decoding="async">
+                    <span>AWS Solutions Architect</span>
+                </div>
+                <div class="cert-item">
+                    <img src="az-900.jpg" alt="Azure Fundamentals" class="cert-img" loading="lazy" decoding="async">
+                    <span>Azure Fundamentals</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card D: Azure — 5 cols -->
+        <div class="bento-card bento-card--d" style="--rot: 1.5deg">
+            <p class="bento-card-label">microsoft azure</p>
+            <div class="skill-chips">
+                <span class="chip chip--purple">Entra ID</span>
+                <span class="chip chip--purple">Azure Monitor</span>
+                <span class="chip chip--purple">Cost Mgmt</span>
+                <span class="chip chip--purple">Compute</span>
+                <span class="chip chip--purple">Networking</span>
+                <span class="chip chip--purple">Load Balancer</span>
+            </div>
+            <div class="bento-icon-pop" aria-hidden="true">🔷</div>
+        </div>
+
+        <!-- Card E: Full Stack — 7 cols, black bg -->
+        <div class="bento-card bento-card--e" style="--rot: -2deg">
+            <p class="bento-card-label bento-card-label--light">full stack dev</p>
+            <div class="stack-pills">
+                <span class="stack-pill">HTML</span>
+                <span class="stack-pill">CSS</span>
+                <span class="stack-pill">JavaScript</span>
+                <span class="stack-pill">Node.js</span>
+                <span class="stack-pill">React</span>
+                <span class="stack-pill">MongoDB</span>
+                <span class="stack-pill">Git</span>
+                <span class="stack-pill">Python</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     PROJECTS
+══════════════════════════════════════════ -->
+<section class="projects-section" id="projects">
+    <div class="section-header">
+        <span class="section-label">what i've built</span>
+        <h2 class="section-title">projects.</h2>
+    </div>
+
+    <div class="projects-grid">
+
+        <div class="project-card" style="--rot: -2deg">
+            <img src="Figma-site1.png" alt="Experiential Network" class="project-img" loading="lazy" decoding="async">
+            <div class="project-info">
+                <h3 class="project-title">experiential network</h3>
+                <p class="project-desc">A full-featured social platform designed for experiential learning communities with real-time collaboration features.</p>
+                <div class="project-tags">
+                    <span class="project-tag">figma</span>
+                    <span class="project-tag">ux/ui</span>
+                    <span class="project-tag">react</span>
+                </div>
+                <div class="project-btns">
+                    <a href="https://github.com/rush1998" target="_blank" rel="noopener" class="btn-brutal btn-brutal--black">github</a>
+                    <a href="https://www.figma.com/proto/l86d06P47h7vPOUxMwnHGD/New-website?node-id=1-2&starting-point-node-id=1%3A2" target="_blank" rel="noopener" class="btn-brutal btn-brutal--white">live demo</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card" style="--rot: 1.5deg">
+            <img src="Figma-site2.png" alt="Capstone Project" class="project-img" loading="lazy" decoding="async">
+            <div class="project-info">
+                <h3 class="project-title">capstone project</h3>
+                <p class="project-desc">Graduate capstone — a platform bridging students and industry mentors with smart matching algorithms.</p>
+                <div class="project-tags">
+                    <span class="project-tag">informatics</span>
+                    <span class="project-tag">node.js</span>
+                    <span class="project-tag">mongodb</span>
+                </div>
+                <div class="project-btns">
+                    <a href="https://github.com/rush1998" target="_blank" rel="noopener" class="btn-brutal btn-brutal--black">github</a>
+                    <a href="https://www.figma.com/proto/j9ZXbhAjOAdJmidsKjAC2i/ITC6040?node-id=1-4&starting-point-node-id=1%3A4" target="_blank" rel="noopener" class="btn-brutal btn-brutal--white">live demo</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card" style="--rot: -1deg">
+            <img src="Figma-site3.png" alt="E-commerce Website" class="project-img" loading="lazy" decoding="async">
+            <div class="project-info">
+                <h3 class="project-title">e-commerce site</h3>
+                <p class="project-desc">Modern storefront with real-time inventory management, dynamic cart, and optimised checkout flow.</p>
+                <div class="project-tags">
+                    <span class="project-tag">javascript</span>
+                    <span class="project-tag">css</span>
+                    <span class="project-tag">node.js</span>
+                </div>
+                <div class="project-btns">
+                    <a href="https://github.com/rush1998/Future_website.git" target="_blank" rel="noopener" class="btn-brutal btn-brutal--black">github</a>
+                    <a href="https://github.com/rush1998/Future_website.git" target="_blank" rel="noopener" class="btn-brutal btn-brutal--white">live demo</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     BRUTALIST FAQ
+══════════════════════════════════════════ -->
+<section class="faq-section" id="faq">
+    <div class="section-header">
+        <span class="section-label">got questions?</span>
+        <h2 class="section-title">faq.</h2>
+    </div>
+
+    <div class="faq-container">
+
+        <details class="faq-item">
+            <summary class="faq-summary">
+                what do you actually do every day?
+                <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <p class="faq-body">
+                mostly coffee + iac. i design cloud infra, write terraform modules, build ci/cd pipelines,
+                and make sure deployments go out without drama. occasionally i also push real app code.
+            </p>
+        </details>
+
+        <details class="faq-item">
+            <summary class="faq-summary">
+                are you open to new opportunities?
+                <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <p class="faq-body">
+                yes! i'm actively exploring full-time devops / cloud engineering roles. contract work,
+                consulting, and interesting side projects are all on the table. just reach out.
+            </p>
+        </details>
+
+        <details class="faq-item">
+            <summary class="faq-summary">
+                what's your cloud of choice?
+                <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <p class="faq-body">
+                aws is home base — i'm certified at solutions architect level. but i've shipped real workloads
+                on azure too, and i believe in picking the right tool over platform loyalty.
+            </p>
+        </details>
+
+        <details class="faq-item">
+            <summary class="faq-summary">
+                can you help with my startup's infra?
+                <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <p class="faq-body">
+                absolutely. i love working with early-stage teams to lay the right foundations —
+                scalable infra from day one so you're not scrambling when traction hits.
+                drop me an email and let's talk specifics.
+            </p>
+        </details>
+
+        <details class="faq-item">
+            <summary class="faq-summary">
+                do you code frontend too?
+                <span class="faq-icon" aria-hidden="true">+</span>
+            </summary>
+            <p class="faq-body">
+                yep — this very page is hand-coded by me. i'm comfortable across the full stack:
+                html/css, javascript, react, node.js, and enough python to be dangerous.
+            </p>
+        </details>
+
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     GIANT CTA
+══════════════════════════════════════════ -->
+<section class="cta-section" id="contact">
+    <span class="cta-sticker cta-sticker-1" aria-hidden="true">💣</span>
+    <span class="cta-sticker cta-sticker-2" aria-hidden="true">🦄</span>
+    <span class="cta-sticker cta-sticker-3" aria-hidden="true">⚡</span>
+    <span class="cta-sticker cta-sticker-4" aria-hidden="true">🌶️</span>
+
+    <div class="cta-inner">
+        <h2 class="cta-headline">let's build</h2>
+        <h2 class="cta-headline cta-headline--outline">something</h2>
+        <h2 class="cta-headline">wild.</h2>
+        <p class="cta-sub">i'm available for full-time roles, consulting &amp; fun projects.</p>
+        <div class="cta-btns">
+            <a href="mailto:rushabh.patel1998@gmail.com" class="btn-brutal btn-brutal--black wobble-btn">
+                <i class="fas fa-envelope"></i> email me
+            </a>
+            <a href="https://www.linkedin.com/in/rushabh19/" target="_blank" rel="noopener" class="btn-brutal btn-brutal--white wobble-btn">
+                <i class="fab fa-linkedin-in"></i> linkedin
+            </a>
+        </div>
+    </div>
+</section>
+
+</main>
+
+
+<!-- ══════════════════════════════════════════
+    FOOTER
+══════════════════════════════════════════ -->
+<footer class="site-footer">
+    <div class="footer-brand-bg" aria-hidden="true">rushabh</div>
+    <div class="footer-inner">
+        <div class="footer-left">
+            <span class="footer-logo">RP</span>
+            <p class="footer-tagline">devops · cloud · full stack</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+            <a href="#about">about</a>
+            <a href="#skills">skills</a>
+            <a href="#projects">projects</a>
+            <a href="#faq">faq</a>
+            <a href="#contact">contact</a>
+        </nav>
+        <div class="footer-socials">
+            <a href="https://www.linkedin.com/in/rushabh19/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="footer-social-link">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/rush1998" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="footer-social-link">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://medium.com/@rushpatel" target="_blank" rel="noopener noreferrer" aria-label="Medium" class="footer-social-link">
+                <i class="fab fa-medium"></i>
+            </a>
+        </div>
+    </div>
+    <p class="footer-legal">© 2026 rushabh patel. all rights reserved.</p>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="index.js"></script>
 </body>
 </html>
