@@ -310,3 +310,136 @@ document.addEventListener('keydown', function (e) {
         }, 220);
     }, 2200);
 })();
+
+
+/* ── MEDIUM BLOGS GALLERY — horizontal scrollable card deck ───────────── */
+(function initBlogsGallery() {
+    var gallery = document.getElementById('blogsGallery');
+    var scrollLeftBtn = document.getElementById('blogsScrollLeft');
+    var scrollRightBtn = document.getElementById('blogsScrollRight');
+    
+    if (!gallery) return;
+
+    var feedUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@rushpatel';
+    var scrollAmount = 380; // Card width + gap
+
+    function fetchBlogs() {
+        fetch(feedUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'ok' && data.items && data.items.length > 0) {
+                    var articles = data.items.slice(0, 6);
+                    renderCards(articles);
+                } else {
+                    gallery.innerHTML = '<div class="blogs-loading">No articles found yet.</div>';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching Medium feed:', error);
+                gallery.innerHTML = '<div class="blogs-loading">Unable to load articles. Please check back later.</div>';
+            });
+    }
+
+    function createCard(article) {
+        var cleanDescription = article.description
+            .replace(/<[^>]*>/g, '')
+            .slice(0, 100);
+
+        // Extract image from article content if available
+        var imageMatch = article.description && article.description.match(/<img[^>]+src=["']([^"']+)["']/);
+        var imageUrl = imageMatch ? imageMatch[1] : 'https://via.placeholder.com/350x200?text=' + encodeURIComponent(article.title.slice(0, 20));
+
+        // Default category based on keywords (could be enhanced)
+        var categories = ['article', 'insights'];
+        if (article.title.toLowerCase().includes('devops')) categories.push('devops');
+        if (article.title.toLowerCase().includes('kubernetes')) categories.push('k8s');
+        if (article.title.toLowerCase().includes('cloud')) categories.push('cloud');
+        categories = categories.slice(-2); // Keep last 2
+
+        var card = document.createElement('div');
+        card.className = 'blog-card project-card';
+
+        card.innerHTML = `
+            <img src="${imageUrl}" alt="${article.title}" class="blog-card-image project-img" loading="lazy" decoding="async">
+            
+            <div class="blog-card-content project-info">
+                <h3 class="blog-card-title project-title">${article.title}</h3>
+                <p class="blog-card-description project-desc">${cleanDescription}...</p>
+                
+                <div class="blog-card-tags project-tags">
+                    ${categories.map(cat => `<span class="project-tag">${cat}</span>`).join('')}
+                </div>
+                
+                <div class="blog-card-footer project-btns">
+                    <a href="${article.link}" target="_blank" rel="noopener noreferrer" class="btn-brutal btn-brutal--black">
+                        read article
+                    </a>
+                    <a href="${article.link}" target="_blank" rel="noopener noreferrer" class="btn-brutal btn-brutal--white">
+                        medium
+                    </a>
+                </div>
+            </div>
+        `;
+
+        return card;
+    }
+
+    function renderCards(articles) {
+        gallery.innerHTML = '';
+        articles.forEach(function(article) {
+            gallery.appendChild(createCard(article));
+        });
+        updateScrollButtons();
+    }
+
+    function updateScrollButtons() {
+        var scrollLeft = gallery.scrollLeft;
+        var scrollWidth = gallery.scrollWidth;
+        var clientWidth = gallery.clientWidth;
+
+        // Disable left button if at start
+        if (scrollLeftBtn) {
+            scrollLeftBtn.disabled = scrollLeft === 0;
+        }
+
+        // Disable right button if at end
+        if (scrollRightBtn) {
+            scrollRightBtn.disabled = scrollLeft + clientWidth >= scrollWidth - 10;
+        }
+    }
+
+    function scroll(direction) {
+        var currentScroll = gallery.scrollLeft;
+        var targetScroll = currentScroll + (direction === 'left' ? -scrollAmount : scrollAmount);
+        
+        gsap.to(gallery, {
+            scrollLeft: targetScroll,
+            duration: 0.6,
+            ease: 'power2.inOut',
+            onUpdate: updateScrollButtons
+        });
+    }
+
+    // Event listeners
+    if (scrollLeftBtn) {
+        scrollLeftBtn.addEventListener('click', function() {
+            scroll('left');
+        });
+    }
+
+    if (scrollRightBtn) {
+        scrollRightBtn.addEventListener('click', function() {
+            scroll('right');
+        });
+    }
+
+    gallery.addEventListener('scroll', updateScrollButtons, { passive: true });
+    window.addEventListener('resize', updateScrollButtons, { passive: true });
+
+    // Fetch blogs when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', fetchBlogs);
+    } else {
+        fetchBlogs();
+    }
+})();

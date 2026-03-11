@@ -93,6 +93,24 @@
             </a>
         </li>
         <li>
+            <a href="#blogs" class="pill-link" aria-label="blogs section">
+                <span class="pill-hover-circle" aria-hidden="true"></span>
+                <span class="label-stack">
+                    <span class="pill-label">blogs</span>
+                    <span class="pill-label-hover" aria-hidden="true">blogs</span>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="#faq" class="pill-link" aria-label="faq section">
+                <span class="pill-hover-circle" aria-hidden="true"></span>
+                <span class="label-stack">
+                    <span class="pill-label">faq</span>
+                    <span class="pill-label-hover" aria-hidden="true">faq</span>
+                </span>
+            </a>
+        </li>
+        <li>
             <a href="#contact" class="pill-link" aria-label="contact section">
                 <span class="pill-hover-circle" aria-hidden="true"></span>
                 <span class="label-stack">
@@ -117,6 +135,7 @@
         <li><a href="#about" onclick="toggleMobileNav()">about</a></li>
         <li><a href="#skills" onclick="toggleMobileNav()">skills</a></li>
         <li><a href="#projects" onclick="toggleMobileNav()">projects</a></li>
+        <li><a href="#blogs" onclick="toggleMobileNav()">blogs</a></li>
         <li><a href="#faq" onclick="toggleMobileNav()">faq</a></li>
         <li><a href="#contact" class="drawer-cta" onclick="toggleMobileNav()">get in touch →</a></li>
     </ul>
@@ -451,6 +470,43 @@
 
 
 <!-- ══════════════════════════════════════════
+     MEDIUM BLOGS
+══════════════════════════════════════════ -->
+<section class="blogs-section" id="blogs">
+    <div class="section-header">
+        <span class="section-label">thoughts & insights</span>
+        <h2 class="section-title">blogs.</h2>
+    </div>
+    
+    <div class="blogs-gallery-wrapper">
+        <!-- Left Arrow -->
+        <button class="gallery-nav gallery-nav--left" id="blogsScrollLeft" aria-label="Scroll left">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <!-- Scrollable Gallery -->
+        <div class="blogs-gallery" id="blogsGallery">
+            <div class="blogs-loading" id="blogsLoading">
+                <i class="fas fa-spinner fa-spin"></i> loading articles...
+            </div>
+            <!-- Blog cards will be inserted here by JavaScript -->
+        </div>
+
+        <!-- Right Arrow -->
+        <button class="gallery-nav gallery-nav--right" id="blogsScrollRight" aria-label="Scroll right">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <div class="blogs-footer">
+        <a href="https://medium.com/@rushpatel" target="_blank" rel="noopener noreferrer" class="btn-brutal btn-brutal--white wobble-btn">
+            <i class="fab fa-medium"></i> read more on medium
+        </a>
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
      BRUTALIST FAQ
 ══════════════════════════════════════════ -->
 <section class="faq-section" id="faq">
@@ -563,6 +619,7 @@
             <a href="#about">about</a>
             <a href="#skills">skills</a>
             <a href="#projects">projects</a>
+            <a href="#blogs">blogs</a>
             <a href="#faq">faq</a>
             <a href="#contact">contact</a>
         </nav>
