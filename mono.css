@@ -1,66 +1,70 @@
 /* ══════════════════════════════════════════════════════════════
    MINIMALIST MONOCHROME THEME — mono.css
+   Design System: Pure black & white, editorial serif, zero radius,
+   no shadows, thick rules, per-section textures, instant interactions.
    Loaded dynamically when user clicks "✦ click me" toggle.
-   Overrides index.css tokens with pure black & white editorial.
 ══════════════════════════════════════════════════════════════ */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* ── DESIGN TOKENS ──────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════════
+   DESIGN TOKENS
+══════════════════════════════════════════════════════════════ */
 [data-theme="mono"] {
-    --green:   #000000;
-    --purple:  #000000;
-    --pink:    #000000;
-    --black:   #000000;
-    --white:   #ffffff;
-    --gray:    #f5f5f5;
+    --bg:          #ffffff;
+    --fg:          #000000;
+    --muted:       #f5f5f5;
+    --muted-fg:    #525252;
+    --border:      #000000;
+    --border-lt:   #e5e5e5;
 
-    --border:    2px solid #000000;
-    --shadow:    none;
-    --shadow-sm: none;
-    --shadow-lg: none;
-
-    --radius-pill: 0px;
-    --radius-card: 0px;
-
-    --bounce: linear;
+    --hairline: 1px solid #e5e5e5;
+    --thin:     1px solid #000000;
+    --medium:   2px solid #000000;
+    --thick:    4px solid #000000;
+    --ultra:    8px solid #000000;
 
     --font-head: 'Playfair Display', Georgia, serif;
     --font-body: 'Source Serif 4', Georgia, serif;
     --font-mono: 'JetBrains Mono', monospace;
 
-    /* Monochrome specifics */
-    --mono-hairline:  1px solid #e5e5e5;
-    --mono-thin:      1px solid #000000;
-    --mono-medium:    2px solid #000000;
-    --mono-thick:     4px solid #000000;
-    --mono-ultra:     8px solid #000000;
-    --mono-muted:     #525252;
-    --mono-off-white: #f5f5f5;
+    --radius-pill: 0px;
+    --radius-card: 0px;
+    --bounce: linear;
+    --shadow: none;
+    --shadow-sm: none;
+    --shadow-lg: none;
 }
 
-/* ── BASE ─────────────────────────────────────────────────── */
-[data-theme="mono"] body {
-    background: #ffffff;
-    color: #000000;
-    font-family: 'Source Serif 4', Georgia, serif;
-}
-
-[data-theme="mono"] * {
+/* ══════════════════════════════════════════════════════════════
+   GLOBAL RESET — sharp corners, no shadows, no animations
+══════════════════════════════════════════════════════════════ */
+[data-theme="mono"] *,
+[data-theme="mono"] *::before,
+[data-theme="mono"] *::after {
     border-radius: 0 !important;
     box-shadow: none !important;
     text-shadow: none !important;
-    animation: none !important;
-    transition: background 0.1s, color 0.1s, border 0.1s !important;
+    animation-duration: 0.001s !important;
+    transition-property: background-color, color, border-color, opacity !important;
+    transition-duration: 100ms !important;
+    transition-timing-function: linear !important;
 }
 
-/* Keep cursor ring animation */
+/* Re-allow cursor ring transitions */
 [data-theme="mono"] #cursor-ring {
-    animation: none;
-    transition: width 0.1s, height 0.1s, border-color 0.1s, opacity 0.1s !important;
+    transition: width 0.1s linear, height 0.1s linear,
+                border-color 0.1s linear, opacity 0.1s linear !important;
 }
 
-/* ── NOISE TEXTURE OVERLAY ───────────────────────────────── */
+/* ── BASE ──────────────────────────────────────────────────── */
+[data-theme="mono"] body {
+    background: #ffffff;
+    color: #000000;
+    font-family: var(--font-body);
+}
+
+/* Global noise texture for paper-like quality */
 [data-theme="mono"] body::before {
     content: '';
     position: fixed;
@@ -68,31 +72,40 @@
     pointer-events: none;
     z-index: 0;
     background-image:
-        repeating-linear-gradient(0deg, transparent, transparent 1px, #000 1px, #000 2px);
+        repeating-linear-gradient(
+            0deg,
+            transparent, transparent 1px,
+            #000 1px, #000 2px
+        );
     background-size: 100% 4px;
     opacity: 0.012;
 }
 
-/* ── NAV ────────────────────────────────────────────────────── */
+
+/* ══════════════════════════════════════════════════════════════
+   NAV
+══════════════════════════════════════════════════════════════ */
 [data-theme="mono"] .nav-pill {
     background: #ffffff;
-    border: var(--mono-thick);
+    border: var(--ultra);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border-radius: 0 !important;
+    box-shadow: none !important;
+    transform: translateX(-50%) !important; /* kill scale-on-scroll */
 }
 
 [data-theme="mono"] .logo-mark {
     background: #000000;
     color: #ffffff;
-    border: var(--mono-medium);
+    border: var(--medium);
     border-radius: 0 !important;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-weight: 500;
 }
 
 [data-theme="mono"] .nav-links li a.pill-link {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 500;
     text-transform: uppercase;
@@ -100,7 +113,6 @@
     background: transparent;
     border: none;
     color: #000000;
-    border-radius: 0 !important;
     height: auto;
     padding: 0.35rem 0.75rem;
 }
@@ -109,21 +121,23 @@
 [data-theme="mono"] .nav-links li a.pill-link.active {
     background: #000000;
     color: #ffffff;
-    border-color: #000000;
 }
 
-[data-theme="mono"] .pill-hover-circle { display: none; }
-[data-theme="mono"] .pill-label-hover  { display: none; }
+/* Kill GSAP pill animations in mono */
+[data-theme="mono"] .pill-hover-circle { display: none !important; }
+[data-theme="mono"] .pill-label-hover  { display: none !important; }
+[data-theme="mono"] .pill-label        { transform: none !important; }
 
 [data-theme="mono"] .nav-cta-pill {
     background: #000000;
     color: #ffffff;
-    border: var(--mono-medium);
-    font-family: 'JetBrains Mono', monospace;
+    border: var(--medium);
+    font-family: var(--font-mono);
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     border-radius: 0 !important;
+    transform: none !important;
 }
 
 [data-theme="mono"] .nav-cta-pill:hover {
@@ -132,11 +146,21 @@
     border-color: #000000;
 }
 
-/* ── HERO ────────────────────────────────────────────────────── */
+
+/* ══════════════════════════════════════════════════════════════
+   HERO  — oversized Playfair, thick rule + bordered square
+══════════════════════════════════════════════════════════════ */
 [data-theme="mono"] .hero {
     background: #ffffff;
-    background-image: none;
-    border-bottom: var(--mono-ultra);
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent, transparent 1px,
+            #000 1px, #000 2px
+        );
+    background-size: 100% 4px;
+    /* texture opacity via pseudo handled by body::before; keep this subtle */
+    border-bottom: var(--ultra);
     color: #000000;
     padding-top: 10rem;
     padding-bottom: 6rem;
@@ -144,7 +168,6 @@
     overflow: hidden;
 }
 
-/* Horizontal line texture inside hero */
 [data-theme="mono"] .hero::before {
     content: '';
     position: absolute;
@@ -152,31 +175,49 @@
     pointer-events: none;
     z-index: 0;
     background-image:
-        repeating-linear-gradient(0deg, transparent, transparent 1px, #000 1px, #000 2px);
+        repeating-linear-gradient(
+            0deg,
+            transparent, transparent 1px,
+            #000 1px, #000 2px
+        );
     background-size: 100% 4px;
     opacity: 0.015;
 }
 
+/* Decorative thick rule + small bordered square (design system §Bold Choices #2) */
+[data-theme="mono"] .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    width: 80px;
+    height: 4px;
+    background: #000000;
+    box-shadow: none !important;
+}
+
 [data-theme="mono"] .hero-blob { display: none; }
 [data-theme="mono"] .hero-cursor-glow { display: none; }
+[data-theme="mono"] .sticker { display: none !important; }
 
 [data-theme="mono"] .hero-eyebrow {
     background: transparent;
-    border: var(--mono-medium);
+    border: var(--medium);
     color: #000000;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.14em;
     border-radius: 0 !important;
 }
 
+/* 8xl+ Playfair — typography as graphic element */
 [data-theme="mono"] .hero-headline {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(4rem, 10vw, 8rem);
+    font-family: var(--font-head);
+    font-size: clamp(5rem, 12vw, 9rem);
     font-weight: 900;
-    letter-spacing: -0.04em;
-    line-height: 0.9;
+    letter-spacing: -0.05em;
+    line-height: 0.88;
     color: #000000;
     text-transform: none;
 }
@@ -187,79 +228,144 @@
     -webkit-text-fill-color: #000000 !important;
     background-clip: unset !important;
     color: #000000;
+    /* Italic for editorial drama */
+    font-style: italic;
 }
 
 [data-theme="mono"] .hero-sub {
     color: #000000;
-    font-family: 'Source Serif 4', Georgia, serif;
+    font-family: var(--font-body);
     font-size: 1.1rem;
     font-style: italic;
     line-height: 1.7;
 }
 
 [data-theme="mono"] .hero-role-line { color: #000000; }
-[data-theme="mono"] .hero-role-cursor {
-    background: #000000;
-}
+[data-theme="mono"] .hero-role-cursor { background: #000000; }
 
-[data-theme="mono"] .sticker { display: none !important; }
 
-/* ── PHONE MOCKUP — invert in mono ─── */
+/* ══════════════════════════════════════════════════════════════
+   PHONE MOCKUP
+══════════════════════════════════════════════════════════════ */
 [data-theme="mono"] .phone-frame {
-    border: var(--mono-ultra);
+    border: var(--ultra);
     background: #ffffff;
+    border-radius: 0 !important;
 }
 
 [data-theme="mono"] .phone-header {
     background: #000000;
-    border-bottom: var(--mono-medium);
+    border-bottom: var(--medium);
 }
 
-[data-theme="mono"] .phone-header-title { color: #ffffff; }
+[data-theme="mono"] .phone-header-title { color: #ffffff; font-family: var(--font-mono); }
 
 [data-theme="mono"] .phone-header-badge {
     background: #ffffff;
     color: #000000;
-    border: var(--mono-thin);
+    border: var(--thin);
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
 }
 
 [data-theme="mono"] .phone-post {
     background: #f5f5f5 !important;
-    border: var(--mono-thin);
+    border: var(--thin);
     transform: none !important;
 }
 
-[data-theme="mono"] .phone-post:hover { transform: none !important; }
+[data-theme="mono"] .phone-post:hover {
+    background: #000000 !important;
+    color: #ffffff;
+}
+
+[data-theme="mono"] .phone-post:hover .phone-post-name,
+[data-theme="mono"] .phone-post:hover .phone-post-role { color: #ffffff; }
 
 [data-theme="mono"] .phone-post-name {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: var(--font-head);
     font-weight: 700;
     color: #000000;
 }
 
 [data-theme="mono"] .phone-post-role {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 0.58rem;
     color: #525252;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
 }
 
 [data-theme="mono"] .phone-tab-action {
     background: #000000;
     color: #ffffff;
-    border: var(--mono-thin);
+    border: var(--thin);
 }
 
-/* ── BUTTONS ───────────────────────────────────────────────────── */
+
+/* ══════════════════════════════════════════════════════════════
+   MARQUEE
+══════════════════════════════════════════════════════════════ */
+[data-theme="mono"] .marquee-outer { transform: none; }
+
+[data-theme="mono"] .marquee-wrap {
+    background: #000000;
+    border-top: var(--ultra);
+    border-bottom: var(--ultra);
+}
+
+[data-theme="mono"] .marquee-track span {
+    font-family: var(--font-head);
+    font-style: italic;
+    font-size: 1.4rem;
+    color: #ffffff;
+    text-transform: none;
+    letter-spacing: -0.02em;
+}
+
+[data-theme="mono"] .marquee-sep { color: #ffffff !important; }
+
+
+/* ══════════════════════════════════════════════════════════════
+   SECTION CHROME
+══════════════════════════════════════════════════════════════ */
+[data-theme="mono"] .section-label {
+    background: transparent;
+    color: #525252;
+    border: var(--thin);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    border-radius: 0 !important;
+    padding: 0.25rem 0.75rem;
+}
+
+[data-theme="mono"] .section-title {
+    font-family: var(--font-head);
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    text-transform: none;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   BUTTONS — instant inversion, rectangular, uppercase mono
+══════════════════════════════════════════════════════════════ */
 [data-theme="mono"] .btn-brutal {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-weight: 500;
     border-radius: 0 !important;
     padding: 0.85rem 2rem;
-    border: var(--mono-medium);
-    transition: background 0.1s, color 0.1s !important;
+    border: var(--medium);
+    transition-duration: 100ms !important;
 }
 
 [data-theme="mono"] .btn-brutal--black,
@@ -280,12 +386,11 @@
 [data-theme="mono"] .hero .btn-brutal--white {
     background: #ffffff;
     color: #000000;
-    border: var(--mono-medium) !important;
+    border: var(--medium) !important;
     border-color: #000000 !important;
 }
 
-[data-theme="mono"] .btn-brutal--white:hover,
-[data-theme="mono"] .hero .btn-brutal--white:hover {
+[data-theme="mono"] .btn-brutal--white:hover {
     background: #000000;
     color: #ffffff;
 }
@@ -296,112 +401,94 @@
     border-color: #000000;
 }
 
-/* ── SOCIAL CHIPS ────────────────────────────────────────────── */
+
+/* ══════════════════════════════════════════════════════════════
+   SOCIAL CHIPS
+══════════════════════════════════════════════════════════════ */
 [data-theme="mono"] .social-chip {
     background: transparent;
     color: #000000;
-    border: var(--mono-thin);
-    font-family: 'JetBrains Mono', monospace;
+    border: var(--thin);
+    font-family: var(--font-mono);
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     border-radius: 0 !important;
+    transform: none !important;
 }
 
 [data-theme="mono"] .social-chip:hover {
     background: #000000;
     color: #ffffff;
-    border-color: #000000;
     transform: none !important;
 }
 
-/* ── MARQUEE ────────────────────────────────────────────────────── */
-[data-theme="mono"] .marquee-outer {
-    transform: none;
-}
 
-[data-theme="mono"] .marquee-wrap {
-    background: #000000;
-    border-top: var(--mono-thick);
-    border-bottom: var(--mono-thick);
-}
-
-[data-theme="mono"] .marquee-track span {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-style: italic;
-    font-size: 1.4rem;
-    color: #ffffff;
-    text-transform: none;
-    letter-spacing: -0.02em;
-}
-
-[data-theme="mono"] .marquee-sep { color: #ffffff !important; }
-
-/* ── SECTION CHROME ───────────────────────────────────────────── */
-[data-theme="mono"] .section-label {
-    background: transparent;
-    color: #525252;
-    border: var(--mono-thin);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    border-radius: 0 !important;
-    padding: 0.25rem 0.75rem;
-}
-
-[data-theme="mono"] .section-title {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 900;
-    text-transform: none;
-    letter-spacing: -0.04em;
-}
-
-/* ── ABOUT ────────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════════
+   ABOUT  — thick top/bottom rules, grid texture
+══════════════════════════════════════════════════════════════ */
 [data-theme="mono"] .about-section {
-    border-top: var(--mono-ultra);
-    border-bottom: var(--mono-thick);
+    border-top: var(--ultra);
+    border-bottom: var(--thick);
+    background: #ffffff;
+    position: relative;
+}
+
+[data-theme="mono"] .about-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(#00000008 1px, transparent 1px),
+        linear-gradient(90deg, #00000008 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 1;
 }
 
 [data-theme="mono"] .about-photo {
-    border: var(--mono-thick);
+    border: var(--thick);
     filter: grayscale(100%) contrast(1.1);
     border-radius: 0 !important;
 }
 
 [data-theme="mono"] .about-text {
-    font-family: 'Source Serif 4', Georgia, serif;
+    font-family: var(--font-body);
     font-size: 1.05rem;
     line-height: 1.8;
     color: #000000;
 }
 
 [data-theme="mono"] .badge {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    border: var(--mono-medium);
+    border: var(--medium);
     border-radius: 0 !important;
+    transform: none !important;
 }
 
-[data-theme="mono"] .badge--green {
-    background: #000000;
-    color: #ffffff;
-}
+[data-theme="mono"] .badge--green  { background: #000000; color: #ffffff; }
+[data-theme="mono"] .badge--purple { background: #ffffff; color: #000000; }
+[data-theme="mono"] .badge--orange { background: #ffffff; color: #000000; }
 
-[data-theme="mono"] .badge--purple,
-[data-theme="mono"] .badge--orange {
-    background: #ffffff;
-    color: #000000;
-    border-color: #000000;
-}
 
-/* ── BENTO GRID ───────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════════
+   BENTO / SKILLS  — grid texture, full card inversion on hover
+══════════════════════════════════════════════════════════════ */
 [data-theme="mono"] .bento-section {
     background: #f5f5f5;
-    border-top: var(--mono-ultra);
-    border-bottom: var(--mono-thick);
+    border-top: var(--ultra);
+    border-bottom: var(--thick);
+    position: relative;
+}
+
+[data-theme="mono"] .bento-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
     background-image:
         linear-gradient(#00000008 1px, transparent 1px),
         linear-gradient(90deg, #00000008 1px, transparent 1px);
@@ -410,9 +497,10 @@
 
 [data-theme="mono"] .bento-card {
     background: #ffffff;
-    border: var(--mono-medium);
+    border: var(--medium);
     transform: none !important;
     border-radius: 0 !important;
+    transition-duration: 100ms !important;
 }
 
 [data-theme="mono"] .bento-card:hover {
@@ -421,63 +509,70 @@
     transform: none !important;
 }
 
-[data-theme="mono"] .bento-card:hover .bento-card-label {
+[data-theme="mono"] .bento-card:hover .bento-card-label,
+[data-theme="mono"] .bento-card:hover .bento-icon-pop,
+[data-theme="mono"] .bento-card:hover .neon-list li,
+[data-theme="mono"] .bento-card:hover .neon-dot {
     color: #ffffff;
-    opacity: 1;
 }
 
-[data-theme="mono"] .bento-card:hover .chip {
+[data-theme="mono"] .bento-card:hover .chip,
+[data-theme="mono"] .bento-card:hover .stack-pill {
     background: #ffffff;
     color: #000000;
     border-color: #ffffff;
 }
 
-[data-theme="mono"] .bento-card--a {
-    background: #f5f5f5;
-}
+[data-theme="mono"] .bento-card--a { background: #f5f5f5; }
+[data-theme="mono"] .bento-card--b { background: #000000; color: #ffffff; }
+[data-theme="mono"] .bento-card--b:hover { background: #ffffff; color: #000000; }
+[data-theme="mono"] .bento-card--b:hover .bento-card-label { color: #000000; }
+[data-theme="mono"] .bento-card--b:hover .neon-list li,
+[data-theme="mono"] .bento-card--b:hover .neon-dot { color: #000000; }
 
-[data-theme="mono"] .bento-card--b {
-    background: #000000;
-    color: #ffffff;
-}
-
+/* Card C — vertical stripe texture, stays inverted */
 [data-theme="mono"] .bento-card--c {
     background: #000000;
     color: #ffffff;
     background-image:
-        repeating-linear-gradient(90deg, transparent, transparent 1px, #fff 1px, #fff 2px);
+        repeating-linear-gradient(
+            90deg,
+            transparent, transparent 1px,
+            #fff 1px, #fff 2px
+        );
     background-size: 4px 100%;
 }
 
-[data-theme="mono"] .bento-card--d {
-    background: #ffffff;
-}
-
-[data-theme="mono"] .bento-card--e {
+[data-theme="mono"] .bento-card--d { background: #ffffff; }
+[data-theme="mono"] .bento-card--e { background: #000000; color: #ffffff; }
+[data-theme="mono"] .bento-card--e:hover { background: #ffffff; color: #000000; }
+[data-theme="mono"] .bento-card--e:hover .bento-card-label { color: #000000; }
+[data-theme="mono"] .bento-card--e:hover .stack-pill {
     background: #000000;
     color: #ffffff;
+    border-color: #000000;
 }
 
 [data-theme="mono"] .bento-card-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 0.68rem;
     text-transform: uppercase;
     letter-spacing: 0.14em;
     color: #000000;
-    opacity: 1;
 }
 
 [data-theme="mono"] .bento-card-label--light { color: #ffffff; }
 
 [data-theme="mono"] .chip {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     background: #ffffff;
     color: #000000;
-    border: var(--mono-thin);
+    border: var(--thin);
     border-radius: 0 !important;
+    transform: none !important;
 }
 
 [data-theme="mono"] .chip:hover {
@@ -488,7 +583,7 @@
 }
 
 [data-theme="mono"] .neon-list li {
-    font-family: 'Source Serif 4', Georgia, serif;
+    font-family: var(--font-body);
     color: #ffffff;
     font-size: 0.95rem;
 }
@@ -497,14 +592,16 @@
 
 [data-theme="mono"] .cert-dashboard {
     background: rgba(255,255,255,0.08);
-    border: var(--mono-thin);
+    border: var(--thin);
     border-color: rgba(255,255,255,0.4);
 }
 
 [data-theme="mono"] .cert-item {
     background: #ffffff;
-    border: var(--mono-medium);
+    border: var(--medium);
     border-radius: 0 !important;
+    transition-duration: 100ms !important;
+    transform: none !important;
 }
 
 [data-theme="mono"] .cert-item:hover {
@@ -515,7 +612,7 @@
 [data-theme="mono"] .cert-item:hover span { color: #ffffff; }
 
 [data-theme="mono"] .stack-pill {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -523,6 +620,7 @@
     color: #ffffff;
     border: 1px solid rgba(255,255,255,0.5);
     border-radius: 0 !important;
+    transform: none !important;
 }
 
 [data-theme="mono"] .stack-pill:hover {
@@ -532,54 +630,98 @@
     transform: none !important;
 }
 
-/* ── PROJECTS ───────────────────────────────────────────────────── */
+
+/* ══════════════════════════════════════════════════════════════
+   PROJECTS  — diagonal line texture, image hover: border thickens
+══════════════════════════════════════════════════════════════ */
 [data-theme="mono"] .projects-section {
-    border-top: var(--mono-ultra);
-    border-bottom: var(--mono-thick);
+    border-top: var(--ultra);
+    border-bottom: var(--thick);
+    background: #ffffff;
+    position: relative;
+}
+
+[data-theme="mono"] .projects-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent, transparent 40px,
+        #00000008 40px, #00000008 42px
+    );
+    opacity: 1;
 }
 
 [data-theme="mono"] .project-card {
-    border: var(--mono-medium);
+    border: var(--medium);
     background: #ffffff;
     transform: none !important;
     border-radius: 0 !important;
+    transition-duration: 100ms !important;
 }
 
 [data-theme="mono"] .project-card:hover {
-    background: #ffffff;
+    background: #000000;
+    color: #ffffff;
     border-color: #000000;
-    border-width: 4px;
     transform: none !important;
 }
 
+[data-theme="mono"] .project-card:hover .project-title,
+[data-theme="mono"] .project-card:hover .project-desc {
+    color: #ffffff;
+}
+
+[data-theme="mono"] .project-card:hover .project-tag {
+    background: #ffffff;
+    color: #000000;
+}
+
+[data-theme="mono"] .project-card:hover .btn-brutal--black {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+}
+
+[data-theme="mono"] .project-card:hover .btn-brutal--white {
+    background: #000000;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+/* Image: grayscale → color, border thickens on hover (300ms exception) */
 [data-theme="mono"] .project-img {
-    border-bottom: var(--mono-medium);
+    border-bottom: var(--medium);
     filter: grayscale(100%) contrast(1.05);
     border-radius: 0 !important;
+    transition: filter 300ms linear, border-bottom-width 100ms linear !important;
 }
 
 [data-theme="mono"] .project-card:hover .project-img {
-    filter: grayscale(0%);
+    filter: grayscale(0%) contrast(1);
     border-bottom-width: 4px;
 }
 
 [data-theme="mono"] .project-title {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: var(--font-head);
     font-size: 1.3rem;
     font-weight: 700;
     text-transform: none;
     letter-spacing: -0.03em;
+    color: #000000;
 }
 
 [data-theme="mono"] .project-desc {
-    font-family: 'Source Serif 4', Georgia, serif;
+    font-family: var(--font-body);
     font-size: 0.9rem;
     line-height: 1.7;
     color: #525252;
 }
 
 [data-theme="mono"] .project-tag {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 0.68rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -590,16 +732,38 @@
     border-radius: 0 !important;
 }
 
-/* ── BLOGS ────────────────────────────────────────────────────── */
+
+/* ══════════════════════════════════════════════════════════════
+   BLOGS  — horizontal line texture, image hover thickens
+══════════════════════════════════════════════════════════════ */
 [data-theme="mono"] .blogs-section {
-    border-top: var(--mono-ultra);
-    border-bottom: var(--mono-thick);
+    border-top: var(--ultra);
+    border-bottom: var(--thick);
+    background: #f5f5f5;
+    position: relative;
 }
 
+[data-theme="mono"] .blogs-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent, transparent 1px,
+            #000 1px, #000 2px
+        );
+    background-size: 100% 4px;
+    opacity: 0.015;
+}
+
+/* Blog card = project card — same inversion pattern */
 [data-theme="mono"] .blog-card-image {
-    border: var(--mono-medium);
+    border: var(--medium);
     filter: grayscale(100%);
     border-radius: 0 !important;
+    transition: filter 300ms linear, border-width 100ms linear !important;
 }
 
 [data-theme="mono"] .blog-card:hover .blog-card-image {
@@ -609,29 +773,31 @@
 
 [data-theme="mono"] .blog-card-title,
 [data-theme="mono"] .blog-card .project-title {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: var(--font-head);
     font-weight: 700;
     letter-spacing: -0.03em;
     text-transform: none;
 }
 
 [data-theme="mono"] .blog-card .project-desc {
-    font-family: 'Source Serif 4', Georgia, serif;
+    font-family: var(--font-body);
     color: #525252;
 }
 
 [data-theme="mono"] .blog-stat--time {
     background: #000000;
     color: #ffffff;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     border-radius: 0 !important;
 }
 
 [data-theme="mono"] .gallery-nav {
-    border: var(--mono-medium);
+    border: var(--medium);
     background: #ffffff;
     color: #000000;
     border-radius: 0 !important;
+    transform: none !important;
+    transition-duration: 100ms !important;
 }
 
 [data-theme="mono"] .gallery-nav:hover {
@@ -640,17 +806,33 @@
     transform: none !important;
 }
 
-/* ── FAQ ─────────────────────────────────────────────────────────────── */
+
+/* ══════════════════════════════════════════════════════════════
+   FAQ  — editorial, grid texture, Playfair summaries
+══════════════════════════════════════════════════════════════ */
 [data-theme="mono"] .faq-section {
     background: #f5f5f5;
-    border-top: var(--mono-ultra);
-    border-bottom: var(--mono-thick);
+    border-top: var(--ultra);
+    border-bottom: var(--thick);
+    position: relative;
+}
+
+[data-theme="mono"] .faq-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(#00000008 1px, transparent 1px),
+        linear-gradient(90deg, #00000008 1px, transparent 1px);
+    background-size: 40px 40px;
 }
 
 [data-theme="mono"] .faq-item {
     background: #ffffff;
-    border: var(--mono-medium);
+    border: var(--medium);
     border-radius: 0 !important;
+    transition-duration: 100ms !important;
 }
 
 [data-theme="mono"] .faq-item[open] {
@@ -658,8 +840,21 @@
     color: #ffffff;
 }
 
+/* Editorial pull-quote: oversized quotation mark */
+[data-theme="mono"] .faq-item[open]::before {
+    content: '\201C';
+    font-family: var(--font-head);
+    font-size: 6rem;
+    line-height: 0.5;
+    color: rgba(255,255,255,0.15);
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    pointer-events: none;
+}
+
 [data-theme="mono"] .faq-summary {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: var(--font-head);
     font-size: 1.05rem;
     font-weight: 700;
     text-transform: none;
@@ -667,75 +862,144 @@
     background: transparent;
     color: inherit;
     border-radius: 0 !important;
+    cursor: pointer;
 }
 
 [data-theme="mono"] .faq-item[open] .faq-summary {
     background: #000000;
     color: #ffffff;
-    border-bottom: var(--mono-thin);
+    border-bottom: var(--thin);
     border-color: rgba(255,255,255,0.2);
-    border-radius: 0 !important;
 }
 
 [data-theme="mono"] .faq-icon { color: inherit; }
 
 [data-theme="mono"] .faq-body {
-    font-family: 'Source Serif 4', Georgia, serif;
+    font-family: var(--font-body);
     font-size: 0.95rem;
+    font-style: italic;
     color: rgba(255,255,255,0.85);
     line-height: 1.8;
 }
 
-/* ── CTA ─────────────────────────────────────────────────────────────── */
+
+/* ══════════════════════════════════════════════════════════════
+   CTA (CONTACT)  — INVERTED: black bg, white text,
+   vertical stripe texture + radial highlight (§Inverted Section)
+══════════════════════════════════════════════════════════════ */
 [data-theme="mono"] .cta-section {
     background: #000000;
-    border-top: var(--mono-ultra);
-    background-image: radial-gradient(circle at top center, #ffffff, transparent 70%);
+    border-top: var(--ultra);
     position: relative;
+    overflow: hidden;
+}
+
+/* Vertical stripe texture */
+[data-theme="mono"] .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+        90deg,
+        transparent, transparent 1px,
+        #fff 1px, #fff 2px
+    );
+    background-size: 4px 100%;
+    opacity: 0.03;
+}
+
+/* Radial white glow at top center */
+[data-theme="mono"] .cta-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(
+        circle at top center,
+        #ffffff,
+        transparent 70%
+    );
+    opacity: 0.05;
 }
 
 [data-theme="mono"] .cta-sticker { display: none; }
 
 [data-theme="mono"] .cta-headline {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: var(--font-head);
     font-weight: 900;
-    color: #ffffff;
+    font-size: clamp(3.5rem, 10vw, 8rem);
     letter-spacing: -0.05em;
+    line-height: 0.9;
+    color: #ffffff;
     text-transform: none;
 }
 
 [data-theme="mono"] .cta-headline--outline {
     -webkit-text-stroke: 3px #ffffff;
     color: transparent;
-}
-
-[data-theme="mono"] .cta-sub {
-    font-family: 'Source Serif 4', Georgia, serif;
-    color: rgba(255,255,255,0.85);
     font-style: italic;
 }
 
-/* ── FOOTER ─────────────────────────────────────────────────────────────── */
+[data-theme="mono"] .cta-sub {
+    font-family: var(--font-body);
+    color: rgba(255,255,255,0.75);
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+[data-theme="mono"] .cta-section .btn-brutal--black {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+}
+
+[data-theme="mono"] .cta-section .btn-brutal--black:hover {
+    background: #000000;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+[data-theme="mono"] .cta-section .btn-brutal--white {
+    background: transparent;
+    color: #ffffff;
+    border: var(--medium);
+    border-color: #ffffff;
+}
+
+[data-theme="mono"] .cta-section .btn-brutal--white:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   FOOTER  — inverted black bg
+══════════════════════════════════════════════════════════════ */
 [data-theme="mono"] .site-footer {
     background: #000000;
-    border-top: var(--mono-ultra);
+    border-top: var(--ultra);
     color: #ffffff;
 }
 
 [data-theme="mono"] .footer-brand-bg {
     color: #ffffff;
     opacity: 0.04;
+    font-family: var(--font-head);
+    font-style: italic;
 }
 
 [data-theme="mono"] .footer-logo {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: var(--font-head);
     font-style: italic;
+    font-size: 1.8rem;
+    font-weight: 900;
     color: #ffffff;
 }
 
 [data-theme="mono"] .footer-tagline {
     color: rgba(255,255,255,0.5);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 0.68rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -743,7 +1007,7 @@
 
 [data-theme="mono"] .footer-nav a {
     color: rgba(255,255,255,0.7);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -759,6 +1023,8 @@
     border: 1px solid rgba(255,255,255,0.35);
     color: #ffffff;
     border-radius: 0 !important;
+    transform: none !important;
+    transition-duration: 100ms !important;
 }
 
 [data-theme="mono"] .footer-social-link:hover {
@@ -769,23 +1035,27 @@
 
 [data-theme="mono"] .footer-legal {
     color: rgba(255,255,255,0.35);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
 }
 
-/* ── MOBILE NAV DRAWER ────────────────────────────────────────────── */
+
+/* ══════════════════════════════════════════════════════════════
+   MOBILE NAV DRAWER
+══════════════════════════════════════════════════════════════ */
 [data-theme="mono"] .mobile-nav-drawer {
     background: #ffffff;
-    border-left: var(--mono-thick);
+    border-left: var(--ultra);
     border-radius: 0 !important;
 }
 
 [data-theme="mono"] .mobile-nav-drawer ul li a {
-    border: var(--mono-medium);
+    border: var(--medium);
     border-radius: 0 !important;
-    font-family: 'Source Serif 4', Georgia, serif;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
 }
 
 [data-theme="mono"] .mobile-nav-drawer ul li a:hover {
@@ -801,9 +1071,15 @@
 [data-theme="mono"] .drawer-cta {
     background: #000000 !important;
     color: #ffffff !important;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
 
-/* ── CURSOR RING in MONO ────────────────────────────────────────────── */
+
+/* ══════════════════════════════════════════════════════════════
+   CURSOR RING
+══════════════════════════════════════════════════════════════ */
 [data-theme="mono"] #cursor-ring {
     border-color: #000000;
     opacity: 0.5;
@@ -826,15 +1102,10 @@
 
 
 /* ══════════════════════════════════════════════════════════════
-   THEME TOGGLE BUTTON (✦ click me / ✦ original)
-   Matches .nav-cta-pill from index.css exactly:
-     Space Grotesk bold, lowercase, black bg, white text,
-     2px border, 9999px radius, 0.42rem 1.1rem padding,
-     3px 3px offset shadow, scale(1.08) + purple shadow on hover.
-   Spark animation fires from JS-injected .spark elements.
+   THEME TOGGLE BUTTON
 ══════════════════════════════════════════════════════════════ */
 
-/* ── Spark keyframes ────────────────────────────────────────────── */
+/* Spark keyframes */
 @keyframes spark-fly-1  { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% - 22px),calc(-50% - 26px)) scale(0);opacity:0} }
 @keyframes spark-fly-2  { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% + 24px),calc(-50% - 22px)) scale(0);opacity:0} }
 @keyframes spark-fly-3  { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% + 28px),calc(-50% +  4px)) scale(0);opacity:0} }
@@ -844,8 +1115,7 @@
 @keyframes spark-fly-7  { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% - 12px),calc(-50% - 32px)) scale(0);opacity:0} }
 @keyframes spark-fly-8  { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% + 14px),calc(-50% - 30px)) scale(0);opacity:0} }
 
-/* ── Button — default (neo-brutalist) theme ─────────────────────── */
-/* Exact copy of .nav-cta-pill from index.css */
+/* Default (neo-brutalist) state */
 .theme-toggle-btn {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
@@ -874,11 +1144,9 @@
 .theme-toggle-btn:hover {
     transform: scale(1.08);
     box-shadow: 4px 4px 0px #7000ff;
-    background: #0a0a0a;
-    color: #ffffff;
 }
 
-/* ── Spark dots (JS-injected .spark elements) ─────────────────── */
+/* Spark dots */
 .theme-toggle-btn .spark {
     position: absolute;
     top: 50%;
@@ -900,19 +1168,19 @@
 .theme-toggle-btn .spark--7  { background: #ccff00; animation: spark-fly-7 0.5s ease 0.01s     forwards; }
 .theme-toggle-btn .spark--8  { background: #7000ff; animation: spark-fly-8 0.5s ease 0.04s     forwards; }
 
-/* ── Mono-theme override — sharp, black/white ───────────────────── */
+/* Mono theme override — sharp, rectangular, instant */
 [data-theme="mono"] .theme-toggle-btn {
     background: #ffffff;
     color: #000000;
     border: 2px solid #000000 !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     transform: none !important;
-    transition: background 0.1s, color 0.1s !important;
+    transition: background 100ms linear, color 100ms linear !important;
 }
 
 [data-theme="mono"] .theme-toggle-btn:hover {
@@ -922,7 +1190,7 @@
     box-shadow: none !important;
 }
 
-/* Greyscale sparks in mono mode */
+/* Greyscale sparks in mono */
 [data-theme="mono"] .theme-toggle-btn .spark--1,
 [data-theme="mono"] .theme-toggle-btn .spark--4,
 [data-theme="mono"] .theme-toggle-btn .spark--7 { background: #000000; }
@@ -932,7 +1200,7 @@
 [data-theme="mono"] .theme-toggle-btn .spark--6,
 [data-theme="mono"] .theme-toggle-btn .spark--8 { background: #000000; }
 
-/* ── Hide on mobile — same breakpoint as .nav-cta-pill ──────────── */
+/* Hide on mobile — same breakpoint as .nav-cta-pill */
 @media (max-width: 900px) {
     .theme-toggle-btn { display: none; }
 }
