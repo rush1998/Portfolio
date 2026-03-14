@@ -14,7 +14,7 @@
         monoLink.disabled = !isMono;
         if (isMono) {
             html.setAttribute('data-theme', 'mono');
-            btn.textContent = '✦ original';
+            btn.textContent = '✦ click me';
             btn.setAttribute('title', 'Back to Neo-Brutalist');
         } else {
             html.removeAttribute('data-theme');
@@ -462,7 +462,7 @@ document.addEventListener('keydown', function (e) {
             .slice(0, 100);
 
         var imageMatch = article.description &&
-            article.description.match(/<img[^>]+src=["']([^"']+)["']/);
+            article.description.match(/<img[^>]+src=["']([^"']+)['"]/);
         var imageUrl = imageMatch
             ? imageMatch[1]
             : 'https://via.placeholder.com/350x200?text=' +
@@ -552,26 +552,22 @@ document.addEventListener('keydown', function (e) {
     if (!btn) return;
     if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
 
-    // Spark colours cycling through the brand palette
     var COLOURS = ['#ccff00', '#7000ff', '#ff4800', '#ccff00', '#7000ff', '#ff4800', '#ccff00', '#7000ff'];
-    var DURATION = 520; // ms — matches CSS animation duration
+    var DURATION = 520;
     var rafId = null;
 
     function spawnSparks() {
-        // Remove any leftover sparks from previous hover
         btn.querySelectorAll('.spark').forEach(function (s) { s.remove(); });
 
         for (var n = 1; n <= 8; n++) {
             var spark = document.createElement('span');
             spark.className = 'spark spark--' + n;
             spark.style.background = COLOURS[n - 1];
-            // Override colour in mono mode with greyscale
             if (document.documentElement.getAttribute('data-theme') === 'mono') {
                 spark.style.background = (n % 3 === 0) ? '#525252' : '#000000';
             }
             btn.appendChild(spark);
 
-            // Self-remove after animation completes
             (function (el) {
                 setTimeout(function () { if (el.parentNode) el.remove(); }, DURATION + 80);
             }(spark));
