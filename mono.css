@@ -824,45 +824,181 @@
     opacity: 1;
 }
 
-/* ── THEME TOGGLE BUTTON ─────────────────────────────────── */
+
+/* ════════════════════════════════════════════════════════════
+   THEME TOGGLE BUTTON
+   Matches the original neo-brutalist nav-cta-pill exactly:
+   — Space Grotesk bold, lowercase, acid-green bg, black border,
+     pill border-radius, 3px offset shadow.
+   Spark animation fires on hover using CSS-only sparks.
+════════════════════════════════════════════════════════════ */
+
+/* ── Spark keyframes ─────────────────────────────────────── */
+@keyframes spark-fly-1  { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate(-22px,-26px) scale(0);opacity:0} }
+@keyframes spark-fly-2  { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate( 24px,-22px) scale(0);opacity:0} }
+@keyframes spark-fly-3  { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate( 28px,  4px) scale(0);opacity:0} }
+@keyframes spark-fly-4  { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate( 18px, 26px) scale(0);opacity:0} }
+@keyframes spark-fly-5  { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate(-18px, 28px) scale(0);opacity:0} }
+@keyframes spark-fly-6  { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate(-30px,  6px) scale(0);opacity:0} }
+@keyframes spark-fly-7  { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate(-12px,-32px) scale(0);opacity:0} }
+@keyframes spark-fly-8  { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate( 14px,-30px) scale(0);opacity:0} }
+
+/* ── Base button — default (original) theme ─────────────── */
 .theme-toggle-btn {
+    /* Layout */
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 0.4rem 0.85rem;
-    background: var(--green, #ccff00);
-    color: var(--black, #0a0a0a);
-    border: 2px solid var(--black, #0a0a0a);
-    cursor: none;
     white-space: nowrap;
     flex-shrink: 0;
-    transition: background 0.2s, color 0.2s;
-    border-radius: 0;
-    user-select: none;
     position: relative;
     z-index: 1001;
+    overflow: visible; /* sparks escape the box */
+
+    /* Typography — matches nav-cta-pill */
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: lowercase;
+    letter-spacing: -0.01em;
     line-height: 1;
+
+    /* Geometry — pill, same as nav-cta-pill */
+    padding: 0.42rem 1.1rem;
+    border-radius: 9999px;
+    border: 2px solid #0a0a0a;
+
+    /* Colour — acid green, same as nav-cta-pill */
+    background: #ccff00;
+    color: #0a0a0a;
+
+    /* Shadow — same as nav-cta-pill */
+    box-shadow: 3px 3px 0px rgba(0,0,0,0.4);
+
+    cursor: none;
+    user-select: none;
+
+    /* Smooth scale on hover */
+    transition:
+        transform   0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        box-shadow  0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        background  0.2s,
+        color       0.2s;
 }
 
+/* Scale up — same as nav-cta-pill:hover scale */
 .theme-toggle-btn:hover {
-    background: var(--black, #0a0a0a);
-    color: var(--green, #ccff00);
+    transform: scale(1.08);
+    box-shadow: 4px 4px 0px #7000ff;  /* purple shadow, same as nav-cta-pill hover */
+    background: #ccff00;
+    color: #0a0a0a;
 }
 
+/* ── Sparks — 8 tiny dots that burst outward on hover ────── */
+.theme-toggle-btn::before,
+.theme-toggle-btn::after {
+    content: '';
+    position: absolute;
+    /* sit at the horizontal centre, slightly above mid-height */
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #ccff00;
+    pointer-events: none;
+    opacity: 0;
+}
+
+/* 8 individual spark dots via box-shadow — all anchored at centre.
+   Each box-shadow entry IS one extra particle (same size, different hue
+   so they pop on both light and dark backgrounds).
+   We use two pseudo-elements to get 2 × 4 = 8 sparks total. */
+.theme-toggle-btn::before {
+    box-shadow:
+        0 0 0 0 #ccff00,   /* self */
+        0 0 0 0 #7000ff,
+        0 0 0 0 #ff4800,
+        0 0 0 0 #ccff00;
+    transform: translate(-50%, -50%);
+}
+
+.theme-toggle-btn::after {
+    box-shadow:
+        0 0 0 0 #7000ff,
+        0 0 0 0 #ccff00,
+        0 0 0 0 #ff4800,
+        0 0 0 0 #0a0a0a;
+    transform: translate(-50%, -50%);
+}
+
+/* On hover, animate each spark pseudo to burst outward */
+.theme-toggle-btn:hover::before {
+    animation:
+        spark-fly-1 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards,
+        spark-flash 0.55s ease forwards;
+    opacity: 1;
+}
+
+.theme-toggle-btn:hover::after {
+    animation:
+        spark-fly-2 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.04s forwards,
+        spark-flash 0.55s ease 0.04s forwards;
+    opacity: 1;
+}
+
+/* Additional sparks via JS-injected .spark elements (see index.js) */
+.theme-toggle-btn .spark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+@keyframes spark-flash { 0%{opacity:1} 80%{opacity:0.6} 100%{opacity:0} }
+
+/* Colour variants */
+.theme-toggle-btn .spark--1  { background: #ccff00; animation: spark-fly-1 0.5s ease forwards; }
+.theme-toggle-btn .spark--2  { background: #7000ff; animation: spark-fly-2 0.5s ease 0.03s forwards; }
+.theme-toggle-btn .spark--3  { background: #ff4800; animation: spark-fly-3 0.5s ease 0.06s forwards; }
+.theme-toggle-btn .spark--4  { background: #ccff00; animation: spark-fly-4 0.5s ease 0.02s forwards; }
+.theme-toggle-btn .spark--5  { background: #7000ff; animation: spark-fly-5 0.5s ease 0.05s forwards; }
+.theme-toggle-btn .spark--6  { background: #ff4800; animation: spark-fly-6 0.5s ease 0.08s forwards; }
+.theme-toggle-btn .spark--7  { background: #ccff00; animation: spark-fly-7 0.5s ease 0.01s forwards; }
+.theme-toggle-btn .spark--8  { background: #7000ff; animation: spark-fly-8 0.5s ease 0.04s forwards; }
+
+/* ── Mono-theme override — sharp, black/white ─────────────── */
 [data-theme="mono"] .theme-toggle-btn {
     background: #ffffff;
     color: #000000;
     border: 2px solid #000000;
+    border-radius: 0 !important;
+    box-shadow: none !important;
     font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
     letter-spacing: 0.1em;
+    transform: none !important;
 }
 
 [data-theme="mono"] .theme-toggle-btn:hover {
     background: #000000;
     color: #ffffff;
+    box-shadow: none !important;
+    transform: none !important;
 }
+
+/* Sparks use green in mono-mode too — they peek outside the button */
+[data-theme="mono"] .theme-toggle-btn .spark--1,
+[data-theme="mono"] .theme-toggle-btn .spark--4,
+[data-theme="mono"] .theme-toggle-btn .spark--7 { background: #000000; }
+[data-theme="mono"] .theme-toggle-btn .spark--2,
+[data-theme="mono"] .theme-toggle-btn .spark--5 { background: #525252; }
+[data-theme="mono"] .theme-toggle-btn .spark--3,
+[data-theme="mono"] .theme-toggle-btn .spark--6,
+[data-theme="mono"] .theme-toggle-btn .spark--8 { background: #000000; }
