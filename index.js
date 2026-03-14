@@ -6,7 +6,6 @@
 (function initMarquee() {
     var track = document.getElementById('marquee-track');
     if (!track) return;
-    // Clone once so we have exactly 2× content; CSS animates -50%
     track.innerHTML += track.innerHTML;
 })();
 
@@ -26,8 +25,6 @@ function resetMobileNavForDesktop() {
     var overlay = document.getElementById('mobile-overlay');
     var drawer = document.getElementById('mobile-drawer');
     if (!overlay || !drawer) return;
-
-    // Keep drawer state clean when switching back to desktop layout.
     if (window.innerWidth > 900) {
         drawer.classList.remove('open');
         overlay.classList.remove('visible');
@@ -38,7 +35,6 @@ function resetMobileNavForDesktop() {
 window.addEventListener('resize', resetMobileNavForDesktop, { passive: true });
 document.addEventListener('DOMContentLoaded', resetMobileNavForDesktop);
 
-// Close on Escape
 document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
         var drawer = document.getElementById('mobile-drawer');
@@ -61,10 +57,7 @@ document.addEventListener('keydown', function (e) {
     var logoMark = document.querySelector('.nav-logo-link .logo-mark');
     var logoLink = document.querySelector('.nav-logo-link');
 
-    if (!gsapRef) {
-        // Graceful fallback when GSAP fails to load.
-        return;
-    }
+    if (!gsapRef) return;
 
     var tlRefs = [];
     var activeTweenRefs = [];
@@ -145,9 +138,7 @@ document.addEventListener('keydown', function (e) {
                 duration: 0.8,
                 ease: 'elastic.out(1,0.5)',
                 overwrite: 'auto',
-                onComplete: function () {
-                    gsapRef.set(logoMark, { rotate: 0 });
-                }
+                onComplete: function () { gsapRef.set(logoMark, { rotate: 0 }); }
             });
         });
     }
@@ -155,7 +146,6 @@ document.addEventListener('keydown', function (e) {
     window.addEventListener('resize', buildTimelines, { passive: true });
     document.addEventListener('DOMContentLoaded', buildTimelines);
 
-    // Keep nav animation synced with active class updates from section observer.
     var obs = new MutationObserver(syncActivePills);
     links.forEach(function (link) {
         obs.observe(link, { attributes: true, attributeFilter: ['class'] });
@@ -198,13 +188,9 @@ document.addEventListener('keydown', function (e) {
     function updateActiveFromScroll() {
         var scrollPos = window.scrollY + 170;
         var currentId = sections[0].id;
-
         sections.forEach(function (section) {
-            if (scrollPos >= section.offsetTop) {
-                currentId = section.id;
-            }
+            if (scrollPos >= section.offsetTop) currentId = section.id;
         });
-
         setActiveById(currentId);
     }
 
@@ -222,7 +208,6 @@ document.addEventListener('keydown', function (e) {
     );
     if (!targets.length) return;
 
-    // Stagger delays for grouped elements
     document.querySelectorAll('.bento-card').forEach(function (el, i) {
         el.style.animationDelay = (i * 0.07) + 's';
     });
@@ -246,27 +231,22 @@ document.addEventListener('keydown', function (e) {
 })();
 
 
-/* ── FAQ — prevent default summary toggle jank on fast clicks ─ */
+/* ── FAQ ─────────────────────────────────────────────────────── */
 (function initFaq() {
     var items = document.querySelectorAll('.faq-item');
     items.forEach(function (item) {
         var summary = item.querySelector('.faq-summary');
         if (!summary) return;
-        // Let native <details> handle open/close;
-        // we just ensure smooth icon transition via CSS.
         summary.addEventListener('click', function () {
-            // Close others for accordion feel (optional)
             items.forEach(function (other) {
-                if (other !== item && other.open) {
-                    other.open = false;
-                }
+                if (other !== item && other.open) other.open = false;
             });
         });
     });
 })();
 
 
-/* ── HERO ENTRANCE — stagger left-side children ─────────────── */
+/* ── HERO ENTRANCE ───────────────────────────────────────────── */
 (function initHeroEntrance() {
     var heroLeft = document.querySelector('.hero-left');
     if (!heroLeft) return;
@@ -276,7 +256,6 @@ document.addEventListener('keydown', function (e) {
         child.style.transition =
             'opacity 0.55s ease ' + (0.1 + i * 0.12) + 's, ' +
             'transform 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275) ' + (0.1 + i * 0.12) + 's';
-        // Trigger reflow then animate in
         requestAnimationFrame(function () {
             requestAnimationFrame(function () {
                 child.style.opacity   = '1';
@@ -287,7 +266,7 @@ document.addEventListener('keydown', function (e) {
 })();
 
 
-/* ── HERO ROLE ROTATOR — dynamic modern subtitle ───────────── */
+/* ── HERO ROLE ROTATOR ───────────────────────────────────────── */
 (function initHeroRoleRotator() {
     var roleEl = document.getElementById('hero-role-text');
     if (!roleEl) return;
@@ -302,7 +281,6 @@ document.addEventListener('keydown', function (e) {
     var idx = 0;
     setInterval(function () {
         roleEl.classList.add('is-swapping');
-
         setTimeout(function () {
             idx = (idx + 1) % roles.length;
             roleEl.textContent = roles[idx];
@@ -316,8 +294,6 @@ document.addEventListener('keydown', function (e) {
 (function initHeroCursorGlow() {
     var hero = document.querySelector('.hero');
     if (!hero) return;
-
-    // Skip on touch-only devices
     if (window.matchMedia('(hover: none)').matches) return;
 
     var glow = document.createElement('div');
@@ -343,7 +319,6 @@ document.addEventListener('keydown', function (e) {
         var rect = hero.getBoundingClientRect();
         mouseX = e.clientX - rect.left;
         mouseY = e.clientY - rect.top;
-
         if (!isInside) {
             isInside = true;
             glowX = mouseX;
@@ -361,64 +336,84 @@ document.addEventListener('keydown', function (e) {
 })();
 
 
-/* ── MEDIUM BLOGS GALLERY — horizontal scrollable card deck ───────────── */
+/* ── MEDIUM BLOGS GALLERY ────────────────────────────────────── */
 (function initBlogsGallery() {
-    var gallery = document.getElementById('blogsGallery');
+    var gallery       = document.getElementById('blogsGallery');
     var scrollLeftBtn = document.getElementById('blogsScrollLeft');
-    var scrollRightBtn = document.getElementById('blogsScrollRight');
-    
+    var scrollRightBtn= document.getElementById('blogsScrollRight');
     if (!gallery) return;
 
-    var feedUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@rushpatel';
-    var scrollAmount = 380; // Card width + gap
+    var feedUrl     = 'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@rushpatel';
+    var scrollAmount = 380;
 
-    function fetchBlogs() {
-        fetch(feedUrl)
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'ok' && data.items && data.items.length > 0) {
-                    var articles = data.items.slice(0, 6);
-                    renderCards(articles);
-                } else {
-                    gallery.innerHTML = '<div class="blogs-loading">No articles found yet.</div>';
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching Medium feed:', error);
-                gallery.innerHTML = '<div class="blogs-loading">Unable to load articles. Please check back later.</div>';
-            });
+    /* ── Helpers ── */
+    function estimateReadTime(html) {
+        var text  = html.replace(/<[^>]*>/g, ' ');
+        var words = text.trim().split(/\s+/).filter(Boolean).length;
+        var mins  = Math.max(1, Math.round(words / 200));
+        return mins + ' min read';
     }
 
+    function getRealCategories(article) {
+        var cats = [];
+        if (Array.isArray(article.categories) && article.categories.length) {
+            // RSS returns lowercase strings; sanitise and take up to 3
+            cats = article.categories
+                .map(function (c) { return c.toLowerCase().trim(); })
+                .filter(function (c) { return c.length > 0 && c.length < 22; })
+                .slice(0, 3);
+        }
+        // Fallback: derive from title keywords if API returned nothing
+        if (!cats.length) {
+            var t = (article.title || '').toLowerCase();
+            if (t.includes('devops'))     cats.push('devops');
+            if (t.includes('kubernetes') || t.includes('k8s')) cats.push('k8s');
+            if (t.includes('cloud'))      cats.push('cloud');
+            if (t.includes('terraform'))  cats.push('terraform');
+            if (t.includes('aws'))        cats.push('aws');
+            if (!cats.length)             cats.push('article');
+        }
+        return cats;
+    }
+
+    /* ── Card builder ── */
     function createCard(article) {
-        var cleanDescription = article.description
+        var cleanDescription = (article.description || '')
             .replace(/<[^>]*>/g, '')
             .slice(0, 100);
 
-        // Extract image from article content if available
-        var imageMatch = article.description && article.description.match(/<img[^>]+src=["']([^"']+)["']/);
-        var imageUrl = imageMatch ? imageMatch[1] : 'https://via.placeholder.com/350x200?text=' + encodeURIComponent(article.title.slice(0, 20));
+        var imageMatch = article.description &&
+            article.description.match(/<img[^>]+src=["']([^"']+)["']/);
+        var imageUrl = imageMatch
+            ? imageMatch[1]
+            : 'https://via.placeholder.com/350x200?text=' +
+              encodeURIComponent((article.title || '').slice(0, 20));
 
-        // Default category based on keywords (could be enhanced)
-        var categories = ['article', 'insights'];
-        if (article.title.toLowerCase().includes('devops')) categories.push('devops');
-        if (article.title.toLowerCase().includes('kubernetes')) categories.push('k8s');
-        if (article.title.toLowerCase().includes('cloud')) categories.push('cloud');
-        categories = categories.slice(-2); // Keep last 2
+        var readTime   = estimateReadTime(article.description || '');
+        var categories = getRealCategories(article);
 
         var card = document.createElement('div');
         card.className = 'blog-card project-card';
 
         card.innerHTML = `
             <img src="${imageUrl}" alt="${article.title}" class="blog-card-image project-img" loading="lazy" decoding="async">
-            
+
             <div class="blog-card-content project-info">
                 <h3 class="blog-card-title project-title">${article.title}</h3>
+
+                <div class="blog-card-stats">
+                    <span class="blog-stat blog-stat--time">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        ${readTime}
+                    </span>
+                </div>
+
                 <p class="blog-card-description project-desc">${cleanDescription}...</p>
-                
+
                 <div class="blog-card-tags project-tags">
                     ${categories.map(cat => `<span class="project-tag">${cat}</span>`).join('')}
                 </div>
-                
+
                 <div class="blog-card-footer project-btns">
                     <a href="${article.link}" target="_blank" rel="noopener noreferrer" class="btn-brutal btn-brutal--black">
                         read article
@@ -433,59 +428,51 @@ document.addEventListener('keydown', function (e) {
         return card;
     }
 
+    /* ── Fetch ── */
+    function fetchBlogs() {
+        fetch(feedUrl)
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                if (data.status === 'ok' && data.items && data.items.length) {
+                    renderCards(data.items.slice(0, 6));
+                } else {
+                    gallery.innerHTML = '<div class="blogs-loading">No articles found yet.</div>';
+                }
+            })
+            .catch(function (err) {
+                console.error('Error fetching Medium feed:', err);
+                gallery.innerHTML = '<div class="blogs-loading">Unable to load articles. Please check back later.</div>';
+            });
+    }
+
     function renderCards(articles) {
         gallery.innerHTML = '';
-        articles.forEach(function(article) {
+        articles.forEach(function (article) {
             gallery.appendChild(createCard(article));
         });
         updateScrollButtons();
     }
 
+    /* ── Scroll controls ── */
     function updateScrollButtons() {
-        var scrollLeft = gallery.scrollLeft;
-        var scrollWidth = gallery.scrollWidth;
-        var clientWidth = gallery.clientWidth;
-
-        // Disable left button if at start
-        if (scrollLeftBtn) {
-            scrollLeftBtn.disabled = scrollLeft === 0;
-        }
-
-        // Disable right button if at end
-        if (scrollRightBtn) {
-            scrollRightBtn.disabled = scrollLeft + clientWidth >= scrollWidth - 10;
-        }
+        var sl = gallery.scrollLeft;
+        var sw = gallery.scrollWidth;
+        var cw = gallery.clientWidth;
+        if (scrollLeftBtn)  scrollLeftBtn.disabled  = sl === 0;
+        if (scrollRightBtn) scrollRightBtn.disabled = sl + cw >= sw - 10;
     }
 
     function scroll(direction) {
-        var currentScroll = gallery.scrollLeft;
-        var targetScroll = currentScroll + (direction === 'left' ? -scrollAmount : scrollAmount);
-        
-        gsap.to(gallery, {
-            scrollLeft: targetScroll,
-            duration: 0.6,
-            ease: 'power2.inOut',
-            onUpdate: updateScrollButtons
-        });
+        var target = gallery.scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount);
+        gsap.to(gallery, { scrollLeft: target, duration: 0.6, ease: 'power2.inOut', onUpdate: updateScrollButtons });
     }
 
-    // Event listeners
-    if (scrollLeftBtn) {
-        scrollLeftBtn.addEventListener('click', function() {
-            scroll('left');
-        });
-    }
-
-    if (scrollRightBtn) {
-        scrollRightBtn.addEventListener('click', function() {
-            scroll('right');
-        });
-    }
+    if (scrollLeftBtn)  scrollLeftBtn.addEventListener('click',  function () { scroll('left');  });
+    if (scrollRightBtn) scrollRightBtn.addEventListener('click', function () { scroll('right'); });
 
     gallery.addEventListener('scroll', updateScrollButtons, { passive: true });
     window.addEventListener('resize', updateScrollButtons, { passive: true });
 
-    // Fetch blogs when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', fetchBlogs);
     } else {
