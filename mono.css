@@ -1,12 +1,12 @@
 /* ══════════════════════════════════════════════════════════════
    MINIMALIST MONOCHROME THEME — mono.css
-   Loaded dynamically when user clicks "Click Me" toggle.
+   Loaded dynamically when user clicks "✦ click me" toggle.
    Overrides index.css tokens with pure black & white editorial.
 ══════════════════════════════════════════════════════════════ */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* ── DESIGN TOKENS ────────────────────────────────────────── */
+/* ── DESIGN TOKENS ──────────────────────────────────────────── */
 [data-theme="mono"] {
     --green:   #000000;
     --purple:  #000000;
@@ -60,7 +60,7 @@
     transition: width 0.1s, height 0.1s, border-color 0.1s, opacity 0.1s !important;
 }
 
-/* ── NOISE TEXTURE OVERLAY ────────────────────────────────── */
+/* ── NOISE TEXTURE OVERLAY ───────────────────────────────── */
 [data-theme="mono"] body::before {
     content: '';
     position: fixed;
@@ -73,7 +73,7 @@
     opacity: 0.012;
 }
 
-/* ── NAV ──────────────────────────────────────────────────── */
+/* ── NAV ────────────────────────────────────────────────────── */
 [data-theme="mono"] .nav-pill {
     background: #ffffff;
     border: var(--mono-thick);
@@ -132,7 +132,7 @@
     border-color: #000000;
 }
 
-/* ── HERO ─────────────────────────────────────────────────── */
+/* ── HERO ────────────────────────────────────────────────────── */
 [data-theme="mono"] .hero {
     background: #ffffff;
     background-image: none;
@@ -249,7 +249,7 @@
     border: var(--mono-thin);
 }
 
-/* ── BUTTONS ──────────────────────────────────────────────── */
+/* ── BUTTONS ───────────────────────────────────────────────────── */
 [data-theme="mono"] .btn-brutal {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.75rem;
@@ -296,7 +296,7 @@
     border-color: #000000;
 }
 
-/* ── SOCIAL CHIPS ─────────────────────────────────────────── */
+/* ── SOCIAL CHIPS ────────────────────────────────────────────── */
 [data-theme="mono"] .social-chip {
     background: transparent;
     color: #000000;
@@ -315,7 +315,7 @@
     transform: none !important;
 }
 
-/* ── MARQUEE ──────────────────────────────────────────────── */
+/* ── MARQUEE ────────────────────────────────────────────────────── */
 [data-theme="mono"] .marquee-outer {
     transform: none;
 }
@@ -337,7 +337,7 @@
 
 [data-theme="mono"] .marquee-sep { color: #ffffff !important; }
 
-/* ── SECTION CHROME ───────────────────────────────────────── */
+/* ── SECTION CHROME ───────────────────────────────────────────── */
 [data-theme="mono"] .section-label {
     background: transparent;
     color: #525252;
@@ -357,7 +357,7 @@
     letter-spacing: -0.04em;
 }
 
-/* ── ABOUT ────────────────────────────────────────────────── */
+/* ── ABOUT ────────────────────────────────────────────────────── */
 [data-theme="mono"] .about-section {
     border-top: var(--mono-ultra);
     border-bottom: var(--mono-thick);
@@ -397,7 +397,7 @@
     border-color: #000000;
 }
 
-/* ── BENTO GRID ───────────────────────────────────────────── */
+/* ── BENTO GRID ───────────────────────────────────────────────────── */
 [data-theme="mono"] .bento-section {
     background: #f5f5f5;
     border-top: var(--mono-ultra);
@@ -532,7 +532,7 @@
     transform: none !important;
 }
 
-/* ── PROJECTS ─────────────────────────────────────────────── */
+/* ── PROJECTS ───────────────────────────────────────────────────── */
 [data-theme="mono"] .projects-section {
     border-top: var(--mono-ultra);
     border-bottom: var(--mono-thick);
@@ -590,7 +590,7 @@
     border-radius: 0 !important;
 }
 
-/* ── BLOGS ────────────────────────────────────────────────── */
+/* ── BLOGS ────────────────────────────────────────────────────── */
 [data-theme="mono"] .blogs-section {
     border-top: var(--mono-ultra);
     border-bottom: var(--mono-thick);
@@ -640,7 +640,7 @@
     transform: none !important;
 }
 
-/* ── FAQ ──────────────────────────────────────────────────── */
+/* ── FAQ ─────────────────────────────────────────────────────────────── */
 [data-theme="mono"] .faq-section {
     background: #f5f5f5;
     border-top: var(--mono-ultra);
@@ -686,7 +686,7 @@
     line-height: 1.8;
 }
 
-/* ── CTA ──────────────────────────────────────────────────── */
+/* ── CTA ─────────────────────────────────────────────────────────────── */
 [data-theme="mono"] .cta-section {
     background: #000000;
     border-top: var(--mono-ultra);
@@ -715,7 +715,7 @@
     font-style: italic;
 }
 
-/* ── FOOTER ───────────────────────────────────────────────── */
+/* ── FOOTER ─────────────────────────────────────────────────────────────── */
 [data-theme="mono"] .site-footer {
     background: #000000;
     border-top: var(--mono-ultra);
@@ -775,7 +775,7 @@
     letter-spacing: 0.12em;
 }
 
-/* ── MOBILE NAV DRAWER ───────────────────────────────────── */
+/* ── MOBILE NAV DRAWER ────────────────────────────────────────────── */
 [data-theme="mono"] .mobile-nav-drawer {
     background: #ffffff;
     border-left: var(--mono-thick);
@@ -803,7 +803,7 @@
     color: #ffffff !important;
 }
 
-/* ── CURSOR RING in MONO ─────────────────────────────────── */
+/* ── CURSOR RING in MONO ────────────────────────────────────────────── */
 [data-theme="mono"] #cursor-ring {
     border-color: #000000;
     opacity: 0.5;
@@ -825,129 +825,60 @@
 }
 
 
-/* ════════════════════════════════════════════════════════════
-   THEME TOGGLE BUTTON
-   Matches the original neo-brutalist nav-cta-pill exactly:
-   — Space Grotesk bold, lowercase, acid-green bg, black border,
-     pill border-radius, 3px offset shadow.
-   Spark animation fires on hover using CSS-only sparks.
-════════════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════════
+   THEME TOGGLE BUTTON (✦ click me / ✦ original)
+   Matches .nav-cta-pill from index.css exactly:
+     Space Grotesk bold, lowercase, black bg, white text,
+     2px border, 9999px radius, 0.42rem 1.1rem padding,
+     3px 3px offset shadow, scale(1.08) + purple shadow on hover.
+   Spark animation fires from JS-injected .spark elements.
+══════════════════════════════════════════════════════════════ */
 
-/* ── Spark keyframes ─────────────────────────────────────── */
-@keyframes spark-fly-1  { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate(-22px,-26px) scale(0);opacity:0} }
-@keyframes spark-fly-2  { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate( 24px,-22px) scale(0);opacity:0} }
-@keyframes spark-fly-3  { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate( 28px,  4px) scale(0);opacity:0} }
-@keyframes spark-fly-4  { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate( 18px, 26px) scale(0);opacity:0} }
-@keyframes spark-fly-5  { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate(-18px, 28px) scale(0);opacity:0} }
-@keyframes spark-fly-6  { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate(-30px,  6px) scale(0);opacity:0} }
-@keyframes spark-fly-7  { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate(-12px,-32px) scale(0);opacity:0} }
-@keyframes spark-fly-8  { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate( 14px,-30px) scale(0);opacity:0} }
+/* ── Spark keyframes ────────────────────────────────────────────── */
+@keyframes spark-fly-1  { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% - 22px),calc(-50% - 26px)) scale(0);opacity:0} }
+@keyframes spark-fly-2  { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% + 24px),calc(-50% - 22px)) scale(0);opacity:0} }
+@keyframes spark-fly-3  { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% + 28px),calc(-50% +  4px)) scale(0);opacity:0} }
+@keyframes spark-fly-4  { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% + 18px),calc(-50% + 26px)) scale(0);opacity:0} }
+@keyframes spark-fly-5  { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% - 18px),calc(-50% + 28px)) scale(0);opacity:0} }
+@keyframes spark-fly-6  { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% - 30px),calc(-50% +  6px)) scale(0);opacity:0} }
+@keyframes spark-fly-7  { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% - 12px),calc(-50% - 32px)) scale(0);opacity:0} }
+@keyframes spark-fly-8  { 0%{transform:translate(-50%,-50%) scale(1);opacity:1} 100%{transform:translate(calc(-50% + 14px),calc(-50% - 30px)) scale(0);opacity:0} }
 
-/* ── Base button — default (original) theme ─────────────── */
+/* ── Button — default (neo-brutalist) theme ─────────────────────── */
+/* Exact copy of .nav-cta-pill from index.css */
 .theme-toggle-btn {
-    /* Layout */
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: lowercase;
+    background: #0a0a0a;
+    color: #ffffff;
+    border: 2px solid #0a0a0a;
+    border-radius: 9999px;
+    padding: 0.42rem 1.1rem;
+    cursor: none;
+    margin-left: 0.2rem;
     white-space: nowrap;
     flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
     position: relative;
-    z-index: 1001;
-    overflow: visible; /* sparks escape the box */
-
-    /* Typography — matches nav-cta-pill */
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-transform: lowercase;
-    letter-spacing: -0.01em;
-    line-height: 1;
-
-    /* Geometry — pill, same as nav-cta-pill */
-    padding: 0.42rem 1.1rem;
-    border-radius: 9999px;
-    border: 2px solid #0a0a0a;
-
-    /* Colour — acid green, same as nav-cta-pill */
-    background: #ccff00;
-    color: #0a0a0a;
-
-    /* Shadow — same as nav-cta-pill */
+    overflow: visible;
     box-shadow: 3px 3px 0px rgba(0,0,0,0.4);
-
-    cursor: none;
-    user-select: none;
-
-    /* Smooth scale on hover */
     transition:
         transform   0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-        box-shadow  0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-        background  0.2s,
-        color       0.2s;
+        box-shadow  0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Scale up — same as nav-cta-pill:hover scale */
 .theme-toggle-btn:hover {
     transform: scale(1.08);
-    box-shadow: 4px 4px 0px #7000ff;  /* purple shadow, same as nav-cta-pill hover */
-    background: #ccff00;
-    color: #0a0a0a;
+    box-shadow: 4px 4px 0px #7000ff;
+    background: #0a0a0a;
+    color: #ffffff;
 }
 
-/* ── Sparks — 8 tiny dots that burst outward on hover ────── */
-.theme-toggle-btn::before,
-.theme-toggle-btn::after {
-    content: '';
-    position: absolute;
-    /* sit at the horizontal centre, slightly above mid-height */
-    top: 50%;
-    left: 50%;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: #ccff00;
-    pointer-events: none;
-    opacity: 0;
-}
-
-/* 8 individual spark dots via box-shadow — all anchored at centre.
-   Each box-shadow entry IS one extra particle (same size, different hue
-   so they pop on both light and dark backgrounds).
-   We use two pseudo-elements to get 2 × 4 = 8 sparks total. */
-.theme-toggle-btn::before {
-    box-shadow:
-        0 0 0 0 #ccff00,   /* self */
-        0 0 0 0 #7000ff,
-        0 0 0 0 #ff4800,
-        0 0 0 0 #ccff00;
-    transform: translate(-50%, -50%);
-}
-
-.theme-toggle-btn::after {
-    box-shadow:
-        0 0 0 0 #7000ff,
-        0 0 0 0 #ccff00,
-        0 0 0 0 #ff4800,
-        0 0 0 0 #0a0a0a;
-    transform: translate(-50%, -50%);
-}
-
-/* On hover, animate each spark pseudo to burst outward */
-.theme-toggle-btn:hover::before {
-    animation:
-        spark-fly-1 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards,
-        spark-flash 0.55s ease forwards;
-    opacity: 1;
-}
-
-.theme-toggle-btn:hover::after {
-    animation:
-        spark-fly-2 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.04s forwards,
-        spark-flash 0.55s ease 0.04s forwards;
-    opacity: 1;
-}
-
-/* Additional sparks via JS-injected .spark elements (see index.js) */
+/* ── Spark dots (JS-injected .spark elements) ─────────────────── */
 .theme-toggle-btn .spark {
     position: absolute;
     top: 50%;
@@ -960,23 +891,20 @@
     opacity: 0;
 }
 
-@keyframes spark-flash { 0%{opacity:1} 80%{opacity:0.6} 100%{opacity:0} }
+.theme-toggle-btn .spark--1  { background: #ccff00; animation: spark-fly-1 0.5s ease           forwards; }
+.theme-toggle-btn .spark--2  { background: #7000ff; animation: spark-fly-2 0.5s ease 0.03s     forwards; }
+.theme-toggle-btn .spark--3  { background: #ff4800; animation: spark-fly-3 0.5s ease 0.06s     forwards; }
+.theme-toggle-btn .spark--4  { background: #ccff00; animation: spark-fly-4 0.5s ease 0.02s     forwards; }
+.theme-toggle-btn .spark--5  { background: #7000ff; animation: spark-fly-5 0.5s ease 0.05s     forwards; }
+.theme-toggle-btn .spark--6  { background: #ff4800; animation: spark-fly-6 0.5s ease 0.08s     forwards; }
+.theme-toggle-btn .spark--7  { background: #ccff00; animation: spark-fly-7 0.5s ease 0.01s     forwards; }
+.theme-toggle-btn .spark--8  { background: #7000ff; animation: spark-fly-8 0.5s ease 0.04s     forwards; }
 
-/* Colour variants */
-.theme-toggle-btn .spark--1  { background: #ccff00; animation: spark-fly-1 0.5s ease forwards; }
-.theme-toggle-btn .spark--2  { background: #7000ff; animation: spark-fly-2 0.5s ease 0.03s forwards; }
-.theme-toggle-btn .spark--3  { background: #ff4800; animation: spark-fly-3 0.5s ease 0.06s forwards; }
-.theme-toggle-btn .spark--4  { background: #ccff00; animation: spark-fly-4 0.5s ease 0.02s forwards; }
-.theme-toggle-btn .spark--5  { background: #7000ff; animation: spark-fly-5 0.5s ease 0.05s forwards; }
-.theme-toggle-btn .spark--6  { background: #ff4800; animation: spark-fly-6 0.5s ease 0.08s forwards; }
-.theme-toggle-btn .spark--7  { background: #ccff00; animation: spark-fly-7 0.5s ease 0.01s forwards; }
-.theme-toggle-btn .spark--8  { background: #7000ff; animation: spark-fly-8 0.5s ease 0.04s forwards; }
-
-/* ── Mono-theme override — sharp, black/white ─────────────── */
+/* ── Mono-theme override — sharp, black/white ───────────────────── */
 [data-theme="mono"] .theme-toggle-btn {
     background: #ffffff;
     color: #000000;
-    border: 2px solid #000000;
+    border: 2px solid #000000 !important;
     border-radius: 0 !important;
     box-shadow: none !important;
     font-family: 'JetBrains Mono', monospace;
@@ -984,16 +912,17 @@
     text-transform: uppercase;
     letter-spacing: 0.1em;
     transform: none !important;
+    transition: background 0.1s, color 0.1s !important;
 }
 
 [data-theme="mono"] .theme-toggle-btn:hover {
     background: #000000;
     color: #ffffff;
-    box-shadow: none !important;
     transform: none !important;
+    box-shadow: none !important;
 }
 
-/* Sparks use green in mono-mode too — they peek outside the button */
+/* Greyscale sparks in mono mode */
 [data-theme="mono"] .theme-toggle-btn .spark--1,
 [data-theme="mono"] .theme-toggle-btn .spark--4,
 [data-theme="mono"] .theme-toggle-btn .spark--7 { background: #000000; }
@@ -1002,3 +931,8 @@
 [data-theme="mono"] .theme-toggle-btn .spark--3,
 [data-theme="mono"] .theme-toggle-btn .spark--6,
 [data-theme="mono"] .theme-toggle-btn .spark--8 { background: #000000; }
+
+/* ── Hide on mobile — same breakpoint as .nav-cta-pill ──────────── */
+@media (max-width: 900px) {
+    .theme-toggle-btn { display: none; }
+}
