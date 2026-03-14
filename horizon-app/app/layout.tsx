@@ -1,22 +1,72 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Space_Grotesk, DM_Sans } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-space',
+  display: 'swap',
+})
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  style: ['normal', 'italic'],
+  variable: '--font-dm',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
-  title: 'Horizon — Rushabh Patel',
-  description: 'Interactive 3D hero section built with Three.js + GSAP',
+  title: 'Rushabh Patel — DevOps Engineer',
+  description:
+    'Rushabh Patel is a DevOps Engineer and Cloud Architect specializing in AWS, Azure, Terraform, Kubernetes, CI/CD, and full-stack development.',
+  keywords:
+    'Rushabh Patel, DevOps Engineer, Cloud Architect, AWS, Azure, Terraform, Kubernetes, CI/CD, Full Stack Developer',
+  authors: [{ name: 'Rushabh Patel' }],
+  robots: 'index, follow, max-image-preview:large',
+  themeColor: '#0a0a0a',
+  openGraph: {
+    type: 'website',
+    title: 'Rushabh Patel — DevOps Engineer',
+    description: 'Portfolio of Rushabh Patel: DevOps Engineer, Cloud Architect, and Full-Stack Developer.',
+    images: [{ url: '/main.jpg' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Rushabh Patel — DevOps Engineer',
+    description: 'DevOps Engineer and Cloud Architect specializing in AWS, Azure, Terraform, and Kubernetes.',
+    images: ['/main.jpg'],
+  },
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Rushabh Patel',
+  jobTitle: 'DevOps Engineer',
+  description: 'DevOps Engineer and Cloud Architect specializing in AWS, Azure, Terraform, Kubernetes, and CI/CD.',
+  url: 'https://rushabhpatel.dev',
+  image: '/main.jpg',
+  homeLocation: { '@type': 'Country', name: 'Canada' },
+  sameAs: [
+    'https://www.linkedin.com/in/prushabh/',
+    'https://github.com/rush1998',
+    'https://medium.com/@rushpatel',
+  ],
+  knowsAbout: ['AWS', 'Azure', 'Terraform', 'Kubernetes', 'CI/CD', 'DevOps', 'Full Stack Development'],
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body>{children}</body>
     </html>
   )
 }
