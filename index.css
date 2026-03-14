@@ -137,7 +137,7 @@ em   { font-style: italic; }
     border: var(--border);
     box-shadow: var(--shadow);
     border-radius: var(--radius-pill);
-    cursor: pointer;
+    cursor: none;
     transition:
         transform   0.3s var(--bounce),
         box-shadow  0.3s var(--bounce);
@@ -252,6 +252,7 @@ em   { font-style: italic; }
     border: 1px solid rgba(0, 0, 0, 0.06);
     transition: transform 0.2s var(--bounce);
     text-decoration: none;
+    cursor: none;
 }
 
 .nav-links li a.pill-link:hover { transform: translateY(-1px); }
@@ -306,7 +307,7 @@ em   { font-style: italic; }
     border: 2px solid var(--black);
     border-radius: var(--radius-pill);
     padding: 0.42rem 1.1rem;
-    cursor: pointer;
+    cursor: none;
     margin-left: 0.2rem;
     transition: transform 0.25s var(--bounce), box-shadow 0.25s var(--bounce);
     box-shadow: 3px 3px 0px rgba(0,0,0,0.4);
@@ -325,7 +326,7 @@ em   { font-style: italic; }
     gap: 4px;
     background: transparent;
     border: none;
-    cursor: pointer;
+    cursor: none;
     padding: 4px;
     margin-left: 0.4rem;
 }
@@ -378,7 +379,7 @@ em   { font-style: italic; }
     width: 36px;
     height: 36px;
     font-size: 1rem;
-    cursor: pointer;
+    cursor: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -577,6 +578,7 @@ em   { font-style: italic; }
     border-radius: var(--radius-pill);
     padding: 0.35rem 0.9rem;
     transition: transform 0.25s var(--bounce), box-shadow 0.25s var(--bounce), background 0.2s;
+    cursor: none;
 }
 
 .social-chip:hover {
@@ -967,7 +969,7 @@ em   { font-style: italic; }
     background: var(--white);
     color: var(--black);
     transition: transform 0.2s var(--bounce), background 0.2s;
-    cursor: default;
+    cursor: none;
 }
 
 .chip:hover         { transform: rotate(-2deg) scale(1.08); background: var(--green); }
@@ -1015,7 +1017,7 @@ em   { font-style: italic; }
     padding: 1rem 0.5rem;
     box-shadow: 4px 4px 0px var(--black);
     transition: transform 0.25s var(--bounce);
-    cursor: default;
+    cursor: none;
 }
 
 .cert-item:hover { transform: translateY(-5px) rotate(-1.5deg); }
@@ -1047,7 +1049,7 @@ em   { font-style: italic; }
     border-radius: var(--radius-pill);
     padding: 0.3rem 0.85rem;
     transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s var(--bounce);
-    cursor: default;
+    cursor: none;
 }
 
 .stack-pill:hover {
@@ -1263,7 +1265,7 @@ em   { font-style: italic; }
     border: 2.5px solid var(--black);
     background: var(--white);
     border-radius: 12px;
-    cursor: pointer;
+    cursor: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1335,7 +1337,7 @@ em   { font-style: italic; }
     align-items: center;
     gap: 1rem;
     padding: 1.2rem 1.5rem;
-    cursor: pointer;
+    cursor: none;
     list-style: none;
     font-family: var(--font-head);
     font-size: 1.02rem;
@@ -1518,6 +1520,7 @@ em   { font-style: italic; }
     text-transform: lowercase;
     color: var(--black);
     transition: color 0.2s;
+    cursor: none;
 }
 
 .footer-nav a:hover { color: var(--purple); }
@@ -1541,6 +1544,7 @@ em   { font-style: italic; }
     font-size: 1rem;
     color: var(--black);
     background: var(--white);
+    cursor: none;
     transition:
         background  0.2s var(--bounce),
         color       0.2s,
@@ -1562,6 +1566,92 @@ em   { font-style: italic; }
     color: #999;
     text-align: center;
     text-transform: lowercase;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   CUSTOM CURSOR — dual-ring magnetic
+══════════════════════════════════════════════════════════════ */
+@media (hover: hover) and (pointer: fine) {
+    body { cursor: none; }
+    a, button, [role="button"],
+    .btn-brutal, .chip, .stack-pill, .badge,
+    .cert-item, .gallery-nav, .nav-cta-pill,
+    .pill-link, .social-chip, .faq-summary {
+        cursor: none;
+    }
+}
+
+/* Dot — snaps to exact mouse position */
+#cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+    transition: width 0.2s var(--bounce), height 0.2s var(--bounce), background 0.2s;
+    mix-blend-mode: difference;
+}
+
+/* Ring — lags behind with lerp */
+#cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--green);
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+    transition:
+        width    0.25s var(--bounce),
+        height   0.25s var(--bounce),
+        border-color 0.2s,
+        opacity  0.3s;
+    opacity: 0.7;
+}
+
+/* Hover state — ring grows, dot hides, ring fills with purple tint */
+body.cursor-hover #cursor-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--purple);
+}
+
+body.cursor-hover #cursor-ring {
+    width: 64px;
+    height: 64px;
+    border-color: var(--purple);
+    opacity: 0.55;
+    background: rgba(112, 0, 255, 0.07);
+}
+
+/* Click state — ring squashes */
+body.cursor-click #cursor-dot {
+    width: 12px;
+    height: 12px;
+    background: var(--pink);
+}
+
+body.cursor-click #cursor-ring {
+    width: 30px;
+    height: 30px;
+    border-color: var(--pink);
+    opacity: 1;
+}
+
+/* Hide on touch/mobile */
+@media (hover: none), (pointer: coarse) {
+    #cursor-dot, #cursor-ring { display: none; }
 }
 
 
@@ -1628,4 +1718,5 @@ em   { font-style: italic; }
     .about-section { padding-left: 5%; padding-right: 5%; }
     .footer-brand-bg { font-size: 14vw; }
     .hero-cursor-glow { display: none; }
+    #cursor-dot, #cursor-ring { display: none; }
 }
