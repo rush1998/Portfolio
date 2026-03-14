@@ -456,6 +456,32 @@ em   { font-style: italic; }
     padding: 9rem 6% 5rem;
     position: relative;
     overflow: hidden;
+    cursor: none;
+}
+
+/* ── Cursor Glow ─────────────────────────────────────────────── */
+.hero-cursor-glow {
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(204, 255, 0, 0.18) 0%,
+        rgba(112, 0, 255, 0.10) 45%,
+        transparent 70%
+    );
+    pointer-events: none;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.35s ease;
+    will-change: transform;
+    filter: blur(2px);
+    opacity: 0;
+}
+
+.hero-cursor-glow.visible {
+    opacity: 1;
 }
 
 /* decorative blobs */
@@ -1714,4 +1740,7 @@ em   { font-style: italic; }
     .about-section { padding-left: 5%; padding-right: 5%; }
 
     .footer-brand-bg { font-size: 14vw; }
+
+    /* Hide glow on touch devices */
+    .hero-cursor-glow { display: none; }
 }

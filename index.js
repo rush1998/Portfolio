@@ -312,6 +312,55 @@ document.addEventListener('keydown', function (e) {
 })();
 
 
+/* ── HERO CURSOR GLOW ──────────────────────────────────────── */
+(function initHeroCursorGlow() {
+    var hero = document.querySelector('.hero');
+    if (!hero) return;
+
+    // Skip on touch-only devices
+    if (window.matchMedia('(hover: none)').matches) return;
+
+    var glow = document.createElement('div');
+    glow.className = 'hero-cursor-glow';
+    hero.appendChild(glow);
+
+    var mouseX = 0, mouseY = 0;
+    var glowX = 0, glowY = 0;
+    var rafId = null;
+    var isInside = false;
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    function animateGlow() {
+        glowX = lerp(glowX, mouseX, 0.1);
+        glowY = lerp(glowY, mouseY, 0.1);
+        glow.style.left = glowX + 'px';
+        glow.style.top  = glowY + 'px';
+        if (isInside) rafId = requestAnimationFrame(animateGlow);
+    }
+
+    hero.addEventListener('mousemove', function (e) {
+        var rect = hero.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+
+        if (!isInside) {
+            isInside = true;
+            glowX = mouseX;
+            glowY = mouseY;
+            glow.classList.add('visible');
+            rafId = requestAnimationFrame(animateGlow);
+        }
+    }, { passive: true });
+
+    hero.addEventListener('mouseleave', function () {
+        isInside = false;
+        glow.classList.remove('visible');
+        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    }, { passive: true });
+})();
+
+
 /* ── MEDIUM BLOGS GALLERY — horizontal scrollable card deck ───────────── */
 (function initBlogsGallery() {
     var gallery = document.getElementById('blogsGallery');
