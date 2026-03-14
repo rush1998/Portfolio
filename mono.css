@@ -1,0 +1,868 @@
+/* ══════════════════════════════════════════════════════════════
+   MINIMALIST MONOCHROME THEME — mono.css
+   Loaded dynamically when user clicks "Click Me" toggle.
+   Overrides index.css tokens with pure black & white editorial.
+══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── DESIGN TOKENS ────────────────────────────────────────── */
+[data-theme="mono"] {
+    --green:   #000000;
+    --purple:  #000000;
+    --pink:    #000000;
+    --black:   #000000;
+    --white:   #ffffff;
+    --gray:    #f5f5f5;
+
+    --border:    2px solid #000000;
+    --shadow:    none;
+    --shadow-sm: none;
+    --shadow-lg: none;
+
+    --radius-pill: 0px;
+    --radius-card: 0px;
+
+    --bounce: linear;
+
+    --font-head: 'Playfair Display', Georgia, serif;
+    --font-body: 'Source Serif 4', Georgia, serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Monochrome specifics */
+    --mono-hairline:  1px solid #e5e5e5;
+    --mono-thin:      1px solid #000000;
+    --mono-medium:    2px solid #000000;
+    --mono-thick:     4px solid #000000;
+    --mono-ultra:     8px solid #000000;
+    --mono-muted:     #525252;
+    --mono-off-white: #f5f5f5;
+}
+
+/* ── BASE ─────────────────────────────────────────────────── */
+[data-theme="mono"] body {
+    background: #ffffff;
+    color: #000000;
+    font-family: 'Source Serif 4', Georgia, serif;
+}
+
+[data-theme="mono"] * {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    animation: none !important;
+    transition: background 0.1s, color 0.1s, border 0.1s !important;
+}
+
+/* Keep cursor ring animation */
+[data-theme="mono"] #cursor-ring {
+    animation: none;
+    transition: width 0.1s, height 0.1s, border-color 0.1s, opacity 0.1s !important;
+}
+
+/* ── NOISE TEXTURE OVERLAY ────────────────────────────────── */
+[data-theme="mono"] body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 1px, #000 1px, #000 2px);
+    background-size: 100% 4px;
+    opacity: 0.012;
+}
+
+/* ── NAV ──────────────────────────────────────────────────── */
+[data-theme="mono"] .nav-pill {
+    background: #ffffff;
+    border: var(--mono-thick);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-radius: 0 !important;
+}
+
+[data-theme="mono"] .logo-mark {
+    background: #000000;
+    color: #ffffff;
+    border: var(--mono-medium);
+    border-radius: 0 !important;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+}
+
+[data-theme="mono"] .nav-links li a.pill-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: transparent;
+    border: none;
+    color: #000000;
+    border-radius: 0 !important;
+    height: auto;
+    padding: 0.35rem 0.75rem;
+}
+
+[data-theme="mono"] .nav-links li a.pill-link:hover,
+[data-theme="mono"] .nav-links li a.pill-link.active {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+[data-theme="mono"] .pill-hover-circle { display: none; }
+[data-theme="mono"] .pill-label-hover  { display: none; }
+
+[data-theme="mono"] .nav-cta-pill {
+    background: #000000;
+    color: #ffffff;
+    border: var(--mono-medium);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 0 !important;
+}
+
+[data-theme="mono"] .nav-cta-pill:hover {
+    background: #ffffff;
+    color: #000000;
+    border-color: #000000;
+}
+
+/* ── HERO ─────────────────────────────────────────────────── */
+[data-theme="mono"] .hero {
+    background: #ffffff;
+    background-image: none;
+    border-bottom: var(--mono-ultra);
+    color: #000000;
+    padding-top: 10rem;
+    padding-bottom: 6rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Horizontal line texture inside hero */
+[data-theme="mono"] .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 1px, #000 1px, #000 2px);
+    background-size: 100% 4px;
+    opacity: 0.015;
+}
+
+[data-theme="mono"] .hero-blob { display: none; }
+[data-theme="mono"] .hero-cursor-glow { display: none; }
+
+[data-theme="mono"] .hero-eyebrow {
+    background: transparent;
+    border: var(--mono-medium);
+    color: #000000;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    border-radius: 0 !important;
+}
+
+[data-theme="mono"] .hero-headline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    color: #000000;
+    text-transform: none;
+}
+
+[data-theme="mono"] .gradient-text {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: #000000 !important;
+    background-clip: unset !important;
+    color: #000000;
+}
+
+[data-theme="mono"] .hero-sub {
+    color: #000000;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.7;
+}
+
+[data-theme="mono"] .hero-role-line { color: #000000; }
+[data-theme="mono"] .hero-role-cursor {
+    background: #000000;
+}
+
+[data-theme="mono"] .sticker { display: none !important; }
+
+/* ── PHONE MOCKUP — invert in mono ─── */
+[data-theme="mono"] .phone-frame {
+    border: var(--mono-ultra);
+    background: #ffffff;
+}
+
+[data-theme="mono"] .phone-header {
+    background: #000000;
+    border-bottom: var(--mono-medium);
+}
+
+[data-theme="mono"] .phone-header-title { color: #ffffff; }
+
+[data-theme="mono"] .phone-header-badge {
+    background: #ffffff;
+    color: #000000;
+    border: var(--mono-thin);
+}
+
+[data-theme="mono"] .phone-post {
+    background: #f5f5f5 !important;
+    border: var(--mono-thin);
+    transform: none !important;
+}
+
+[data-theme="mono"] .phone-post:hover { transform: none !important; }
+
+[data-theme="mono"] .phone-post-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    color: #000000;
+}
+
+[data-theme="mono"] .phone-post-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.58rem;
+    color: #525252;
+}
+
+[data-theme="mono"] .phone-tab-action {
+    background: #000000;
+    color: #ffffff;
+    border: var(--mono-thin);
+}
+
+/* ── BUTTONS ──────────────────────────────────────────────── */
+[data-theme="mono"] .btn-brutal {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    border-radius: 0 !important;
+    padding: 0.85rem 2rem;
+    border: var(--mono-medium);
+    transition: background 0.1s, color 0.1s !important;
+}
+
+[data-theme="mono"] .btn-brutal--black,
+[data-theme="mono"] .btn-brutal--green {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+[data-theme="mono"] .btn-brutal--black:hover,
+[data-theme="mono"] .btn-brutal--green:hover {
+    background: #ffffff;
+    color: #000000;
+    border-color: #000000;
+}
+
+[data-theme="mono"] .btn-brutal--white,
+[data-theme="mono"] .hero .btn-brutal--white {
+    background: #ffffff;
+    color: #000000;
+    border: var(--mono-medium) !important;
+    border-color: #000000 !important;
+}
+
+[data-theme="mono"] .btn-brutal--white:hover,
+[data-theme="mono"] .hero .btn-brutal--white:hover {
+    background: #000000;
+    color: #ffffff;
+}
+
+[data-theme="mono"] .hero .btn-brutal--black {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+/* ── SOCIAL CHIPS ─────────────────────────────────────────── */
+[data-theme="mono"] .social-chip {
+    background: transparent;
+    color: #000000;
+    border: var(--mono-thin);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: 0 !important;
+}
+
+[data-theme="mono"] .social-chip:hover {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+    transform: none !important;
+}
+
+/* ── MARQUEE ──────────────────────────────────────────────── */
+[data-theme="mono"] .marquee-outer {
+    transform: none;
+}
+
+[data-theme="mono"] .marquee-wrap {
+    background: #000000;
+    border-top: var(--mono-thick);
+    border-bottom: var(--mono-thick);
+}
+
+[data-theme="mono"] .marquee-track span {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: #ffffff;
+    text-transform: none;
+    letter-spacing: -0.02em;
+}
+
+[data-theme="mono"] .marquee-sep { color: #ffffff !important; }
+
+/* ── SECTION CHROME ───────────────────────────────────────── */
+[data-theme="mono"] .section-label {
+    background: transparent;
+    color: #525252;
+    border: var(--mono-thin);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    border-radius: 0 !important;
+    padding: 0.25rem 0.75rem;
+}
+
+[data-theme="mono"] .section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    text-transform: none;
+    letter-spacing: -0.04em;
+}
+
+/* ── ABOUT ────────────────────────────────────────────────── */
+[data-theme="mono"] .about-section {
+    border-top: var(--mono-ultra);
+    border-bottom: var(--mono-thick);
+}
+
+[data-theme="mono"] .about-photo {
+    border: var(--mono-thick);
+    filter: grayscale(100%) contrast(1.1);
+    border-radius: 0 !important;
+}
+
+[data-theme="mono"] .about-text {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #000000;
+}
+
+[data-theme="mono"] .badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: var(--mono-medium);
+    border-radius: 0 !important;
+}
+
+[data-theme="mono"] .badge--green {
+    background: #000000;
+    color: #ffffff;
+}
+
+[data-theme="mono"] .badge--purple,
+[data-theme="mono"] .badge--orange {
+    background: #ffffff;
+    color: #000000;
+    border-color: #000000;
+}
+
+/* ── BENTO GRID ───────────────────────────────────────────── */
+[data-theme="mono"] .bento-section {
+    background: #f5f5f5;
+    border-top: var(--mono-ultra);
+    border-bottom: var(--mono-thick);
+    background-image:
+        linear-gradient(#00000008 1px, transparent 1px),
+        linear-gradient(90deg, #00000008 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+[data-theme="mono"] .bento-card {
+    background: #ffffff;
+    border: var(--mono-medium);
+    transform: none !important;
+    border-radius: 0 !important;
+}
+
+[data-theme="mono"] .bento-card:hover {
+    background: #000000;
+    color: #ffffff;
+    transform: none !important;
+}
+
+[data-theme="mono"] .bento-card:hover .bento-card-label {
+    color: #ffffff;
+    opacity: 1;
+}
+
+[data-theme="mono"] .bento-card:hover .chip {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+}
+
+[data-theme="mono"] .bento-card--a {
+    background: #f5f5f5;
+}
+
+[data-theme="mono"] .bento-card--b {
+    background: #000000;
+    color: #ffffff;
+}
+
+[data-theme="mono"] .bento-card--c {
+    background: #000000;
+    color: #ffffff;
+    background-image:
+        repeating-linear-gradient(90deg, transparent, transparent 1px, #fff 1px, #fff 2px);
+    background-size: 4px 100%;
+}
+
+[data-theme="mono"] .bento-card--d {
+    background: #ffffff;
+}
+
+[data-theme="mono"] .bento-card--e {
+    background: #000000;
+    color: #ffffff;
+}
+
+[data-theme="mono"] .bento-card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #000000;
+    opacity: 1;
+}
+
+[data-theme="mono"] .bento-card-label--light { color: #ffffff; }
+
+[data-theme="mono"] .chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: #ffffff;
+    color: #000000;
+    border: var(--mono-thin);
+    border-radius: 0 !important;
+}
+
+[data-theme="mono"] .chip:hover {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+    transform: none !important;
+}
+
+[data-theme="mono"] .neon-list li {
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: #ffffff;
+    font-size: 0.95rem;
+}
+
+[data-theme="mono"] .neon-dot { color: #ffffff; }
+
+[data-theme="mono"] .cert-dashboard {
+    background: rgba(255,255,255,0.08);
+    border: var(--mono-thin);
+    border-color: rgba(255,255,255,0.4);
+}
+
+[data-theme="mono"] .cert-item {
+    background: #ffffff;
+    border: var(--mono-medium);
+    border-radius: 0 !important;
+}
+
+[data-theme="mono"] .cert-item:hover {
+    background: #000000;
+    transform: none !important;
+}
+
+[data-theme="mono"] .cert-item:hover span { color: #ffffff; }
+
+[data-theme="mono"] .stack-pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 0 !important;
+}
+
+[data-theme="mono"] .stack-pill:hover {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+    transform: none !important;
+}
+
+/* ── PROJECTS ─────────────────────────────────────────────── */
+[data-theme="mono"] .projects-section {
+    border-top: var(--mono-ultra);
+    border-bottom: var(--mono-thick);
+}
+
+[data-theme="mono"] .project-card {
+    border: var(--mono-medium);
+    background: #ffffff;
+    transform: none !important;
+    border-radius: 0 !important;
+}
+
+[data-theme="mono"] .project-card:hover {
+    background: #ffffff;
+    border-color: #000000;
+    border-width: 4px;
+    transform: none !important;
+}
+
+[data-theme="mono"] .project-img {
+    border-bottom: var(--mono-medium);
+    filter: grayscale(100%) contrast(1.05);
+    border-radius: 0 !important;
+}
+
+[data-theme="mono"] .project-card:hover .project-img {
+    filter: grayscale(0%);
+    border-bottom-width: 4px;
+}
+
+[data-theme="mono"] .project-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: -0.03em;
+}
+
+[data-theme="mono"] .project-desc {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #525252;
+}
+
+[data-theme="mono"] .project-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 0.2rem 0.65rem;
+    border-radius: 0 !important;
+}
+
+/* ── BLOGS ────────────────────────────────────────────────── */
+[data-theme="mono"] .blogs-section {
+    border-top: var(--mono-ultra);
+    border-bottom: var(--mono-thick);
+}
+
+[data-theme="mono"] .blog-card-image {
+    border: var(--mono-medium);
+    filter: grayscale(100%);
+    border-radius: 0 !important;
+}
+
+[data-theme="mono"] .blog-card:hover .blog-card-image {
+    filter: grayscale(0%);
+    border-width: 4px;
+}
+
+[data-theme="mono"] .blog-card-title,
+[data-theme="mono"] .blog-card .project-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    text-transform: none;
+}
+
+[data-theme="mono"] .blog-card .project-desc {
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: #525252;
+}
+
+[data-theme="mono"] .blog-stat--time {
+    background: #000000;
+    color: #ffffff;
+    font-family: 'JetBrains Mono', monospace;
+    border-radius: 0 !important;
+}
+
+[data-theme="mono"] .gallery-nav {
+    border: var(--mono-medium);
+    background: #ffffff;
+    color: #000000;
+    border-radius: 0 !important;
+}
+
+[data-theme="mono"] .gallery-nav:hover {
+    background: #000000;
+    color: #ffffff;
+    transform: none !important;
+}
+
+/* ── FAQ ──────────────────────────────────────────────────── */
+[data-theme="mono"] .faq-section {
+    background: #f5f5f5;
+    border-top: var(--mono-ultra);
+    border-bottom: var(--mono-thick);
+}
+
+[data-theme="mono"] .faq-item {
+    background: #ffffff;
+    border: var(--mono-medium);
+    border-radius: 0 !important;
+}
+
+[data-theme="mono"] .faq-item[open] {
+    background: #000000;
+    color: #ffffff;
+}
+
+[data-theme="mono"] .faq-summary {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: -0.03em;
+    background: transparent;
+    color: inherit;
+    border-radius: 0 !important;
+}
+
+[data-theme="mono"] .faq-item[open] .faq-summary {
+    background: #000000;
+    color: #ffffff;
+    border-bottom: var(--mono-thin);
+    border-color: rgba(255,255,255,0.2);
+    border-radius: 0 !important;
+}
+
+[data-theme="mono"] .faq-icon { color: inherit; }
+
+[data-theme="mono"] .faq-body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.8;
+}
+
+/* ── CTA ──────────────────────────────────────────────────── */
+[data-theme="mono"] .cta-section {
+    background: #000000;
+    border-top: var(--mono-ultra);
+    background-image: radial-gradient(circle at top center, #ffffff, transparent 70%);
+    position: relative;
+}
+
+[data-theme="mono"] .cta-sticker { display: none; }
+
+[data-theme="mono"] .cta-headline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -0.05em;
+    text-transform: none;
+}
+
+[data-theme="mono"] .cta-headline--outline {
+    -webkit-text-stroke: 3px #ffffff;
+    color: transparent;
+}
+
+[data-theme="mono"] .cta-sub {
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: rgba(255,255,255,0.85);
+    font-style: italic;
+}
+
+/* ── FOOTER ───────────────────────────────────────────────── */
+[data-theme="mono"] .site-footer {
+    background: #000000;
+    border-top: var(--mono-ultra);
+    color: #ffffff;
+}
+
+[data-theme="mono"] .footer-brand-bg {
+    color: #ffffff;
+    opacity: 0.04;
+}
+
+[data-theme="mono"] .footer-logo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    color: #ffffff;
+}
+
+[data-theme="mono"] .footer-tagline {
+    color: rgba(255,255,255,0.5);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+[data-theme="mono"] .footer-nav a {
+    color: rgba(255,255,255,0.7);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+[data-theme="mono"] .footer-nav a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+[data-theme="mono"] .footer-social-link {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #ffffff;
+    border-radius: 0 !important;
+}
+
+[data-theme="mono"] .footer-social-link:hover {
+    background: #ffffff;
+    color: #000000;
+    transform: none !important;
+}
+
+[data-theme="mono"] .footer-legal {
+    color: rgba(255,255,255,0.35);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+/* ── MOBILE NAV DRAWER ───────────────────────────────────── */
+[data-theme="mono"] .mobile-nav-drawer {
+    background: #ffffff;
+    border-left: var(--mono-thick);
+    border-radius: 0 !important;
+}
+
+[data-theme="mono"] .mobile-nav-drawer ul li a {
+    border: var(--mono-medium);
+    border-radius: 0 !important;
+    font-family: 'Source Serif 4', Georgia, serif;
+}
+
+[data-theme="mono"] .mobile-nav-drawer ul li a:hover {
+    background: #000000;
+    color: #ffffff;
+}
+
+[data-theme="mono"] .drawer-close-btn {
+    background: #000000;
+    border-radius: 0 !important;
+}
+
+[data-theme="mono"] .drawer-cta {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+
+/* ── CURSOR RING in MONO ─────────────────────────────────── */
+[data-theme="mono"] #cursor-ring {
+    border-color: #000000;
+    opacity: 0.5;
+}
+
+[data-theme="mono"] body.cursor-hover #cursor-ring {
+    width: 56px;
+    height: 56px;
+    border-color: #000000;
+    background: rgba(0,0,0,0.04);
+    opacity: 0.4;
+}
+
+[data-theme="mono"] body.cursor-click #cursor-ring {
+    width: 24px;
+    height: 24px;
+    border-color: #000000;
+    opacity: 1;
+}
+
+/* ── THEME TOGGLE BUTTON ─────────────────────────────────── */
+.theme-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.4rem 0.85rem;
+    background: var(--green, #ccff00);
+    color: var(--black, #0a0a0a);
+    border: 2px solid var(--black, #0a0a0a);
+    cursor: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background 0.2s, color 0.2s;
+    border-radius: 0;
+    user-select: none;
+    position: relative;
+    z-index: 1001;
+    line-height: 1;
+}
+
+.theme-toggle-btn:hover {
+    background: var(--black, #0a0a0a);
+    color: var(--green, #ccff00);
+}
+
+[data-theme="mono"] .theme-toggle-btn {
+    background: #ffffff;
+    color: #000000;
+    border: 2px solid #000000;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.1em;
+}
+
+[data-theme="mono"] .theme-toggle-btn:hover {
+    background: #000000;
+    color: #ffffff;
+}

@@ -2,31 +2,60 @@
    NEO-BRUTALIST PORTFOLIO — index.js
 ══════════════════════════════════════════════════════════════ */
 
-/* ── CUSTOM DUAL-RING MAGNETIC CURSOR ───────────────────── */
+/* ── THEME TOGGLE — Click Me button ─────────────────────────── */
+(function initThemeToggle() {
+    var STORAGE_KEY = 'rp-theme';
+    var monoLink    = document.getElementById('mono-css');
+    var btn         = document.getElementById('theme-toggle-btn');
+    var html        = document.documentElement;
+    if (!monoLink || !btn) return;
+
+    function applyTheme(isMono) {
+        monoLink.disabled = !isMono;
+        if (isMono) {
+            html.setAttribute('data-theme', 'mono');
+            btn.textContent = '✦ original';
+            btn.setAttribute('title', 'Back to Neo-Brutalist');
+        } else {
+            html.removeAttribute('data-theme');
+            btn.textContent = '✦ click me';
+            btn.setAttribute('title', 'Switch to Minimalist Monochrome');
+        }
+    }
+
+    // Restore saved preference
+    var saved = localStorage.getItem(STORAGE_KEY);
+    applyTheme(saved === 'mono');
+
+    btn.addEventListener('click', function () {
+        var isMono = html.getAttribute('data-theme') === 'mono';
+        var next   = !isMono;
+        applyTheme(next);
+        localStorage.setItem(STORAGE_KEY, next ? 'mono' : 'brutalist');
+    });
+})();
+
+
+/* ── CUSTOM CURSOR — ring only (pencil is native CSS cursor) ── */
 (function initCustomCursor() {
     if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
 
-    var dot  = document.createElement('div');
     var ring = document.createElement('div');
-    dot.id  = 'cursor-dot';
     ring.id = 'cursor-ring';
-    document.body.appendChild(dot);
     document.body.appendChild(ring);
 
     var mx = window.innerWidth  / 2;
     var my = window.innerHeight / 2;
     var rx = mx, ry = my;
     var LERP = 0.13;
-    var rafId;
 
     function lerp(a, b, t) { return a + (b - a) * t; }
 
     function tick() {
         rx = lerp(rx, mx, LERP);
         ry = lerp(ry, my, LERP);
-        dot.style.transform  = 'translate3d(calc(' + mx + 'px - 50%), calc(' + my + 'px - 50%), 0)';
         ring.style.transform = 'translate3d(calc(' + rx + 'px - 50%), calc(' + ry + 'px - 50%), 0)';
-        rafId = requestAnimationFrame(tick);
+        requestAnimationFrame(tick);
     }
 
     document.addEventListener('mousemove', function (e) {
@@ -34,52 +63,31 @@
         my = e.clientY;
     }, { passive: true });
 
-    /* show on first move, hide when leaving window */
     document.addEventListener('mousemove', function show() {
-        dot.style.opacity  = '1';
         ring.style.opacity = '0.7';
         document.removeEventListener('mousemove', show);
     }, { passive: true });
 
-    document.addEventListener('mouseleave', function () {
-        dot.style.opacity  = '0';
-        ring.style.opacity = '0';
-    });
-    document.addEventListener('mouseenter', function () {
-        dot.style.opacity  = '1';
-        ring.style.opacity = '0.7';
-    });
+    document.addEventListener('mouseleave', function () { ring.style.opacity = '0'; });
+    document.addEventListener('mouseenter', function () { ring.style.opacity = '0.7'; });
 
-    /* hover state — enlarge ring on interactive elements */
     var HOVER_SEL = 'a, button, [role="button"], .btn-brutal, .chip, ' +
         '.stack-pill, .badge, .cert-item, .gallery-nav, ' +
         '.nav-cta-pill, .pill-link, .social-chip, .faq-summary, ' +
-        '.project-card, .bento-card, .phone-post, .footer-social-link';
+        '.project-card, .bento-card, .phone-post, .footer-social-link, ' +
+        '.theme-toggle-btn';
 
     document.addEventListener('mouseover', function (e) {
-        if (e.target.closest(HOVER_SEL)) {
-            document.body.classList.add('cursor-hover');
-        }
+        if (e.target.closest(HOVER_SEL)) document.body.classList.add('cursor-hover');
     }, { passive: true });
-
     document.addEventListener('mouseout', function (e) {
-        if (e.target.closest(HOVER_SEL)) {
-            document.body.classList.remove('cursor-hover');
-        }
+        if (e.target.closest(HOVER_SEL)) document.body.classList.remove('cursor-hover');
     }, { passive: true });
+    document.addEventListener('mousedown', function () { document.body.classList.add('cursor-click'); });
+    document.addEventListener('mouseup',   function () { document.body.classList.remove('cursor-click'); });
 
-    /* click squash */
-    document.addEventListener('mousedown', function () {
-        document.body.classList.add('cursor-click');
-    });
-    document.addEventListener('mouseup', function () {
-        document.body.classList.remove('cursor-click');
-    });
-
-    /* start loop */
-    dot.style.opacity  = '0';
     ring.style.opacity = '0';
-    rafId = requestAnimationFrame(tick);
+    requestAnimationFrame(tick);
 })();
 
 
@@ -119,9 +127,7 @@ document.addEventListener('DOMContentLoaded', resetMobileNavForDesktop);
 document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
         var drawer = document.getElementById('mobile-drawer');
-        if (drawer && drawer.classList.contains('open')) {
-            toggleMobileNav();
-        }
+        if (drawer && drawer.classList.contains('open')) toggleMobileNav();
     }
 });
 
@@ -183,11 +189,8 @@ document.addEventListener('keydown', function (e) {
         links.forEach(function (link, i) {
             var tl = tlRefs[i];
             if (!tl) return;
-            if (link.classList.contains('active')) {
-                tl.progress(1);
-            } else {
-                tl.progress(0);
-            }
+            if (link.classList.contains('active')) tl.progress(1);
+            else tl.progress(0);
         });
     }
 
@@ -240,7 +243,6 @@ document.addEventListener('keydown', function (e) {
 (function initNavScroll() {
     var pill = document.getElementById('nav-pill');
     if (!pill) return;
-
     window.addEventListener('scroll', function () {
         if (window.scrollY > 60) {
             pill.style.transform = 'translateX(-50%) scale(0.96)';
@@ -427,7 +429,6 @@ document.addEventListener('keydown', function (e) {
     var feedUrl     = 'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@rushpatel';
     var scrollAmount = 380;
 
-    /* ── Helpers ── */
     function estimateReadTime(html) {
         var text  = html.replace(/<[^>]*>/g, ' ');
         var words = text.trim().split(/\s+/).filter(Boolean).length;
@@ -455,7 +456,6 @@ document.addEventListener('keydown', function (e) {
         return cats;
     }
 
-    /* ── Card builder ── */
     function createCard(article) {
         var cleanDescription = (article.description || '')
             .replace(/<[^>]*>/g, '')
@@ -476,38 +476,27 @@ document.addEventListener('keydown', function (e) {
 
         card.innerHTML = `
             <img src="${imageUrl}" alt="${article.title}" class="blog-card-image project-img" loading="lazy" decoding="async">
-
             <div class="blog-card-content project-info">
                 <h3 class="blog-card-title project-title">${article.title}</h3>
-
                 <div class="blog-card-stats">
                     <span class="blog-stat blog-stat--time">
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         ${readTime}
                     </span>
                 </div>
-
                 <p class="blog-card-description project-desc">${cleanDescription}...</p>
-
                 <div class="blog-card-tags project-tags">
                     ${categories.map(cat => `<span class="project-tag">${cat}</span>`).join('')}
                 </div>
-
                 <div class="blog-card-footer project-btns">
-                    <a href="${article.link}" target="_blank" rel="noopener noreferrer" class="btn-brutal btn-brutal--black">
-                        read article
-                    </a>
-                    <a href="${article.link}" target="_blank" rel="noopener noreferrer" class="btn-brutal btn-brutal--white">
-                        medium
-                    </a>
+                    <a href="${article.link}" target="_blank" rel="noopener noreferrer" class="btn-brutal btn-brutal--black">read article</a>
+                    <a href="${article.link}" target="_blank" rel="noopener noreferrer" class="btn-brutal btn-brutal--white">medium</a>
                 </div>
             </div>
         `;
-
         return card;
     }
 
-    /* ── Fetch ── */
     function fetchBlogs() {
         fetch(feedUrl)
             .then(function (r) { return r.json(); })
@@ -526,13 +515,10 @@ document.addEventListener('keydown', function (e) {
 
     function renderCards(articles) {
         gallery.innerHTML = '';
-        articles.forEach(function (article) {
-            gallery.appendChild(createCard(article));
-        });
+        articles.forEach(function (article) { gallery.appendChild(createCard(article)); });
         updateScrollButtons();
     }
 
-    /* ── Scroll controls ── */
     function updateScrollButtons() {
         var sl = gallery.scrollLeft;
         var sw = gallery.scrollWidth;
