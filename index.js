@@ -2,6 +2,87 @@
    NEO-BRUTALIST PORTFOLIO — index.js
 ══════════════════════════════════════════════════════════════ */
 
+/* ── CUSTOM DUAL-RING MAGNETIC CURSOR ───────────────────── */
+(function initCustomCursor() {
+    if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
+
+    var dot  = document.createElement('div');
+    var ring = document.createElement('div');
+    dot.id  = 'cursor-dot';
+    ring.id = 'cursor-ring';
+    document.body.appendChild(dot);
+    document.body.appendChild(ring);
+
+    var mx = window.innerWidth  / 2;
+    var my = window.innerHeight / 2;
+    var rx = mx, ry = my;
+    var LERP = 0.13;
+    var rafId;
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    function tick() {
+        rx = lerp(rx, mx, LERP);
+        ry = lerp(ry, my, LERP);
+        dot.style.transform  = 'translate3d(calc(' + mx + 'px - 50%), calc(' + my + 'px - 50%), 0)';
+        ring.style.transform = 'translate3d(calc(' + rx + 'px - 50%), calc(' + ry + 'px - 50%), 0)';
+        rafId = requestAnimationFrame(tick);
+    }
+
+    document.addEventListener('mousemove', function (e) {
+        mx = e.clientX;
+        my = e.clientY;
+    }, { passive: true });
+
+    /* show on first move, hide when leaving window */
+    document.addEventListener('mousemove', function show() {
+        dot.style.opacity  = '1';
+        ring.style.opacity = '0.7';
+        document.removeEventListener('mousemove', show);
+    }, { passive: true });
+
+    document.addEventListener('mouseleave', function () {
+        dot.style.opacity  = '0';
+        ring.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', function () {
+        dot.style.opacity  = '1';
+        ring.style.opacity = '0.7';
+    });
+
+    /* hover state — enlarge ring on interactive elements */
+    var HOVER_SEL = 'a, button, [role="button"], .btn-brutal, .chip, ' +
+        '.stack-pill, .badge, .cert-item, .gallery-nav, ' +
+        '.nav-cta-pill, .pill-link, .social-chip, .faq-summary, ' +
+        '.project-card, .bento-card, .phone-post, .footer-social-link';
+
+    document.addEventListener('mouseover', function (e) {
+        if (e.target.closest(HOVER_SEL)) {
+            document.body.classList.add('cursor-hover');
+        }
+    }, { passive: true });
+
+    document.addEventListener('mouseout', function (e) {
+        if (e.target.closest(HOVER_SEL)) {
+            document.body.classList.remove('cursor-hover');
+        }
+    }, { passive: true });
+
+    /* click squash */
+    document.addEventListener('mousedown', function () {
+        document.body.classList.add('cursor-click');
+    });
+    document.addEventListener('mouseup', function () {
+        document.body.classList.remove('cursor-click');
+    });
+
+    /* start loop */
+    dot.style.opacity  = '0';
+    ring.style.opacity = '0';
+    rafId = requestAnimationFrame(tick);
+})();
+
+
 /* ── MARQUEE — duplicate content for seamless infinite loop ── */
 (function initMarquee() {
     var track = document.getElementById('marquee-track');
@@ -10,7 +91,7 @@
 })();
 
 
-/* ── MOBILE NAV ──────────────────────────────────────────── */
+/* ── MOBILE NAV ───────────────────────────────────────────── */
 function toggleMobileNav() {
     var overlay = document.getElementById('mobile-overlay');
     var drawer  = document.getElementById('mobile-drawer');
@@ -45,7 +126,7 @@ document.addEventListener('keydown', function (e) {
 });
 
 
-/* ── PILL NAV INTERACTIONS (GSAP) ─────────────────────────── */
+/* ── PILL NAV INTERACTIONS (GSAP) ───────────────────────────── */
 (function initPillNavInteractions() {
     var gsapRef = window.gsap;
     var nav = document.getElementById('nav3') || document.getElementById('nav-links');
@@ -155,7 +236,7 @@ document.addEventListener('keydown', function (e) {
 })();
 
 
-/* ── NAV PILL — subtle shrink while scrolling ─────────────── */
+/* ── NAV PILL — subtle shrink while scrolling ───────────────── */
 (function initNavScroll() {
     var pill = document.getElementById('nav-pill');
     if (!pill) return;
@@ -201,7 +282,7 @@ document.addEventListener('keydown', function (e) {
 })();
 
 
-/* ── SCROLL-TRIGGERED FADE IN ──────────────────────────────── */
+/* ── SCROLL-TRIGGERED FADE IN ────────────────────────────────── */
 (function initScrollReveal() {
     var targets = document.querySelectorAll(
         '.bento-card, .project-card, .faq-item, .cert-item, .about-grid'
@@ -231,7 +312,7 @@ document.addEventListener('keydown', function (e) {
 })();
 
 
-/* ── FAQ ─────────────────────────────────────────────────────── */
+/* ── FAQ ─────────────────────────────────────────────────────────────── */
 (function initFaq() {
     var items = document.querySelectorAll('.faq-item');
     items.forEach(function (item) {
@@ -246,7 +327,7 @@ document.addEventListener('keydown', function (e) {
 })();
 
 
-/* ── HERO ENTRANCE ───────────────────────────────────────────── */
+/* ── HERO ENTRANCE ─────────────────────────────────────────────────── */
 (function initHeroEntrance() {
     var heroLeft = document.querySelector('.hero-left');
     if (!heroLeft) return;
@@ -266,7 +347,7 @@ document.addEventListener('keydown', function (e) {
 })();
 
 
-/* ── HERO ROLE ROTATOR ───────────────────────────────────────── */
+/* ── HERO ROLE ROTATOR ──────────────────────────────────────────────── */
 (function initHeroRoleRotator() {
     var roleEl = document.getElementById('hero-role-text');
     if (!roleEl) return;
@@ -290,7 +371,7 @@ document.addEventListener('keydown', function (e) {
 })();
 
 
-/* ── HERO CURSOR GLOW ──────────────────────────────────────── */
+/* ── HERO CURSOR GLOW ────────────────────────────────────────────── */
 (function initHeroCursorGlow() {
     var hero = document.querySelector('.hero');
     if (!hero) return;
@@ -336,7 +417,7 @@ document.addEventListener('keydown', function (e) {
 })();
 
 
-/* ── MEDIUM BLOGS GALLERY ────────────────────────────────────── */
+/* ── MEDIUM BLOGS GALLERY ────────────────────────────────────────────── */
 (function initBlogsGallery() {
     var gallery       = document.getElementById('blogsGallery');
     var scrollLeftBtn = document.getElementById('blogsScrollLeft');
@@ -357,13 +438,11 @@ document.addEventListener('keydown', function (e) {
     function getRealCategories(article) {
         var cats = [];
         if (Array.isArray(article.categories) && article.categories.length) {
-            // RSS returns lowercase strings; sanitise and take up to 3
             cats = article.categories
                 .map(function (c) { return c.toLowerCase().trim(); })
                 .filter(function (c) { return c.length > 0 && c.length < 22; })
                 .slice(0, 3);
         }
-        // Fallback: derive from title keywords if API returned nothing
         if (!cats.length) {
             var t = (article.title || '').toLowerCase();
             if (t.includes('devops'))     cats.push('devops');
