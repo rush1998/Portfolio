@@ -1570,36 +1570,27 @@ em   { font-style: italic; }
 
 
 /* ══════════════════════════════════════════════════════════════
-   CUSTOM CURSOR — dual-ring magnetic
+   CUSTOM CURSOR — pencil + trailing ring
+   SVG pencil: acid-green body, black outline, tip hotspot at 2 2
 ══════════════════════════════════════════════════════════════ */
+
+/*
+  Pencil SVG (32x32), pointing bottom-left, tip at bottom-left corner.
+  Body: #ccff00 (acid green), eraser: #ff4800 (orange), outline: #0a0a0a.
+  Hotspot: 2 28  (near the tip, bottom-left)
+*/
 @media (hover: hover) and (pointer: fine) {
-    body { cursor: none; }
+    body,
     a, button, [role="button"],
     .btn-brutal, .chip, .stack-pill, .badge,
     .cert-item, .gallery-nav, .nav-cta-pill,
-    .pill-link, .social-chip, .faq-summary {
-        cursor: none;
+    .pill-link, .social-chip, .faq-summary,
+    .project-card, .bento-card, .hero {
+        cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg transform='rotate(-45 16 16)'%3E%3Crect x='13' y='3' width='6' height='18' rx='1' fill='%23ccff00' stroke='%230a0a0a' stroke-width='1.5'/%3E%3Crect x='13' y='21' width='6' height='5' rx='0.5' fill='%23e0e0e0' stroke='%230a0a0a' stroke-width='1.5'/%3E%3Cpolygon points='13,26 19,26 16,31' fill='%230a0a0a'/%3E%3Crect x='13' y='3' width='6' height='3' rx='1' fill='%23ff4800' stroke='%230a0a0a' stroke-width='1.5'/%3E%3C/g%3E%3C/svg%3E") 12 28, crosshair;
     }
 }
 
-/* Dot — snaps to exact mouse position */
-#cursor-dot {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--green);
-    pointer-events: none;
-    z-index: 99999;
-    transform: translate(-50%, -50%);
-    will-change: transform;
-    transition: width 0.2s var(--bounce), height 0.2s var(--bounce), background 0.2s;
-    mix-blend-mode: difference;
-}
-
-/* Ring — lags behind with lerp */
+/* Ring — lags behind with lerp, driven by JS */
 #cursor-ring {
     position: fixed;
     top: 0;
@@ -1613,20 +1604,14 @@ em   { font-style: italic; }
     transform: translate(-50%, -50%);
     will-change: transform;
     transition:
-        width    0.25s var(--bounce),
-        height   0.25s var(--bounce),
+        width        0.25s var(--bounce),
+        height       0.25s var(--bounce),
         border-color 0.2s,
-        opacity  0.3s;
+        opacity      0.3s;
     opacity: 0.7;
 }
 
-/* Hover state — ring grows, dot hides, ring fills with purple tint */
-body.cursor-hover #cursor-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--purple);
-}
-
+/* Hover — ring swells and shifts to purple */
 body.cursor-hover #cursor-ring {
     width: 64px;
     height: 64px;
@@ -1635,13 +1620,7 @@ body.cursor-hover #cursor-ring {
     background: rgba(112, 0, 255, 0.07);
 }
 
-/* Click state — ring squashes */
-body.cursor-click #cursor-dot {
-    width: 12px;
-    height: 12px;
-    background: var(--pink);
-}
-
+/* Click — ring squashes to orange */
 body.cursor-click #cursor-ring {
     width: 30px;
     height: 30px;
@@ -1649,9 +1628,9 @@ body.cursor-click #cursor-ring {
     opacity: 1;
 }
 
-/* Hide on touch/mobile */
+/* Hide everything on touch / small screens */
 @media (hover: none), (pointer: coarse) {
-    #cursor-dot, #cursor-ring { display: none; }
+    #cursor-ring { display: none; }
 }
 
 
@@ -1718,5 +1697,5 @@ body.cursor-click #cursor-ring {
     .about-section { padding-left: 5%; padding-right: 5%; }
     .footer-brand-bg { font-size: 14vw; }
     .hero-cursor-glow { display: none; }
-    #cursor-dot, #cursor-ring { display: none; }
+    #cursor-ring { display: none; }
 }
