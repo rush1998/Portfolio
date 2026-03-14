@@ -544,3 +544,39 @@ document.addEventListener('keydown', function (e) {
         fetchBlogs();
     }
 })();
+
+
+/* ── THEME TOGGLE BUTTON — SPARK BURST on hover ─────────────────── */
+(function initToggleBtnSparks() {
+    var btn = document.getElementById('theme-toggle-btn');
+    if (!btn) return;
+    if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
+
+    // Spark colours cycling through the brand palette
+    var COLOURS = ['#ccff00', '#7000ff', '#ff4800', '#ccff00', '#7000ff', '#ff4800', '#ccff00', '#7000ff'];
+    var DURATION = 520; // ms — matches CSS animation duration
+    var rafId = null;
+
+    function spawnSparks() {
+        // Remove any leftover sparks from previous hover
+        btn.querySelectorAll('.spark').forEach(function (s) { s.remove(); });
+
+        for (var n = 1; n <= 8; n++) {
+            var spark = document.createElement('span');
+            spark.className = 'spark spark--' + n;
+            spark.style.background = COLOURS[n - 1];
+            // Override colour in mono mode with greyscale
+            if (document.documentElement.getAttribute('data-theme') === 'mono') {
+                spark.style.background = (n % 3 === 0) ? '#525252' : '#000000';
+            }
+            btn.appendChild(spark);
+
+            // Self-remove after animation completes
+            (function (el) {
+                setTimeout(function () { if (el.parentNode) el.remove(); }, DURATION + 80);
+            }(spark));
+        }
+    }
+
+    btn.addEventListener('mouseenter', spawnSparks);
+})();
