@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rushabh Patel — Minimalist</title>
+    <meta name="description" content="Rushabh Patel — DevOps Engineer & Cloud Architect. Minimalist view.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="mono-page.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+    <a href="#hero" class="nav-logo">RP</a>
+    <ul class="nav-links">
+        <li><a href="#about">about</a></li>
+        <li><a href="#skills">skills</a></li>
+        <li><a href="#projects">projects</a></li>
+        <li><a href="#blogs">blogs</a></li>
+        <li><a href="#faq">faq</a></li>
+        <li><a href="#contact">contact</a></li>
+    </ul>
+    <a href="index.html" class="nav-cta">&#10022; original site</a>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+    <div class="hero-inner">
+        <div class="hero-left">
+            <span class="eyebrow">hey, i&#39;m</span>
+            <h1 class="hero-headline">Rushabh<br><em>Patel.</em></h1>
+            <p class="hero-sub">DevOps Engineer &amp; Cloud Architect.<br>I build infrastructure that doesn&#39;t break at 3 am.</p>
+            <div class="hero-actions">
+                <a href="resume.pdf" target="_blank" rel="noopener" class="btn btn--black">Download CV</a>
+                <a href="#contact" class="btn btn--outline">Let&#39;s Talk &rarr;</a>
+            </div>
+            <div class="hero-socials">
+                <a href="https://www.linkedin.com/in/prushabh/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/rush1998" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://medium.com/@rushpatel" target="_blank" rel="noopener noreferrer">Medium</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <img src="main.jpg" alt="Rushabh Patel" class="hero-photo">
+        </div>
+    </div>
+</section>
+
+<hr class="rule">
+
+<!-- MARQUEE (CSS-only) -->
+<div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+        <span>DevOps Engineer</span><span class="sep">&nbsp;&middot;&nbsp;</span>
+        <span>Cloud Architect</span><span class="sep">&nbsp;&middot;&nbsp;</span>
+        <span>Terraform &amp; AWS</span><span class="sep">&nbsp;&middot;&nbsp;</span>
+        <span>Kubernetes</span><span class="sep">&nbsp;&middot;&nbsp;</span>
+        <span>CI/CD Pipelines</span><span class="sep">&nbsp;&middot;&nbsp;</span>
+        <span>Full Stack Dev</span><span class="sep">&nbsp;&middot;&nbsp;</span>
+        <span>Open Source</span><span class="sep">&nbsp;&middot;&nbsp;</span>
+        <span>Northeastern Alum</span><span class="sep">&nbsp;&middot;&nbsp;</span>
+        <!-- duplicate for seamless loop -->
+        <span>DevOps Engineer</span><span class="sep">&nbsp;&middot;&nbsp;</span>
+        <span>Cloud Architect</span><span class="sep">&nbsp;&middot;&nbsp;</span>
+        <span>Terraform &amp; AWS</span><span class="sep">&nbsp;&middot;&nbsp;</span>
+        <span>Kubernetes</span><span class="sep">&nbsp;&middot;&nbsp;</span>
+        <span>CI/CD Pipelines</span><span class="sep">&nbsp;&middot;&nbsp;</span>
+        <span>Full Stack Dev</span><span class="sep">&nbsp;&middot;&nbsp;</span>
+        <span>Open Source</span><span class="sep">&nbsp;&middot;&nbsp;</span>
+        <span>Northeastern Alum</span><span class="sep">&nbsp;&middot;&nbsp;</span>
+    </div>
+</div>
+
+<hr class="rule">
+
+<!-- ABOUT -->
+<section class="section" id="about">
+    <div class="section-inner">
+        <div class="section-label-wrap">
+            <span class="section-label">get to know me</span>
+            <h2 class="section-title">About Me.</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-photo-wrap">
+                <img src="main.jpg" alt="Rushabh Patel" class="about-photo">
+            </div>
+            <div class="about-text">
+                <p>Hey! I&#39;m Rushabh &mdash; a <strong>DevOps Engineer &amp; Cloud Architect</strong> based in Canada. I graduated with an MS in Informatics from <strong>Northeastern University</strong> and a BE in Computer Science from <strong>GTU</strong>.</p>
+                <p>I specialize in designing resilient cloud infrastructure, automating CI/CD pipelines, and bridging the gap between dev teams and ops. <strong>3+ years</strong> of building things that actually scale.</p>
+                <div class="badges">
+                    <span class="badge badge--black">MS Informatics</span>
+                    <span class="badge badge--outline">3+ Yrs Exp</span>
+                    <span class="badge badge--outline">Open to Work</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="rule">
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+    <div class="section-inner">
+        <div class="section-label-wrap">
+            <span class="section-label">what i know</span>
+            <h2 class="section-title">Experience &amp; Certs.</h2>
+        </div>
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+                <h3 class="skill-card-title">Amazon Web Services</h3>
+                <div class="chips">
+                    <span class="chip">IAM</span><span class="chip">EC2</span><span class="chip">S3</span>
+                    <span class="chip">Lambda</span><span class="chip">EKS</span><span class="chip">CloudWatch</span>
+                    <span class="chip">CodePipeline</span><span class="chip">Cost Explorer</span>
+                </div>
+            </div>
+
+            <div class="skill-card skill-card--inverted">
+                <h3 class="skill-card-title">DevOps Toolkit</h3>
+                <ul class="skill-list">
+                    <li>Terraform / HCL</li>
+                    <li>Kubernetes &amp; Helm</li>
+                    <li>ArgoCD / GitOps</li>
+                    <li>Jenkins / GitHub Actions</li>
+                    <li>Ansible / Puppet</li>
+                    <li>Docker</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3 class="skill-card-title">Microsoft Azure</h3>
+                <div class="chips">
+                    <span class="chip">Entra ID</span><span class="chip">Azure Monitor</span>
+                    <span class="chip">Cost Mgmt</span><span class="chip">Compute</span>
+                    <span class="chip">Networking</span><span class="chip">Load Balancer</span>
+                </div>
+            </div>
+
+            <div class="skill-card skill-card--inverted">
+                <h3 class="skill-card-title">Full Stack Dev</h3>
+                <div class="chips chips--light">
+                    <span class="chip chip--light">HTML</span><span class="chip chip--light">CSS</span>
+                    <span class="chip chip--light">JavaScript</span><span class="chip chip--light">Node.js</span>
+                    <span class="chip chip--light">React</span><span class="chip chip--light">MongoDB</span>
+                    <span class="chip chip--light">Git</span><span class="chip chip--light">Python</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Certifications -->
+        <div class="certs">
+            <h3 class="certs-title">Certifications</h3>
+            <div class="certs-grid">
+                <div class="cert-item">
+                    <img src="blob.png" alt="HashiCorp Terraform" class="cert-img">
+                    <span>HashiCorp Terraform</span>
+                </div>
+                <div class="cert-item">
+                    <img src="aws-1.png" alt="AWS Cloud Practitioner" class="cert-img">
+                    <span>AWS Cloud Practitioner</span>
+                </div>
+                <div class="cert-item">
+                    <img src="aws-2.png" alt="AWS Solutions Architect" class="cert-img">
+                    <span>AWS Solutions Architect</span>
+                </div>
+                <div class="cert-item">
+                    <img src="az-900.jpg" alt="Azure Fundamentals" class="cert-img">
+                    <span>Azure Fundamentals</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<hr class="rule">
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+    <div class="section-inner">
+        <div class="section-label-wrap">
+            <span class="section-label">what i&#39;ve built</span>
+            <h2 class="section-title">Projects.</h2>
+        </div>
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <img src="Figma-site1.png" alt="Experiential Network" class="project-img">
+                <div class="project-body">
+                    <h3 class="project-title">Experiential Network</h3>
+                    <p class="project-desc">A full-featured social platform designed for experiential learning communities with real-time collaboration features.</p>
+                    <div class="project-tags">
+                        <span>Figma</span><span>UX/UI</span><span>React</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/rush1998" target="_blank" rel="noopener" class="btn btn--black btn--sm">GitHub</a>
+                        <a href="https://www.figma.com/proto/l86d06P47h7vPOUxMwnHGD/New-website?node-id=1-2&starting-point-node-id=1%3A2" target="_blank" rel="noopener" class="btn btn--outline btn--sm">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="Figma-site2.png" alt="Capstone Project" class="project-img">
+                <div class="project-body">
+                    <h3 class="project-title">Capstone Project</h3>
+                    <p class="project-desc">Graduate capstone &mdash; a platform bridging students and industry mentors with smart matching algorithms.</p>
+                    <div class="project-tags">
+                        <span>Informatics</span><span>Node.js</span><span>MongoDB</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/rush1998" target="_blank" rel="noopener" class="btn btn--black btn--sm">GitHub</a>
+                        <a href="https://www.figma.com/proto/j9ZXbhAjOAdJmidsKjAC2i/ITC6040?node-id=1-4&starting-point-node-id=1%3A4" target="_blank" rel="noopener" class="btn btn--outline btn--sm">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="Figma-site3.png" alt="E-commerce Site" class="project-img">
+                <div class="project-body">
+                    <h3 class="project-title">E-commerce Site</h3>
+                    <p class="project-desc">Modern storefront with real-time inventory management, dynamic cart, and optimised checkout flow.</p>
+                    <div class="project-tags">
+                        <span>JavaScript</span><span>CSS</span><span>Node.js</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/rush1998/Future_website.git" target="_blank" rel="noopener" class="btn btn--black btn--sm">GitHub</a>
+                        <a href="https://github.com/rush1998/Future_website.git" target="_blank" rel="noopener" class="btn btn--outline btn--sm">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<hr class="rule">
+
+<!-- BLOGS -->
+<section class="section" id="blogs">
+    <div class="section-inner">
+        <div class="section-label-wrap">
+            <span class="section-label">thoughts &amp; insights</span>
+            <h2 class="section-title">Blogs.</h2>
+        </div>
+        <div class="blogs-grid">
+
+            <div class="blog-card">
+                <div class="blog-body">
+                    <span class="blog-tag">DevOps</span>
+                    <h3 class="blog-title">How I Automated My Entire Cloud Infra with Terraform</h3>
+                    <p class="blog-desc">A deep-dive into building reusable Terraform modules that provision AWS infrastructure end-to-end with zero manual steps.</p>
+                    <a href="https://medium.com/@rushpatel" target="_blank" rel="noopener" class="blog-link">Read on Medium &rarr;</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-body">
+                    <span class="blog-tag">Kubernetes</span>
+                    <h3 class="blog-title">GitOps with ArgoCD: Lessons from Production</h3>
+                    <p class="blog-desc">What I learned deploying ArgoCD across three environments &mdash; pitfalls, best practices, and the parts the docs don't tell you.</p>
+                    <a href="https://medium.com/@rushpatel" target="_blank" rel="noopener" class="blog-link">Read on Medium &rarr;</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-body">
+                    <span class="blog-tag">Cloud</span>
+                    <h3 class="blog-title">AWS Cost Optimisation: Cutting Bills by 40%</h3>
+                    <p class="blog-desc">Practical strategies I used to reduce AWS spend without sacrificing reliability &mdash; rightsizing, spot instances, and Reserved Capacity.</p>
+                    <a href="https://medium.com/@rushpatel" target="_blank" rel="noopener" class="blog-link">Read on Medium &rarr;</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="blogs-footer">
+            <a href="https://medium.com/@rushpatel" target="_blank" rel="noopener noreferrer" class="btn btn--outline">Read More on Medium &rarr;</a>
+        </div>
+    </div>
+</section>
+
+<hr class="rule">
+
+<!-- FAQ -->
+<section class="section" id="faq">
+    <div class="section-inner">
+        <div class="section-label-wrap">
+            <span class="section-label">got questions?</span>
+            <h2 class="section-title">FAQ.</h2>
+        </div>
+        <div class="faq">
+
+            <details class="faq-item">
+                <summary>What do you actually do every day?</summary>
+                <p>Mostly coffee + IaC. I design cloud infra, write Terraform modules, build CI/CD pipelines, and make sure deployments go out without drama. Occasionally I push real app code too.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>Are you open to new opportunities?</summary>
+                <p>Yes! I&#39;m actively exploring full-time DevOps / cloud engineering roles. Contract work, consulting, and interesting side projects are all on the table. Just reach out.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>What&#39;s your cloud of choice?</summary>
+                <p>AWS is home base &mdash; I&#39;m certified at Solutions Architect level. But I&#39;ve shipped real workloads on Azure too, and I believe in picking the right tool over platform loyalty.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>Can you help with my startup&#39;s infra?</summary>
+                <p>Absolutely. I love working with early-stage teams to lay the right foundations &mdash; scalable infra from day one so you&#39;re not scrambling when traction hits. Drop me an email and let&#39;s talk specifics.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>Do you code frontend too?</summary>
+                <p>Yep &mdash; this very page is hand-coded by me. I&#39;m comfortable across the full stack: HTML/CSS, JavaScript, React, Node.js, and enough Python to be dangerous.</p>
+            </details>
+
+        </div>
+    </div>
+</section>
+
+<hr class="rule">
+
+<!-- CONTACT -->
+<section class="section section--inverted" id="contact">
+    <div class="section-inner">
+        <h2 class="cta-headline">Let&#39;s Build<br><em>Something.</em></h2>
+        <p class="cta-sub">Available for full-time roles, consulting &amp; interesting projects.</p>
+        <div class="cta-actions">
+            <a href="mailto:rushabh.patel1998@gmail.com" class="btn btn--white">Email Me</a>
+            <a href="https://www.linkedin.com/in/prushabh/" target="_blank" rel="noopener" class="btn btn--outline-white">LinkedIn &rarr;</a>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-left">
+            <span class="footer-logo"><em>RP</em></span>
+            <p class="footer-tagline">devops &middot; cloud &middot; full stack</p>
+        </div>
+        <nav class="footer-nav">
+            <a href="#about">about</a>
+            <a href="#skills">skills</a>
+            <a href="#projects">projects</a>
+            <a href="#blogs">blogs</a>
+            <a href="#faq">faq</a>
+            <a href="#contact">contact</a>
+        </nav>
+        <div class="footer-socials">
+            <a href="https://www.linkedin.com/in/prushabh/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/rush1998" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://medium.com/@rushpatel" target="_blank" rel="noopener noreferrer">Medium</a>
+        </div>
+    </div>
+    <p class="footer-legal">&copy; 2026 Rushabh Patel. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
